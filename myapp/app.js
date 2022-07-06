@@ -8,12 +8,18 @@ app.use(bodyParser.json())
 //app.use(express.static(__dirname + '/recursos'))
 
 import student from './routes/students.js'
-import userRouter from './routes/users.js'
+import classes from './routes/classes.js'
+
+
+//import userRouter from './routes/users.js'
+
 import routes from './routes/index.js'
 
 import db from "./db/db.js";
 
 routes.use('/student', student);
+routes.use('/class', classes);
+
 
 app.use(routes);
 
@@ -38,8 +44,6 @@ function getSTime(){
   }, 2000);
   return test;
 }
-
-
 
 app.get('/assinc', async function(req, res) {
   res.send(await getATime());

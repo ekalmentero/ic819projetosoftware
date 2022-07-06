@@ -1,12 +1,11 @@
 import { Sequelize } from 'sequelize';
-
 import db from '../db/db.js';
 
-class Student{
+class Professor{
 
 }
 
-const StudentsModel = db.define('student', {
+const ProfessorsModel = db.define('professor', {
   id: {
     type: Sequelize.INTEGER.UNSIGNED,
     primaryKey: true,
@@ -17,14 +16,11 @@ const StudentsModel = db.define('student', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  registration: {
+  email: {
     type: Sequelize.STRING,
     allowNull: false,
     unique: true,
   },
 });
 
-
-
-
-export {StudentsModel, Student};
+export {ProfessorsModel, Professor};

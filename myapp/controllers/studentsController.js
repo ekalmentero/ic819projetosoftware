@@ -1,4 +1,4 @@
-import StudentsModel from '../models/studentsModel.js'
+import {StudentsModel} from '../models/studentsModel.js'
 
 async function getById(id){
         
