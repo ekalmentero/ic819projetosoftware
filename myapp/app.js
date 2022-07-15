@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 
 import student from './routes/students.js'
 import classes from './routes/classes.js'
-
+import courses from './routes/courses.js'
 
 //import userRouter from './routes/users.js'
 
@@ -19,7 +19,7 @@ import db from "./db/db.js";
 
 routes.use('/student', student);
 routes.use('/class', classes);
-
+routes.use('/course', courses);
 
 app.use(routes);
 

@@ -6,7 +6,7 @@
   "module": "main.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon app.js"
   },
   "keywords": [],
@@ -16,5 +16,8 @@
     "esm": "^3.2.25",
     "mysql2": "^2.3.3",
     "sequelize": "^6.21.2"
+  },
+  "devDependencies": {
+    "jest": "^28.1.3"
   }
 }
