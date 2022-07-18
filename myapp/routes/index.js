@@ -1,9 +1,9 @@
-import express from 'express';
+const express = require ('express');
 const router = express.Router();
 
 /* GET home page. */
 router.all('/', function(req, res, next) {
-  res.send('APP iniciado');
+	res.send('APP iniciado');
 });
 
-export default router;
+module.exports = router ;

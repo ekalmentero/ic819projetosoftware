@@ -1,14 +1,45 @@
-import { Sequelize } from 'sequelize';
-import {StudentsModel} from './studentsModel.js'
-import db from '../db/db.js';
+const Sequelize = require ('sequelize'); 
+const studentsModel = require ('./studentsModel');
+const db = require ('../db/db');
 
-class Class{
 
+class CourseClass{
+	static async add(classData){
+		return await classesModel.create({
+			code: classData.code,
+			local: classData.local,
+		});
+	}
+
+	static async getById(id){
+		return await classesModel.findByPk(id);
+    }
+
+	static async getByCode(code){
+		return await classesModel.findAll({
+			include: ['students'],
+					
+			where: {
+				code: code
+			}
+		});
+	}
+
+	static async getAll(){
+		return await classesModel.findAll();
+    }
+
+	static async addStudent(id_class, id_student){
+		await classStudentModel.create({
+			studentId: id_student,
+			classId: id_class,
+		});
+	}
 }
 
-const ClassStudentModel = db.define('class_students')
+const classStudentModel = db.define('class_students')
 
-const ClassesModel = db.define('class', {
+const classesModel = db.define('class', {
   id: {
     type: Sequelize.INTEGER.UNSIGNED,
     primaryKey: true,
@@ -28,7 +59,11 @@ const ClassesModel = db.define('class', {
 
 // mapeando o relacionamento n para n entre estudante e turma
 
-StudentsModel.belongsToMany(ClassesModel, { through: 'class_students' });
-ClassesModel.belongsToMany(StudentsModel, { through: 'class_students' });
+studentsModel.studentsSeqModel.belongsToMany(classesModel, { through: 'class_students' });
+classesModel.belongsToMany(studentsModel.studentsSeqModel, { through: 'class_students' });
 
-export {ClassesModel, ClassStudentModel, Class};
+module.exports = {
+	classesModel, 
+	classStudentModel, 
+	CourseClass
+}

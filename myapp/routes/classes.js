@@ -1,42 +1,34 @@
-import express from 'express'
+const express = require ('express');
 
-const routeClass = express.Router();
+const courseClass = express.Router();
 
+const classesController = require('../controllers/classesController')
 
-import ClassesController from '../controllers/classesController.js'
+courseClass.get('/:id', async function(req, res, next) {
+  	res.send(await classesController.getClassById(req.params.id));
+})
 
-routeClass.get('/:id', async function(req, res, next) {
-  res.send(await ClassesController.getById(req.params.id));
+courseClass.post('/:id_class/student/:id_student', async function(req, res, next) {
+  	res.send(await classesController.addStudentToClass(req.params.id_class, req.params.id_student));
+})
+
+courseClass.get('/bycode/:class_code', async function(req, res, next) {
+  	res.send(await classesController.getClassByCode(req.params.class_code));
 })
 
 
-routeClass.post('/:id_class/student/:id_student', async function(req, res, next) {
-  res.send(await ClassesController.addStudent(req.params.id_class, req.params.id_student));
-})
-
-routeClass.get('/bycode/:class_code', async function(req, res, next) {
-  res.send(await ClassesController.getByCode(req.params.class_code));
-})
-
-
-routeClass.route('/')
-  .get(async function(req, res, next) {
-    res.send(await ClassesController.getAll());
-    //res.send("get all students");
-  })
-
-  //todo
-  .post(async function(req, res, next) {
-    res.send(await ClassesController.add(req.body));
-    //res.send("get all students");
-  })
+courseClass.route('/')
+	.get(async function(req, res, next) {
+    	res.send(await classesController.getAllClasses());
+    })
+	.post(async function(req, res, next) {
+    	res.send(await classesController.addClass(req.body));
+  	})
+  	.patch(async function(req, res) {
+    	res.send("class HTTP patch not implemented");
+  	})
+  	.delete(async function(req, res) {
+		res.send("class HTTP delete not implemented");
+  	})
   
-   .patch(async function(req, res) {
-    res.send("class HTTP patch");
-  })
-  .delete(async function(req, res) {
-    res.send("class HTTP delete");
-  })
-  ;
-
-export default routeClass;
+module.exports = courseClass;

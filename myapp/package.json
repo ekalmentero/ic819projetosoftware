@@ -1,23 +1,22 @@
 {
-  "name": "myapp",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "module": "main.js",
-  "type": "module",
-  "scripts": {
-    "test": "jest",
-    "start": "nodemon app.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "esm": "^3.2.25",
-    "mysql2": "^2.3.3",
-    "sequelize": "^6.21.2"
-  },
-  "devDependencies": {
-    "jest": "^28.1.3"
-  }
+	"name": "myapp",
+  	"version": "1.0.0",
+  	"description": "",
+  	"main": "index.js",
+  	"module": "main.js",
+  	"scripts": {
+    	"test": "jest",
+    	"start": "nodemon app.js"
+  	},
+  	"keywords": [],
+  	"author": "",
+  	"license": "ISC",
+  	"dependencies": {
+    	"esm": "^3.2.25",
+    	"mysql2": "^2.3.3",
+    	"sequelize": "^6.21.2"
+  	},
+  	"devDependencies": {
+    	"jest": "^28.1.3"
+  	}
 }

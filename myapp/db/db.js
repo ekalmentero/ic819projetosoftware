@@ -1,5 +1,4 @@
-import { Sequelize } from "sequelize"; 
-
+const Sequelize = require ('sequelize'); 
 
 const dbName = 'ic819ps'; // passar os dados do .env para as constantes
 const dbUser = 'root';
@@ -7,11 +6,13 @@ const dbHost = 'localhost';
 const dbPassword = '';
 
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
-  dialect: "mysql", 
-  host: dbHost, 
+	dialect: "mysql", 
+  	host: dbHost, 
 });
 
-export default sequelize; //exportar
+module.exports = sequelize;
+
+
 
 /*
 Criar arquivo de configuração no futuro

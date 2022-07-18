@@ -1,29 +1,27 @@
-import express from 'express'
+const express = require ('express');
+
+const coursesController = require ('../controllers/coursesController');
 
 const course = express.Router();
 
-import CoursesController from '../controllers/coursesController.js'
 
 course.get('/:id', async function(req, res, next) {
-    res.send(await CoursesController.getById(req.params.id));
+    res.send(await coursesController.getCourseById(req.params.id));
     
 })
 
 course.route('/')
-  .get(async function(req, res, next) {
-    res.send(await CoursesController.getAll());
-    //res.send("get all students");
-  })
+	.get(async function(req, res, next) {
+		res.send(await coursesController.getAllCourses());
+	})
+	.post(async function(req, res, next) {
+		res.send(await coursesController.addCourse(req.body));
+	})
+	.patch(async function(req, res) {
+		res.send("course HTTP patch not implemented");
+	})
+	.delete(async function(req, res) {
+		res.send("course HTTP delete not implemented");
+	})
 
-  .post(CoursesController.add)
-  
-
-  .patch(async function(req, res) {
-    res.send("course HTTP patch");
-  })
-  .delete(async function(req, res) {
-    res.send("course HTTP delete");
-  })
-  ;
-
-export default course;
+module.exports = course;

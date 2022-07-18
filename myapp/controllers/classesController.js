@@ -1,45 +1,29 @@
-import {ClassesModel, ClassStudentModel } from '../models/classesModel.js'
+const Models = require('../models/classesModel')
 
-async function getById(id){
-        
-        const resultClass = await ClassesModel.findByPk(id);
-        return resultClass;         
-        
+async function getClassById(id){
+    return await Models.CourseClass.getById(id);       
 }
 
-async function getByCode(classCode){
-        
-        const resultClass = await ClassesModel.findAll({
-                include: ['students'],
-                      
-                where: {
-                        code: classCode
-                }
-        });
-        return resultClass;         
-        
+async function getClassByCode(classCode){
+    return await Models.CourseClass.getByCode(classCode);          
 }
 
-async function getAll(){
-        const classes = await ClassesModel.findAll();
-        return classes;
+async function getAllClasses(){
+    return await Models.CourseClass.getAll();
 }
 
-// todo
-
-async function add(classData) {
-        await ClassesModel.create({
-                code: classData.code,
-                local: classData.local,
-        });
+async function addClass(classData) {
+    return await Models.CourseClass.add(classData);
 }
 
-async function addStudent(id_class, id_student) {
-        await ClassStudentModel.create({
-                studentId: id_student,
-                classId: id_class,
-        });
+async function addStudentToClass(id_class, id_student) {
+    return await Models.CourseClass.addStudent(id_class, id_student);
 }
 
-//getAll 
-export default { getAll, getById, getByCode, add, addStudent };
+module.exports = {
+	getClassById, 
+	getClassByCode, 
+	getAllClasses,
+    addClass,
+    addStudentToClass
+}

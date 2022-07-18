@@ -1,24 +1,19 @@
-import {CoursesModel} from '../models/coursesModel.js'
+const Models = require('../models/coursesModel')
 
-async function getById(id){
-        
-        const course = await CoursesModel.findByPk(id);
-        return course;         
-        
+async function getCourseById(id){
+	return await Models.Course.getById(id);
 }
 
-async function getAll(){
-        const courses = await CoursesModel.findAll();
-        return courses;
+async function getAllCourses(){
+	return await Models.Course.getAll();
 }
 
-function add(req, res) {
-        CoursesModel.create({
-                code: req.body.code,
-                name: req.body.name,
-                credits: req.body.credits,
-        }).then((result) => res.json(result));
+async function addCourse(courseData) {
+	return await Models.Course.add(courseData);
 }
 
-//getAll 
-export default { getAll, getById, add };
+module.exports = {
+	getAllCourses, 
+	getCourseById,
+	addCourse	
+}
