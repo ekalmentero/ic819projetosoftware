@@ -4,7 +4,9 @@ const db = require ('../db/db');
 
 class Course {
 	static async getById(id){
-		const course = await courseSeqModel.findByPk(id);
+		const course = await courseSeqModel.findByPk(id, {
+			include: ['classes'],
+		});
 		return course;   
 	}
 
@@ -45,6 +47,7 @@ const courseSeqModel = db.define('course', {
 	},
   
 });
+
 
 module.exports = {
 	courseSeqModel, 

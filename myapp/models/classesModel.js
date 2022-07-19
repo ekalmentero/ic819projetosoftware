@@ -1,5 +1,6 @@
 const Sequelize = require ('sequelize'); 
 const studentsModel = require ('./studentsModel');
+const coursesModel = require ('./coursesModel');
 const db = require ('../db/db');
 
 
@@ -8,6 +9,7 @@ class CourseClass{
 		return await classesModel.create({
 			code: classData.code,
 			local: classData.local,
+			courseId: classData.courseId,
 		});
 	}
 
@@ -18,7 +20,7 @@ class CourseClass{
 	static async getByCode(code){
 		return await classesModel.findAll({
 			include: ['students'],
-					
+								
 			where: {
 				code: code
 			}
@@ -29,7 +31,7 @@ class CourseClass{
 		return await classesModel.findAll();
     }
 
-	static async addStudent(id_class, id_student){
+	static async addStudent(id_class, id_student, course_id){
 		await classStudentModel.create({
 			studentId: id_student,
 			classId: id_class,
@@ -57,8 +59,14 @@ const classesModel = db.define('class', {
   },
 });
 
-// mapeando o relacionamento n para n entre estudante e turma
+// Cada turma tem uma disciplina associada
+coursesModel.courseSeqModel.hasMany(classesModel, {
+	foreignKey:'courseId'
+});
+classesModel.belongsTo(coursesModel.courseSeqModel);
 
+
+// mapeando o relacionamento n para n entre estudante e turma
 studentsModel.studentsSeqModel.belongsToMany(classesModel, { through: 'class_students' });
 classesModel.belongsToMany(studentsModel.studentsSeqModel, { through: 'class_students' });
 
