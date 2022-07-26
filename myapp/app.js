@@ -54,6 +54,16 @@ app.get('/sinc', function(req, res) {
 })
 */
 
+//Exemplo pug
+app.set('views', './views');
+app.set('view engine', 'pug');
+
+app.get('/exemplopug', async function(req, res) {
+	res.render('exemploTemplate', { title: 'Exemplo de Template', message: 'Este é um exemplo de renderização de template pug' })
+})
+
+
+
 // sincronizando Sequelize
 db.sync(() => console.log('Banco de dados conectado: ${process.env.DB_NAME}'));
 
