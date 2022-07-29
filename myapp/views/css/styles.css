@@ -1,0 +1,10 @@
+.bd-example {
+    --bd-example-padding: 1.5rem;
+    margin-right: 0;
+    margin-top: 25px;
+    margin-left: 50px;
+    border-width: 1px;
+    border-top-left-radius: var(--bs-border-radius);
+    border-top-right-radius: var(--bs-border-radius);
+    width: 500px;
+}

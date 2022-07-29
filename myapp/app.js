@@ -55,13 +55,15 @@ app.get('/sinc', function(req, res) {
 */
 
 //Exemplo pug
-app.set('views', './views');
+app.set('views', './views/templates');
 app.set('view engine', 'pug');
 
 app.get('/exemplopug', async function(req, res) {
 	res.render('exemploTemplate', { title: 'Exemplo de Template', message: 'Este é um exemplo de renderização de template pug' })
 })
 
+//Permite acesso estático aos recursos da camada de visão dentro da pasta views
+app.use(express.static('views'));
 
 
 // sincronizando Sequelize

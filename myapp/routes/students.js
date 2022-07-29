@@ -4,6 +4,8 @@ const student = express.Router();
 
 const studentsController = require ('../controllers/studentsController');
 
+//olhar express-validator
+
 student.get('/:id', async function(req, res, next) {
 	res.send(await studentsController.getStudentById(req.params.id));
     
@@ -15,8 +17,8 @@ student.post('/:id_student/course/:id_course/:grade', async function(req, res, n
 })
 
 student.get('/:id/cr', async function(req, res, next) {
-	res.sendFile(__dirname + '/cr.html');
-	//res.send(await studentsController.getStudentCR(req.params.id));
+	//res.sendFile(__dirname+'templates/cr.html');
+	res.send(await studentsController.getStudentCR(req.params.id));
 
 })
 
