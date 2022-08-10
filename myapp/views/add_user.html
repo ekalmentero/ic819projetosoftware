@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cadastro de Usuário</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#divAddUserSuccess').hide();
+                $('#divAddUserError').hide();
+            });
+        </script>
+    </head>
+    <body>
+        <form action="" id="frmAddUser">
+            <div class="bd-example">
+                <h2>Cadastro de Usuário</h2>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Nome:</label>
+                    <input type="text" class="form-control" id="iptName" placeholder="Nome">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">E-mail:</label>
+                    <input type="text" class="form-control" id="iptEmail" placeholder="E-mail">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput3" class="form-label">Senha:</label>
+                    <input type="password" class="form-control" id="iptPassword" placeholder="Senha">
+                </div>
+                <div class="col-12">
+                    <button type="button" class="btn btn-primary" id="btnAddUser">Cadastrar</button>
+                </div>
+                <br>
+                <div class="alert alert-success" id="divAddUserSuccess" role="alert" >
+                    
+                </div>
+                <div class="alert alert-danger" id="divAddUserError" role="alert" hidden>
+                
+                </div>
+
+            </div>
+        </form>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>        
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </body>
+</html>

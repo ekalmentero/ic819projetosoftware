@@ -1,15 +1,36 @@
-import express from 'express'
+const express = require ('express');
 
-const usersRouter = express();
+const user = express.Router();
 
-//import * as StudentsController from '../controllers/studentsController'
+const usersController = require ('../controllers/usersController');
+/*
+user.get('/:email', async function(req, res) {
+    res.send(await usersController.getUserByEmail(req.params.email));
+})
+*/
+user.get('/validate', async function(req, res) {
+    res.send(await usersController.validateUser('t@gmail.com','teste'));
+})
 
-/* GET users listing. */
 
-usersRouter
-  .get('/users', function(req, res, next) {
-    //res.send(StudentsController.getStudents());
-    res.send("OK users");
-  });
+user.route('/')
+	.get(async function(req, res, next) {
+        res.send(await usersController.getAllUsers());
+        //res.send("user HTTP get not implemented");
+    })
 
-export default usersRouter;
+  	.post(async function(req, res, next) {
+    	res.send(await usersController.addUser(req.body));
+    })
+
+  	.patch(async function(req, res) {
+    	res.send("user HTTP patch not implemented");
+  	})
+
+  	.delete(async function(req, res) {
+    	res.send("user HTTP delete not implemented");
+  	})
+  
+
+    module.exports = user;
+

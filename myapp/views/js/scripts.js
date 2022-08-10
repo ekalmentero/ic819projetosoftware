@@ -16,3 +16,16 @@ $("#btnCalculateCR").click(function(){
 
     });
 });
+
+$("#btnAddUser").click(function(){
+    var userName = $('#iptName').val();
+    var userEmail = $('#iptEmail').val();
+    var userPassword = $('#iptPassword').val();
+    
+    $.post( 'http://localhost:3000/user/', { name: userName, email: userEmail, password: userPassword })
+        .done(function( data ) {
+            $('#divAddUserSuccess').html('Usuário cadastrado com sucesso');
+            $('#divAddUserSuccess').show();
+    });
+
+});

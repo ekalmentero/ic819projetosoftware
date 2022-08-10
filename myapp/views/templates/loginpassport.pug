@@ -1,0 +1,15 @@
+html
+html
+head
+title Formulário de login
+body
+form(action = "/auth/login/password", method = "POST")
+    div
+        label(for = "Usuário") Usuário:
+        input(name = "username" value = "username")
+        br
+    div
+        label(for = "Password") Password:
+        input(name = "password" value = "password")
+        br
+        button(type = "submit") Login
