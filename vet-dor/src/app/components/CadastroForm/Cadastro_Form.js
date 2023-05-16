@@ -3,12 +3,13 @@ import "./Cadastro_Form.css"
 
 export default function Cadastro_Form(){
   return(
-  <div>
+
+  <div className="form_All" >
 
 <h2>Cadastre-se e comece a cuidar dos seus pets </h2>
-    
-    <div className="form_Flex">
 
+  <div className="form_Flex">
+      
     <div className="first_div" >
       <label for="name" >Nome Completo</label>
       <input id="name" name="name" placeholder="Seu nome" type="text"/>
@@ -33,8 +34,10 @@ export default function Cadastro_Form(){
       <label for="repassword" >Repita a senha</label>
       <input id="repassword" name="repassword"  type="password"/>
 
-      <button type="submit">CADASTRAR</button>
-    <button type="submit"> CADASTRAR COM GOOGLE </button>
+      <div className="form_button" >
+        <button className="submit_google" type="submit">CADASTRAR COM GOOGLE </button>
+        <button className="submit_trad" type="submit"> CADASTRAR </button>
+      </div>
 
     </div>
 

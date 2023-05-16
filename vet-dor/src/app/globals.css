@@ -1,9 +1,383 @@
+
+/* FONTES */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap');
+
+:root {
+/* 
+    CORES
+    só usar tipo background-color = var(--nome-da-cor); 
+*/
+--preto: #0A0A0A;
+--branco: #F8F8F8;
+--azul: #245D61;
+--verde: #96D701;
+--laranja: #FF7D01;
+--amarelo: #FFCD00;
+
+--azul-hover: #1a4144;
+--verde-hover: #7cb102;
+--laranja-hover: #d16500;
+--amarelo-hover: #dfb303;
+
+--negativo: #FF3838;
+--positivo: #00A73E;
+
+--fundo: #ECF2F2;
+--fundo-form: #D6E5E5; /* azul claro no figma */
+
+--sombra: 0px 2px 4px rgb(23 , 23, 23, 0.4);
+
+background: var(--fundo);
+color: var(--preto);
+
+/* fonte padrão de texto */
+font-family: 'Jost', sans-serif;
+
+}
+
+/* 
+TÍTULOS
+não precisa usar nenhuma classe, já vai direto na tag 
+*/
+
+h1, h2, h3, h4 {
+font-family: 'Rajdhani', sans-serif;
+line-height: 110%;
+font-weight: 700;
+}
+
+h1, h3 {
+color: var(--verde);
+}
+
+h2, h4 {
+color: var(--azul);
+}
+
+/*
+TEXTOS 
+textos seguem uma lógica de classes
+texto grande regular -> class="texto-grande"
+texto grande negrito -> class="texto-grande negrito"
+texto normal regular -> class="texto-normal"
+texto normal negrito -> class="texto-normal negrito"
+tudo que tiver class="negrito" fica com peso 600
+*/
+
+.texto-grande {
+font-size: 16px;
+}
+
+.texto-normal {
+font-size: 13px;
+}
+
+.texto-pequeno {
+font-size: 10px;
+}
+
+.negrito {
+font-weight: 600;
+}
+
+.item-negativo {
+font-size: 16px;
+color: var(--negativo);
+font-weight: 500;
+}
+
+.item-positivo {
+font-size: 16px;
+color: var(--positivo);
+font-weight: 500;
+}
+
+/* 
+ETIQUETAS / LABELS 
+podem ser de 3 cores e 2 tamanhos
+coloque a classe de acordo com a cor e o tamanho
+mesma lógica de texto
+etiqueta pequena laranja -> class="etiqueta pequena laranja"
+*/
+.etiqueta {
+font-family: 'Rajdhani', sans-serif;
+text-transform: uppercase;
+font-weight: 700;
+}
+
+.etiqueta.azul {
+color: var(--azul);
+}
+
+.etiqueta.verde {
+color: var(--verde);
+}
+
+.etiqueta.laranja {
+color: var(--laranja);
+}
+
+.etiqueta.pequena {
+font-size: 16px;
+}
+
+.etiqueta.grande {
+font-size:  20px;
+}
+
+/* 
+LINKS
+seguem lógica
+links destacados podem ser de 2 cores
+link em texto -> class="link texto"
+link destacado laranja -> class="link destacado laranja"
+*/
+
+.link {
+text-decoration: underline;
+font-weight: 600;
+color: var(--azul);
+}
+
+.link.texto {
+font-size: 13px;
+}
+
+.link-grande, .link-destacado {
+font-size: 16px;
+}
+
+.link-destacado {
+text-transform: uppercase;
+}
+
+.link.laranja {
+color: var(--laranja);
+}
+
+.link.verde {
+color: var(--verde);
+}
+
+/* 
+INFOS
+o conceito de informações é coisas que precisam ser destacadas como
+importantes, informações que precisam de destaque,
+como algo trazido do bd
+seguem lógica
+podem ser destacados ou não
+podem ser negritos ou não
+info nao destacada regular -> class="info nao-destacada"
+info destacada negrito -> class="indo destacada negrito"
+*/
+
+.info {
+text-transform: uppercase;
+}
+
+.info.negrito {
+font-weight: 700;
+}
+
+.info.destacada {
+font-size: 16px;
+}
+
+.info.nao-destacada {
+font-size: 13px;
+}
+
+/* 
+BOTÕES E TEXTO EM BOTÕES
+seguem lógica
+podem ser de 4 tamanhos
+podem ser de 5 cores (vermelho só em casos especiais)
+botão pequeno laranja -> class="botao pequeno laranja"
+botão grande verde -> class="botão grande verde"
+*/
+
+.botao {
+text-transform: uppercase;
+font-weight: 600;
+padding: 12px 20px;
+border-radius:10px;
+text-decoration: none;
+}
+
+.botao.pequeno {
+font-size: 10px;
+}
+
+.botao.normal {
+font-size: 13px;
+}
+
+.botao.grande {
+font-size: 16px;
+}
+
+.botao.extra-grande {
+font-size: 20px;
+}
+
+.botao.verde {
+background-color: var(--verde);
+color: var(--preto);
+}
+
+.botao.azul {
+background-color: var(--azul);
+color: var(--branco);
+}
+
+.botao.laranja {
+background-color: var(--laranja);
+color: var(--preto);
+}
+
+.botao.amarelo {
+background-color: var(--amarelo);
+color: var(--preto);
+}
+
+.botao.verde:hover {
+background-color: var(--verde-hover);
+}
+
+.botao.azul:hover {
+background-color: var(--azul-hover);
+}
+
+.botao.laranja:hover {
+background-color: var(--laranja-hover);
+}
+
+.botao.amarelo:hover {
+background-color: var(--amarelo-hover);
+}
+
+/* 
+FORMULÁRIOS
+- todos tem a mesma cor de fundo e mesmo border-radius
+- todos os espaços são iguais em todos os formulários
+- única coisa não padronizada é a organização dos inputs,
+mas deixei como grid e vcs ajeitam se é coluna ou linha
+- espaço entre itens é padronizado 10px e já está setado
+(por isso grid é mais fácil e recomendado)
+- se fizer em colunas, ajeite o column gap no arq
+específico da pág, e se fizer em linhas ajeite o row-gap
+no arq da pág
+botão pequeno laranja -> class="botao pequeno laranja"
+botão grande verde -> class="botão grande verde"
+*/
+
+form {
+background-color: var(--fundo-form);
+border-radius: 10px;
+padding: 32px;
+display: grid;
+grid-column-gap: 10px;
+grid-row-gap: 10px;
+}
+
+input, textarea, select {
+background-color: var(--branco);
+border-radius: 5px;
+font-family: 'Jost', sans-serif;
+color: var(--preto);
+border-color: var(--branco);
+border-width: 0px;
+padding: 3px 8px;
+}
+
+fieldset {
+border: none;
+padding: 0;
+}
+
+input {
+line-height: 20px;
+}
+
+label.checkbox, label.radio {
+display: grid;
+grid-template-columns: 1em auto;
+gap: 10px;
+font-weight: 400;
+}
+
+input[type=checkbox] {
+appearance: none;
+font: inherit;
+color: currentColor;
+background-color: var(--branco);
+width: 1.15em;
+height: 1.15em;
+border-radius: 0.15em;
+box-shadow: var(--sombra);
+
+display: grid;
+place-content: center;
+}
+
+input[type=checkbox]::before {
+content: "";
+width: 0.65em;
+height: 0.65em;
+transform: scale(0);
+transition: 120ms transform ease-in-out;
+box-shadow: inset 1em 1em var(--verde);
+}
+
+input[type=checkbox]:checked::before {
+transform: scale(1);
+}
+
+input[type="radio"] {
+/* -webkit-appearance: none; */
+appearance: none;
+margin: 0;
+background-color: var(--branco);
+font: inherit;
+color: currentColor;
+width: 1.05em;
+height: 1.05em;
+box-shadow: var(--sombra);
+border-radius: 50%;
+transform: translateY(0.1em);
+
+display: grid;
+place-content: center;
+}
+
+input[type="radio"]::before {
+content: "";
+width: 0.65em;
+height: 0.65em;
+border-radius: 50%;
+transform: scale(0);
+transition: 120ms transform ease-in-out;
+box-shadow: inset 1em 1em var(--verde);
+}
+
+input[type="radio"]:checked::before {
+transform: scale(1);
+}
+
+label {
+font-size: 16px;
+font-weight: 500;
+}
+
+/* o select e radio button falta fazer */
+
+/* A partir daqui é o gerado pelo next ------------------------------------------------------ */
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  font-family: 'Jost', sans-serif;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -39,7 +413,7 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -71,7 +445,7 @@
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
   }
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -99,9 +473,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-}
+} */
