@@ -10,7 +10,9 @@ export default function Home() {
     <main >
       {/* <Header/> */}
 
-      <AniProfile/>
+      <Cadastro_Form/>
+
+      {/* <AniProfile/> */}
       
       {/* <Footer/> */}
     </main>
