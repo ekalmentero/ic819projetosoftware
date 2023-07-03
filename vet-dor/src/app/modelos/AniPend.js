@@ -44,5 +44,3 @@ module.exports = (sequelize, Sequelize) => {
   return AniPend;
 };
 
-// console.log(Ani instanceof AniPend);
-// console.log(Ani.Nome);

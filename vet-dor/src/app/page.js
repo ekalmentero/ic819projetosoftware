@@ -4,6 +4,7 @@ import Header from './components/Header/header.js'
 import Footer from './components/Footer/Footer'
 import Cadastro_Form from './components/CadastroForm/Cadastro_Form'
 import AniProfile from './components/AniProfile/AniProfile'
+import Readdata from './rotas/Readdata'
 
 export default function Home() {
   return (
@@ -11,6 +12,8 @@ export default function Home() {
       {/* <Header/> */}
 
       <Cadastro_Form/>
+      
+      {/* <Readdata/> */}
 
       {/* <AniProfile/> */}
       
