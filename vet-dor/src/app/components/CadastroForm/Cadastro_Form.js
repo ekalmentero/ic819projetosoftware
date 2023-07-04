@@ -6,8 +6,6 @@ import { getDatabase } from "@firebase/database";
 import { database } from "@/app/controles/Firebase";
 import controladorCadastro from "@/app/controles/controladores/controladorCadastro";
 
-
-
 export default function Cadastro_Form(){
 
 //--------------------------------------------------------
@@ -21,7 +19,7 @@ export default function Cadastro_Form(){
     const user_cpf_regex = /^[0-9]{0,11}$/;
   // Regex numero
     const user_number = /^[0-9]{0,11}$/;
-  //  regex email
+  // regex email
     const user_mail = /^\S+@\S+\.\S+$/;
 
   // states do nome do usuário
@@ -31,61 +29,65 @@ export default function Cadastro_Form(){
   const [number, setNumber] =useState(null)
   const [birthDate, setBirthDate] =useState(null)
   const [email, setEmail] =useState(null)
-  const [objUser, setObjUser] = useState();
+  const [objUser, setObjUser] = useState({});
 
-    // Agora vamos criar uma forma de atualizar os states dos nossos inputs
-    const handleInputChange = (e) => {
-      const {id, value} = e.target;
-      if (id === "name") {
-        if(user_regex.test(value)==true){
-          setUserName(value);
-        }
+  // Agora vamos criar uma forma de atualizar os states dos nossos inputs
+  const handleInputChange = (e) => {
+    const {id, value} = e.target;
+    if (id === "name") {
+      if(user_regex.test(value)==true){
+        setUserName(value);
       }
-      if (id === "cpf") {
-        if (user_cpf_regex.test(value)==true) {
-          setCpf(value); 
-        }
-      }
-      if (id === "dataNasc") {
-        setBirthDate(value);
-      }
-      if (id === 'cell') {
-        if (user_number.test(value)==true) {
-          setNumber(value);  
-        }
-      }
-      if (id === "mail") {
-        if (user_mail.test(value)==true) {
-          setEmail(value)
-        }
-      }
-      if (id === "password") {
-        if (user_PW_regex.test(value)==true) {
-          setPw(value);  
-        }
-      }    
-      let obj = {
-        nome: userName,
-        cpf: cpf,
-        celular: number,
-        email: email,
-        senha: pw,
-        }
-        setObjUser(obj);
     }
-     console.log(userName,cpf,email,pw,number);
-     console.log(objUser);
+    if (id === "cpf") {
+      if (user_cpf_regex.test(value)==true) {
+        setCpf(value); 
+      }
+    }
+    if (id === "dataNasc") {
+      setBirthDate(value);
+    }
+    if (id === 'cell') {
+      if (user_number.test(value)==true) {
+        setNumber(value);  
+      }
+    }
+    if (id === "mail") {
+      if (user_mail.test(value)==true) {
+        setEmail(value)
+      }
+    }
+    if (id === "password") {
+      if (user_PW_regex.test(value)==true) {
+        setPw(value);  
+      }
+    }    
+    let obj = {
+      nome: userName,
+      cpf: cpf,
+      celular: number,
+      email: email,
+      senha: pw,
+      }
+      setObjUser(obj);
+  }
 
-    const handleSubmit = (e)=>{
-      e.preventDefault();
+  console.log(userName,cpf,email,pw,number);
+  console.log(objUser);
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+
+    // chamar controlador
+      // sanitizar e validar
+      // chamar a rota de cadastro no BD
       
-      // 
-      console.log(obj);
-        // const newPostKey = push(child(ref(database), 'posts')).key;
-        // const updates = {};
-        // updates["/"+ newPostKey] = obj
-        // return update(ref(database), updates);
-    }
+    console.log(obj);
+      // const newPostKey = push(child(ref(database), 'posts')).key;
+      // const updates = {};
+      // updates["/"+ newPostKey] = obj
+      // return update(ref(database), updates);
+  }
 
 
 return(
@@ -120,7 +122,7 @@ return(
 
       <div className="form_button" >
         <button className="submit_google" type="submit">CADASTRAR COM GOOGLE </button>
-        <button  onClick={controladorCadastro(objUser)} className="submit_trad"> CADASTRAR </button>
+        <button onClick={controladorCadastro(objUser)} className="submit_trad"> CADASTRAR </button>
       </div>
 
     </div>

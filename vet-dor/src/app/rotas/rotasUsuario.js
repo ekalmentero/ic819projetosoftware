@@ -1,34 +1,34 @@
 // Rotas do Usuário
-const express = require("express");
-const app = express();
 
-const { getFirestore } = require('firebase-admin/firestore'); 
+const { getFirestore } = require('firebase-admin/firestore');
+const express = require('express');
+
 const database = getFirestore();
+const router = express.Router();
 
-
-app.post('/create', async (req, res) =>{
+router.post('/create', async (req, res) => {
   try {
-      const Jsondata = {
-        name: req.body.name,
-        pass: req.body.pass
-      };
-      console.log(req.body);
-      const userRef = await database.collection('users').doc(Jsondata.name).set(Jsondata);
-      res.send(userRef)
-    } catch (error) {
-      res.send(error);
-  }
-})
+    console.log(req.body);
 
-app.get('/user', (req,res)=>{
-  admin.firestore().collection('users').get().then(snapshot =>{
-    const data = snapshot.docs.map(doc=>({
-      ...doc.data(),
-      uid: doc.id
-    }))
-    res.json(data);
-  })
+    const jsonData = {
+      name: req.body.nomeLimpo,
+      pass: req.body.senhaLimpo,
+      cpf: req.body.cpfLimpo,
+      cel: req.body.celularLimpo,
+      email: req.body.emailLimpo
+    }
+
+    const userRef = await database.collection('users').doc(jsonData.name).set(jsonData);
+
+    console.log(`userRef = ${userRef}`);
+    res.send(userRef)
+  } catch (error) {
+    res.send(error);
+  }
 });
 
+router.get('/getOne', async (req, res) => {
 
-export default app;
+}); 
+
+module.exports = router;
