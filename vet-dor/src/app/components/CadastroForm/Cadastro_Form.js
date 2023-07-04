@@ -9,7 +9,6 @@ import controladorCadastro from "@/app/controles/controladores/controladorCadast
 export default function Cadastro_Form(){
 
 //--------------------------------------------------------
-
   const {useState} = require("react");
   // usuario precisa começar com letras e ser seguidos por letras, podendo conter, hifen ou underline.
     const user_regex = /^[a-zA-Z][a-zA-Z0-9-_ ]{0,35}$/;
@@ -23,9 +22,9 @@ export default function Cadastro_Form(){
     const user_mail = /^\S+@\S+\.\S+$/;
 
   // states do nome do usuário
-  const [ userName, setUserName] = useState(null);
-  const [ pw, setPw] = useState(null);
-  const [ cpf, setCpf] = useState(null);
+  const [userName, setUserName] = useState(null);
+  const [pw, setPw] = useState(null);
+  const [cpf, setCpf] = useState(null);
   const [number, setNumber] =useState(null)
   const [birthDate, setBirthDate] =useState(null)
   const [email, setEmail] =useState(null)
@@ -34,59 +33,67 @@ export default function Cadastro_Form(){
   // Agora vamos criar uma forma de atualizar os states dos nossos inputs
   const handleInputChange = (e) => {
     const {id, value} = e.target;
+    
     if (id === "name") {
       if(user_regex.test(value)==true){
         setUserName(value);
       }
     }
+    
     if (id === "cpf") {
       if (user_cpf_regex.test(value)==true) {
         setCpf(value); 
       }
     }
+    
     if (id === "dataNasc") {
       setBirthDate(value);
     }
+    
     if (id === 'cell') {
       if (user_number.test(value)==true) {
         setNumber(value);  
       }
     }
+    
     if (id === "mail") {
       if (user_mail.test(value)==true) {
         setEmail(value)
       }
     }
+    
     if (id === "password") {
       if (user_PW_regex.test(value)==true) {
         setPw(value);  
       }
-    }    
+    }   
+     
     let obj = {
       nome: userName,
       cpf: cpf,
       celular: number,
       email: email,
       senha: pw,
-      }
-      setObjUser(obj);
+    }
+
+    setObjUser(obj);
   }
 
   console.log(userName,cpf,email,pw,number);
   console.log(objUser);
 
-  const handleSubmit = (e)=>{
+  // Aqui chamamos o controlador cadastro que é nosso middleware antes de passarmos nossos dados para as rotas
+  const handleSubmit = (e)=> {
     e.preventDefault();
 
-    // chamar controlador
-      // sanitizar e validar
-      // chamar a rota de cadastro no BD
+    console.log(objUser);
+    
+    controladorCadastro(objUser);
       
-    console.log(obj);
-      // const newPostKey = push(child(ref(database), 'posts')).key;
-      // const updates = {};
-      // updates["/"+ newPostKey] = obj
-      // return update(ref(database), updates);
+    // const newPostKey = push(child(ref(database), 'posts')).key;
+    // const updates = {};
+    // updates["/"+ newPostKey] = obj
+    // return update(ref(database), updates);
   }
 
 
@@ -122,7 +129,7 @@ return(
 
       <div className="form_button" >
         <button className="submit_google" type="submit">CADASTRAR COM GOOGLE </button>
-        <button onClick={controladorCadastro(objUser)} className="submit_trad"> CADASTRAR </button>
+        <button onClick={(e) => { handleSubmit (e) }} className="submit_trad"> CADASTRAR </button>
       </div>
 
     </div>

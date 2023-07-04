@@ -1,4 +1,4 @@
-export const nameValidator = (nome) =>{
+const nameValidator = (nome) =>{
 	let isValid = false;
 
   const RegexVali =  /^[a-zA-Z][a-zA-Z0-9-_ ]{0,35}$/;
@@ -10,7 +10,9 @@ export const nameValidator = (nome) =>{
 	return isValid;
 }
 
-export const emailValidator = (email) =>{
+const emailValidator = (email) =>{
+	let isValid = false;
+
   const RegexVali =  /^\S+@\S+\.\S+$/;
 
   if (RegexVali.test(email) == true ) {
@@ -18,10 +20,10 @@ export const emailValidator = (email) =>{
 	}
 
 	return isValid;
-
 }
 
-export const numberValidator = (number) =>{
+const celNumberValidator = (number) =>{
+	let isValid = false;
 
   const RegexVali =  /^[0-9]{0,11}$/;
 
@@ -30,9 +32,10 @@ export const numberValidator = (number) =>{
 	}
 
 	return isValid;
-
 }
-export const cpfValidator = (cpf) =>{
+
+const cpfValidator = (cpf) =>{
+	let isValid = false;
 
   const RegexVali =  /^[0-9]{0,11}$/;
 
@@ -41,9 +44,10 @@ export const cpfValidator = (cpf) =>{
 	}
 
 	return isValid;
-
 }
-export const pwValidator = (pw) =>{
+
+const pwValidator = (pw) =>{
+	let isValid = false;
 
   const RegexVali =  /^[a-zA-Z][a-zA-Z0-9-_]{0,16}$/;
 
@@ -52,5 +56,14 @@ export const pwValidator = (pw) =>{
 	}
 
 	return isValid;
-
 }
+// exportando todas as funções de validações em um único objeto.
+const validations = {
+	nameValidator,
+	emailValidator,
+	celNumberValidator,
+	cpfValidator,
+	pwValidator,
+}
+
+module.exports = validations;
