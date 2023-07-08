@@ -1,6 +1,6 @@
 // imports
 import DOMPurify from "dompurify";
-const validations = require('./../../validações/validações');
+const validations = require('./../validações/validações');
 
 // Controlador cadastro que vai receber os dados do nosso front e trata-los, sanitizando e validando nossos dados antes de enviar para o front end.
 export default function controladorCadastro(params) {
@@ -67,20 +67,12 @@ export default function controladorCadastro(params) {
           'Content-type': 'application/json; charset=UTF-8'
         }
       });
-
-      console.log(`response.json() = ${response.json()}`);
-      console.log(`response.text() = ${response.text()}`);
-      console.log(`response.ok = ${response.ok}`);
-      console.log(`response.type = ${response.type}`);
-
       
       return response.json();
     };
 
     postData().then((data) => {
-      console.log(`[postData] data2 = ${JSON.stringify(data)}`);
-      console.log( `[postData] data.text() = ${data.text()}`);
-      console.log(`data.message = ${data.message}`);
+      console.log(`Usuário cadastrado no banco`);
     });
       
   } catch (error) {

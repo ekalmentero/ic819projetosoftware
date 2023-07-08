@@ -4,7 +4,7 @@ import { useState } from "react";
 // imports referentes a implementação do firebase
 import { getDatabase } from "@firebase/database";
 import { database } from "@/app/controles/Firebase";
-import controladorCadastro from "@/app/controles/controladores/controladorCadastro";
+import controladorCadastro from "@/app/controladores/controladorCadastro";
 
 export default function Cadastro_Form(){
 
@@ -89,7 +89,7 @@ export default function Cadastro_Form(){
     console.log(objUser);
     
     controladorCadastro(objUser);
-      
+    
     // const newPostKey = push(child(ref(database), 'posts')).key;
     // const updates = {};
     // updates["/"+ newPostKey] = obj

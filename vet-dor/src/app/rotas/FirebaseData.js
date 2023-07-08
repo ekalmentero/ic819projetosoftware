@@ -4,6 +4,8 @@ const { getFirestore } = require('firebase-admin/firestore');
 const ServiceAccount = require("./projetovet-dor-firebase-adminsdk-jddnl-8f04ade30e.json");
 const cors = require('cors')
 
+const controladorUsuario = require('../controladores/controladorUsuario');
+
 admin.initializeApp({
   credential: admin.credential.cert(ServiceAccount),
   // databaseURL: "https://projetovet-dor-default-rtdb.firebaseio.com"
@@ -47,30 +49,7 @@ app.post('/createUser', async (req, res) =>{
 })
 
 // rota pegar dados de um usuário, utilizando o CPF como chave 
-// https://firebase.google.com/docs/firestore/query-data/get-data -> getUser document
-app.get('/getUser', async (req, res) => {
-  try {
-    console.log("[/getUser]");
-    const cpf = req.body.cpfLimpo;
-
-    const docRef = doc(database, 'users', cpf);
-    const userFound = await getDoc(docRef);
-    
-    if(userFound.exists()) {
-      console.log(`usuário existe - ${userFound.data()}`);
-      res.status(200).send({
-        userData: userFound.data()
-      })
-    } else {
-      console.log("usuário não existe");
-      res.status(404).send({
-        message: "usuário não existe"
-      })
-    }
-  } catch (error) {
-    console.log(`/getUser error = ${error}`);
-  }
-})
+app.post('/getUser', controladorUsuario.getUser);
 
 
 // app.get('/user', (req,res)=>{
