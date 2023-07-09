@@ -1,6 +1,6 @@
 // imports
 import DOMPurify from "dompurify";
-const validations = require('./../validações/validações');
+const validations = require('./../validacoes');
 
 // Controlador cadastro que vai receber os dados do nosso front e trata-los, sanitizando e validando nossos dados antes de enviar para o front end.
 export default function controladorCadastro(params) {
@@ -23,23 +23,23 @@ export default function controladorCadastro(params) {
     console.log(`senhaLimpo = ${senhaLimpo}`);
 
     // funções de validações
-    if(!validations.nameValidator(nomeLimpo)) {
+    if(!validations.nameValidation(nomeLimpo)) {
       throw new Error("nome inválido");
     }
 
-    if(!validations.cpfValidator(cpfLimpo)) {
+    if(!validations.cpfValidation(cpfLimpo)) {
       throw new Error("cpf inválido");
     }
 
-    if(!validations.celNumberValidator(celularLimpo)) {
+    if(!validations.phoneValidation(celularLimpo)) {
       throw new Error("celular inválido");
     }
     
-    if(!validations.pwValidator(senhaLimpo)) {
+    if(!validations.passwordValidation(senhaLimpo)) {
       throw new Error("senha inválida");
     }
 
-    if(!validations.emailValidator(emailLimpo)) {
+    if(!validations.emailValidation(emailLimpo)) {
       throw new Error("email inválido");
     }
 

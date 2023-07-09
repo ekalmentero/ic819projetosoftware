@@ -4,7 +4,7 @@ const { JSDOM } = require('jsdom');
 
 const { database } = require('./../db/db');
 
-const validations = require('./../validações/validações');
+const validations = require('./../validacoes');
 
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
@@ -28,19 +28,19 @@ async function fazerLogin(req, res) {
     console.log(`[fazerLogin] senha limpo ${senhaLimpo}`);
 
     // Validar as entradas
-    if(!validations.cpfValidator(cpfLimpo)) {
-      res.status(401).send({
-        code: "CPF_INVALIDO",
-        message: "cpf inválido",
-        result: null
-      });
-      return;
-    }
+    // if(!validations.cpfValidation(cpfLimpo)) {
+    //   res.status(400).send({
+    //     code: "CPF_INVALIDO",
+    //     message: "cpf inválido",
+    //     result: null
+    //   });
+    //   return;
+    // }
     
-    if(!validations.pwValidator(senhaLimpo)) {
-      res.status(401).send({
-        code: "SENHA_INVALIDO",
-        message: "senha inválido",
+    if(!validations.passwordValidation(senhaLimpo)) {
+      res.status(400).send({
+        code: "SENHA_INVALIDA",
+        message: "senha inválida",
         result: null
       });
       return;
@@ -67,7 +67,7 @@ async function fazerLogin(req, res) {
 
     // verificar se a senha está correta
     if (bdUser.pass !== senhaLimpo ) {
-      res.status(401).send({
+      res.status(400).send({
         code: "WRONG_PASSWORD",
         message: "Senha digitada está incorreta",
         result: null
@@ -78,7 +78,7 @@ async function fazerLogin(req, res) {
     res.status(200).send({
       code: "OK",
       message: "login bem sucedido",
-      result: bdUser
+      result: bdUesr
     });
 
   } catch (error) {

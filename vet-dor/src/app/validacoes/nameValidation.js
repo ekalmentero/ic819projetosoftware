@@ -1,4 +1,4 @@
-export default function nameValidation(name) {
+function nameValidation(name) {
 	if (name === null || !name) {
 		console.log("[nameVaidation] name === null || !name");
 		return false;
@@ -11,9 +11,15 @@ export default function nameValidation(name) {
 		return false;
 	}
 
-	// TODO: procurar regras pra nome
+  const RegexVali =  /^[a-zA-Z][a-zA-Z0-9-_ ]{0,35}$/;
+	
+	if (!RegexVali.test(nome) == true ) {
+		return false
+	}
 
 	console.log("[nameVaidation] nome válido!");
 
 	return true;
 }
+
+module.exports = nameValidation;

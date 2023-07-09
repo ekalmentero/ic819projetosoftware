@@ -7,9 +7,14 @@ import AniProfile from './components/AniProfile/AniProfile'
 import Readdata from './rotas/Readdata'
 import Login_Form from './components/LoginForm/Login_Form'
 
+const { usuarioProvider } = require('../contexts/usuarioContext');
+
+const usuarioContext = useContext(usuarioProvider);
+
 export default function Home() {
+  
   return (
-    <main >
+    <usuarioProvider value={usuarioContext}>
       {/* <Header/> */}
 
       {/* <Cadastro_Form/> */}
@@ -21,6 +26,7 @@ export default function Home() {
       {/* <AniProfile/> */}
       
       {/* <Footer/> */}
-    </main>
+
+    </usuarioProvider>
   )
 }

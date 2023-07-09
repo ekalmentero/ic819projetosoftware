@@ -8,7 +8,7 @@
 // depois, pegar o resultado, multiplicar por 10 e dividir por 11
 // o resto dessa segunda parte parte deve ser igual ao último dígito.
 
-export default function isCpfValid(cpf) {
+function isCpfValid(cpf) {
 	console.log(`[cpfValidation] cpf = ${cpf}`);
 
 	// retirar caracteres inválidos
@@ -71,3 +71,5 @@ export default function isCpfValid(cpf) {
 
 	return true;
 }
+
+module.exports = isCpfValid;

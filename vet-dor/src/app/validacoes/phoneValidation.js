@@ -1,5 +1,5 @@
 /* Função para validar o telefone */
-export default function phoneValidation(phone) {
+function phoneValidation(phone) {
 	console.log(`[phoneValidation] phone = ${phone}`);
 
 	if (!phone || phone === "") {
@@ -26,6 +26,14 @@ export default function phoneValidation(phone) {
 		return false;
 	}
 
+	const RegexVali =  /^[0-9]{0,11}$/;
+
+  if (!RegexVali.test(number)) {
+		return false;
+	}
+
 	console.log("[phoneValidation] telefone válido!");
 	return true;
 }
+
+module.exports = phoneValidation;

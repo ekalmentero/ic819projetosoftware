@@ -3,6 +3,8 @@ import "./Login_Form.css"
 const { useState } = require("react");
 import DOMPurify from "dompurify";
 
+const 
+
 // function Login_form ==> verificar onde está criada e onde será utilizada
 export default function Login_Form(){
 
@@ -51,10 +53,10 @@ export default function Login_Form(){
         senha: pw,
       }
 
+      // sanitizar
       const cpfLimpo = DOMPurify.sanitize(objUser.cpf)
       const senhaLimpo = DOMPurify.sanitize(objUser.senha)
 
-      // sanitizar
       // validar
       
       // fetch para o controlador
@@ -78,21 +80,18 @@ export default function Login_Form(){
       login().then((res) => {
         console.log(`[login.then] res = ${JSON.stringify(res)}`);
 
-        if(res.status !== 200) {
+        if(res.code !== "OK") {
+          console.log(`login.then erro`);
           window.alert(res.message);
           return;
-        }
+          
+        } else {
+          // Após tudo okay passamos para o componente do perfil do usuário.
+          // setar contexto User
 
-        console.log(`efetuar login`);
-        // res.status(300).redirect(`/userProfile/${res.result.cpf}`);
-        
-        /*
-          {
-            code: "OK" | "NÃO_ENCONTRADO",
-            message: "dagdgyda",
-            result: erro | null | usuario
-          }
-        */
+          // redirecionar pra profile
+          
+        }
       });
     } catch (error) {
       console.log("tratar error")
