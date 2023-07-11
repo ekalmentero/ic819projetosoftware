@@ -48,7 +48,8 @@ req.params: { "userId": "34", "bookId": "8989" }
 // rota pegar dados de um usuário, utilizando o CPF como chave 
 app.post('/getUser', controladorUsuario.getUser);
 app.post('/login', controladorLogin.fazerLogin);
-app.get("/userProfile/:cpf", controladorUsuario.getProfile);
+app.post('/createUser', controladorUsuario.createUser);
+// app.get("/userProfile/:cpf", controladorUsuario.getProfile);
 
 
 app.listen(PORT, ()=>{

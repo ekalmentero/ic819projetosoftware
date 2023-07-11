@@ -1,12 +1,16 @@
 "use client"
 import "./Login_Form.css"
+
+const { useRouter } = require('next/navigation');
 const { useState } = require("react");
+
 import DOMPurify from "dompurify";
 
-const 
+const profilePath = '/userProfile';
 
 // function Login_form ==> verificar onde está criada e onde será utilizada
 export default function Login_Form(){
+  const router = useRouter();
 
   const cpfRegex =  /^[0-9]{0,11}$/;
 // Usuário precisa ter senha com letra minuscula, letra maiuscula e de tamanho entre 4 a 10.
@@ -54,8 +58,8 @@ export default function Login_Form(){
       }
 
       // sanitizar
-      const cpfLimpo = DOMPurify.sanitize(objUser.cpf)
-      const senhaLimpo = DOMPurify.sanitize(objUser.senha)
+      const cpfLimpo = DOMPurify.sanitize(objUser.cpf);
+      const senhaLimpo = DOMPurify.sanitize(objUser.senha);
 
       // validar
       
@@ -77,20 +81,20 @@ export default function Login_Form(){
         return response.json();
       }
 
-      login().then((res) => {
-        console.log(`[login.then] res = ${JSON.stringify(res)}`);
+      login().then((resData) => {
+        console.log(`[login.then] resData = ${JSON.stringify(resData)}`);
 
-        if(res.code !== "OK") {
+        if(resData.code !== "OK") {
           console.log(`login.then erro`);
-          window.alert(res.message);
+          window.alert(resData.message);
           return;
           
         } else {
           // Após tudo okay passamos para o componente do perfil do usuário.
           // setar contexto User
 
-          // redirecionar pra profile
-          
+          // redirecionar pra profile com o next router
+          router.push(profilePath);
         }
       });
     } catch (error) {

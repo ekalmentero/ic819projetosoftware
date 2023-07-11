@@ -28,7 +28,7 @@ function phoneValidation(phone) {
 
 	const RegexVali =  /^[0-9]{0,11}$/;
 
-  if (!RegexVali.test(number)) {
+  if (!RegexVali.test(phone)) {
 		return false;
 	}
 

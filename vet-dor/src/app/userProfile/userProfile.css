@@ -1,0 +1,37 @@
+.page_flex {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.UserProfile_flex {
+  display: flex;
+  flex-direction: column;
+  background-color: #d6e5e5;
+  width: 50%;
+  align-items: center;
+}
+
+.Profile_data{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 2%;
+}
+
+.Profile_data label{
+  margin-top: 2%;
+}
+.Profile_data button{
+  font-weight: 600;
+  margin-top: 5%;
+  width: 200px;
+  height: 40px;
+  background-color: #96D701;
+  color: black;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  
+}

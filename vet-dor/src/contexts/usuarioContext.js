@@ -1,15 +1,15 @@
-const { createContext, useState } = require(`react`);
+// const { createContext, useState } = require(`react`);
 
-const usuarioContext = createContext(null);
+// const usuarioContext = createContext(null);
 
-function usuarioProvider({ children }) {
-	const [ cpfUsuario, setCpfUsuario ] = useState(null);
+// function usuarioProvider({ children }) {
+// 	const [ cpfUsuario, setCpfUsuario ] = useState(null);
 
-	return (
-		<usuarioContext.Provider value={[ cpfUsuario, setCpfUsuario ]}>
-			{children}
-		</usuarioContext.Provider>
-	)
-}
+// 	return (
+// 		<usuarioContext.Provider value={[ cpfUsuario, setCpfUsuario ]}>
+// 			{children}
+// 		</usuarioContext.Provider>
+// 	)
+// }
 
-export default usuarioProvider;
+// export default usuarioProvider;

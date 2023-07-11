@@ -8,18 +8,25 @@ import { useState } from "react";
 
 export default function read() {
 
-const [data, setdata] = useState(null);
-const dbRef = ref(getDatabase());
- get(child(dbRef, '/')).then((snapshot) =>{
-  if (snapshot.exists()) {
-    // console.log(snapshot.toJSON())
-    setdata(snapshot.val());
-  }else{
-    console.log("no data available");
-  }
-}).catch((eror)=>{
-  console.log(eror);
-})
+// const [data, setdata] = useState(null);
+// const dbRef = ref(getDatabase());
+//  get(child(dbRef, '/')).then((snapshot) =>{
+//   if (snapshot.exists()) {
+//     // console.log(snapshot.toJSON())
+//     setdata(snapshot.val());
+//   }else{
+//     console.log("no data available");
+//   }
+// }).catch((eror)=>{
+//   console.log(eror);
+// })
+
+
+  
+  // const newPostKey = push(child(ref(database), 'posts')).key;
+  // const updates = {};
+  // updates["/"+ newPostKey] = obj
+  // return update(ref(database), updates);
 
 return(
   <div>

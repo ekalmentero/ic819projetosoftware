@@ -13,7 +13,7 @@ function nameValidation(name) {
 
   const RegexVali =  /^[a-zA-Z][a-zA-Z0-9-_ ]{0,35}$/;
 	
-	if (!RegexVali.test(nome) == true ) {
+	if (!RegexVali.test(name) == true ) {
 		return false
 	}
 

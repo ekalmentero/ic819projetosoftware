@@ -52,6 +52,7 @@ async function fazerLogin(req, res) {
     const userRef = database.collection('users').doc(cpfLimpo);
     const doc = await userRef.get();
    
+    //! Verifica se o usuário existe no banco de dados comparando o CPF
     if(!doc.exists) {
       res.status(404).send({   
         code: "NOT_FOUND",
@@ -78,9 +79,8 @@ async function fazerLogin(req, res) {
     res.status(200).send({
       code: "OK",
       message: "login bem sucedido",
-      result: bdUesr
+      result: bdUser
     });
-
   } catch (error) {
     console.log(`ERROR: ${error}`);
 		res.status(500).send({
