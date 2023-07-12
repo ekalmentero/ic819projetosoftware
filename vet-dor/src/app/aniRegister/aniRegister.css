@@ -1,0 +1,30 @@
+.Profile_data {
+  display: flex;
+  flex-direction: column;
+}
+
+.Profile_data label {
+  margin-top: 1%;
+  margin-bottom: 2px;
+}
+
+input {
+  border-style: solid;
+  border-color: grey;
+  border-radius: 4px;
+}
+
+.button_submit {
+  display: flex;
+  align-self: center;
+  margin-top: 2%;
+  width: 12%;
+  font-weight: 500;
+  margin-top: 5%;
+  background-color: #96d701;
+  color: black;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+}

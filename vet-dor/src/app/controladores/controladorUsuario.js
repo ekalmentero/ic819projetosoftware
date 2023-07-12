@@ -8,30 +8,60 @@ const validations = require('../validacoes');
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
 
+async function getUserByCpf(cpf) {
+  const userRef = database.collection('users').doc(cpf);
+  const doc = await userRef.get();
+  
+	// se não há um usuário cadastrado com o cpf, retorna false
+  if(!doc.exists) {
+		console.log('[getUserByCpf] cpf não cadastrado');
+    return false;
+  }
+
+  // se há um usuário cadastrado com o cpf, retorna os dados do usuário
+	console.log(`[getUserByCpf] usuário cadastrado = ${JSON.stringfy(doc.data())}`);
+	return doc.data();
+}
+
 // /getUser - Rota do backend para resgatar os dados de um usuário do BD
 async function getUser(req, res) {
 	try {
     console.log("[/getUser]");
-    const cpf = req.body.cpfLimpo;
-
-    const userRef = database.collection('users').doc(cpf);
-    const doc = await userRef.get();
+    const cpf = req.body.cpf;
     
-    if(doc.exists) {
-      console.log(`usuário existe - ${doc.data()}`);
-      res.status(200).send({
-        code: "OK",
-        message: "usuário encontrado",
-        result: doc.data(),
-      })
-    } else {
-      console.log("usuário não existe");
+    // sanitizar cpf
+    const cpfLimpo = DOMPurify.sanitize(cpf);
+
+    // validar cpf
+    if(!validations.cpfValidation(cpfLimpo)) {
+      console.log('[/getUser] cpf inválido');
+
+      res.status(400).send({
+        code: "CPF_INVALIDO",
+        message: "cpf inválido",
+        result: null
+      });
+      return;
+    };
+
+    // se retorna false, o cpf não está cadastrado
+    const getUserReturn = await getUserByCpf(cpfLimpo);
+
+    if(!getUserReturn) {
+      console.log("usuário não cadastrado");
       res.status(404).send({
         code: "NOT_FOUND",
-        message: "usuário não existe",
+        message: "usuário não cadastrado",
         result: null
-      })
-    }
+      });
+    };
+    
+    console.log(`usuário encontrado = ${getUserReturn}`);
+    res.status(200).send({
+      code: "OK",
+      message: "usuário encontrado",
+      result: doc.data(),
+    });
 
   } catch (error) {
     console.log(`/getUser error = ${error}`);
