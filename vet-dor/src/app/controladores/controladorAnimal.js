@@ -37,7 +37,7 @@ async function createAnimal (req, res) {
 			sexo,
 			especie,
 			idade,
-			cpfResponsável,
+			cpfResponsavel,
 		} = req.body;
 
     const nomeLimpo = DOMPurify.sanitize(nome);
@@ -89,7 +89,7 @@ async function createAnimal (req, res) {
 			sexo: sexoLimpo.toUpperCase(),
 			species: especieLimpo.toUpperCase(),
 			age: idadeLimpo,
-			ownerCpf: cpfLimpo
+			ownerCpf: cpfResponsavelLimpo
 		}
 
 		console.log(`[/createAnimal] dbData = ${dbData}`);
@@ -118,6 +118,51 @@ async function createAnimal (req, res) {
     });
 	}
 }
+
+async function getAnimal(req, res) {
+	try {
+		const { cpfResponsavel } = req.body;
+
+		const cpfResponsavelLimpo = DOMPurify.sanitize(cpfResponsavel);
+
+		if(!validations.cpfValidation(cpfResponsavelLimpo)) {
+      console.log('[/createAnimal] cpf inválido');
+
+      res.status(400).send({
+        code: "CPF_INVALIDO",
+        message: "cpf inválido",
+        result: null
+      });
+      return;
+    };
+
+		const animalResult = await getAnimalByOwnerCpf(cpfResponsavelLimpo);
+
+		if(!animalResult) {
+			console.log("animal não cadastrado");
+      res.status(404).send({
+        code: "NOT_FOUND",
+        message: "animal não cadastrado",
+        result: null
+      });
+		};
+
+		console.log(`animal encontrado = ${animalResult}`);
+    res.status(200).send({
+      code: "OK",
+      message: "animal encontrado",
+      result: animalResult,
+    });
+		
+	} catch (error) {
+		console.log(`/createUser error = ${error}`);
+    res.status(500).send({
+      code: "ERRO_INESPERADO",
+      message: "Um erro inesperado aconteceu.",
+      result: error,
+    });
+	}
+};
 
 module.exports = {
 	createAnimal,

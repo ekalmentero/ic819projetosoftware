@@ -45,9 +45,9 @@ async function getUser(req, res) {
     };
 
     // se retorna false, o cpf não está cadastrado
-    const getUserReturn = await getUserByCpf(cpfLimpo);
+    const userResult = await getUserByCpf(cpfLimpo);
 
-    if(!getUserReturn) {
+    if(!userResult) {
       console.log("usuário não cadastrado");
       res.status(404).send({
         code: "NOT_FOUND",
@@ -56,11 +56,11 @@ async function getUser(req, res) {
       });
     };
     
-    console.log(`usuário encontrado = ${getUserReturn}`);
+    console.log(`usuário encontrado = ${userResult}`);
     res.status(200).send({
       code: "OK",
       message: "usuário encontrado",
-      result: doc.data(),
+      result: userResult
     });
 
   } catch (error) {

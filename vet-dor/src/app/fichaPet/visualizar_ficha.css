@@ -1,0 +1,60 @@
+.form {
+    background-color: var(--fundo-form);
+    border-radius: 10px;
+    padding: 32px;
+    display: grid;
+    justify-items: center;
+}
+
+div.header-info {
+    display: grid;
+    grid-column-gap: 10px;
+    row-gap: 10px;
+    grid-template-columns: 1fr 2fr;
+}
+
+.info-ficha {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 15px;
+}
+
+div.item {
+    display: flex;
+    flex-direction:column;
+}
+
+div.right {
+    display: grid;
+    grid-template-columns: auto;
+    align-content: center;
+}
+
+div.left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.left img {
+    border-radius: 100px;
+    width: 166px;
+}
+
+.area-pdfs {
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 49px;
+}
+
+.pdf {
+    display: grid;
+    justify-items: center;
+    /* width: 15rem; */
+}
+
+object {
+    height: 30rem;
+    width: 16rem;
+}
