@@ -1,0 +1,37 @@
+#projectTable {
+    width: 100%;
+}
+
+#projectTable .table {
+    margin-bottom: 0;
+}
+
+#projectTable .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+#projectTable_filter{
+    padding: 10px;
+}
+
+#projectTable th {
+    font-weight: bold;
+}
+
+#projectTable td.text-center {
+    text-align: center;
+}
+
+#projectTable .sorting,
+#projectTable .sorting_asc {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Personalizando os controles */
+.dataTables_filter label {
+    font-weight: bold;
+}
+
+.dataTables_length label {
+    font-weight: bold;
+}

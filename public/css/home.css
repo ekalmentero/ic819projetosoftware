@@ -1,0 +1,50 @@
+h1{
+    font-style: italic;
+    font-weight: bold;
+}
+.text-inform{
+    max-height: 300px;
+    font-weight: bold;
+}
+.view-projeto{
+    margin: auto;
+    font-weight: bold;
+}
+.card-title {
+    font-weight: bold;
+}
+
+.button{
+    padding: 0.5rem ;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    background-color: #F53A27;
+    border: none;
+    border-radius: 20px;
+}
+
+.button:hover{
+    background-color: #ff3738;
+}
+.card-complete{
+    border-radius: 20px;
+    background-color: #1a202c;
+    color: white;
+    height: 250px;
+}
+.text{
+    max-height: 100px;
+}
+.text::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+}
+
+.text::-webkit-scrollbar-track {
+    background-color: #ffffff; /* Cor de fundo da barra de rolagem */
+}
+
+.text::-webkit-scrollbar-thumb {
+    background-color: #F53A27; /* Cor do "polegar" da barra de rolagem */
+}
+

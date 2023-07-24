@@ -1,0 +1,9 @@
+.error-container {
+    margin-top: 5px;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    display: none;
+}
