@@ -1,15 +1,15 @@
-// const { createContext, useState } = require(`react`);
+'use client'
 
-// const usuarioContext = createContext(null);
+const { createContext, useState } = require(`react`);
 
-// function usuarioProvider({ children }) {
-// 	const [ cpfUsuario, setCpfUsuario ] = useState(null);
+export const UsuarioContext = createContext();
 
-// 	return (
-// 		<usuarioContext.Provider value={[ cpfUsuario, setCpfUsuario ]}>
-// 			{children}
-// 		</usuarioContext.Provider>
-// 	)
-// }
+export function UsuarioProvider({ children }) {
+	const [ cpfUsuario, setCpfUsuario ] = useState('');
 
-// export default usuarioProvider;
+	return(
+		<UsuarioContext.Provider value={{ cpfUsuario, setCpfUsuario }}>
+			{children}
+		</UsuarioContext.Provider>
+	)
+}

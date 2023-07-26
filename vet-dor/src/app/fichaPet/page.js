@@ -1,15 +1,55 @@
 "use client"
+// const fs = require("fs");
+// const readline = require('readline');
+
 import "./visualizar_ficha.css"
 import { useState } from "react";
-// imports referentes a implementação do firebase
 
-export default function Visualizar_Ficha(){
-
-//--------------------------------------------------------
-
+export default function Visualizar_Ficha() {
 // Link para um artigo ensinando a enviar artigo = https://blog.logrocket.com/firebase-cloud-storage-firebase-v9-react/
 // Link da documentação do próprio firebase = https://firebase.google.com/docs/storage/web/upload-files
+    const [f, setF] = useState({});
 
+    const handleFileChanger = (e) => {
+        
+        if (e.target.files) {
+            setF(e.target.files[0]);
+        }
+    };
+
+    const handleSubmit = () => {
+        
+        if (!f) {
+            alert('Arquivo inválido');
+            return
+        }
+
+        console.log(f);
+
+
+        // const formData = new FormData();
+        // formData.append('file', f);
+        // // testar: formData.set()
+        // console.log(formData);
+
+        // const postData = async () => {
+        //     console.log('[postData] fetch para /storeFile');
+        //     const response = await fetch("http://localhost:8080/storeFile", {
+        //         method: "POST",
+        //         body: formData,
+        //     })
+        //     return response.json();
+        // }
+
+        // postData().then((resData) => {
+        //     console.log(`[postData.then] resData = ${resData}`);
+        
+        //     window.alert(resData.message);
+        //     // document.getElementById('pdfForm').reset();
+        //     return;
+        // });
+    }
+    
     return(
         <main>
             <div className="form">
@@ -37,7 +77,6 @@ export default function Visualizar_Ficha(){
                                 <label for="data">Data</label>
                                 <input type="text" name="data" id="data" value="12/01/2023" readonly/>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -47,19 +86,39 @@ export default function Visualizar_Ficha(){
                         <p className="etiqueta grande laranja">Diagnóstico</p>
                         <object data="sample-pdf.pdf#page=1&zoom=50" type="application/pdf" className="pdf-diagnostico" name="pdf-diagnostico"> <p>Não foi possível carregar o PDF. Baixe o arquivo diretamente.</p> </object>
                     </div>
-
+                    <div className="pdf">
+                        <p className="etiqueta grande laranja">Receita</p>
+                        <object data="sample-pdf.pdf#page=1&zoom=50" type="application/pdf" className="pdf-diagnostico" name="pdf-diagnostico"> <p>Não foi possível carregar o PDF. Baixe o arquivo diretamente.</p> </object>
+                    </div>
+                    
                     <div className="pdf">
                         <p className="etiqueta grande laranja">Laudo</p>
                         <object data="sample-pdf.pdf#page=1&zoom=50" type="application/pdf" className="pdf-laudo" name="pdf-laudo"> <p>Não foi possível carregar o PDF. Baixe o arquivo diretamente.</p> </object>
                     </div>
 
                     <div className="pdf">
-                        <p className="etiqueta grande laranja">Receitas</p>
-                        <object data="sample-pdf.pdf#page=1&zoom=50" type="application/pdf" className="pdf-receitas" name="pdf-receitas"> <p>Não foi possível carregar o PDF. Baixe o arquivo diretamente.</p> </object>
+                        <form onSubmit={(e)=>{e.preventDefault()}} id="pdfForm">
+                            <p className="etiqueta grande laranja">Diagnóstico</p>
+                            <input id="inputDiagnostico" type="file"  onChange={handleFileChanger} />
+                            <button  type="submit" onClick={handleSubmit } >Enviar arquivo</button>
+                        </form>
                     </div>
-                    
+
+                    <div className="pdf">
+                        <p className="etiqueta grande laranja">Receitas</p>
+                        <input type="file"/>
+                        <button>Enviar Receita</button>
+                    </div>
+
+                    <div className="pdf">
+                        <p className="etiqueta grande laranja">Laudo</p>
+                        <input type="file"/>
+                        <button>Enviar Laudo</button>
+                    </div>
                 </div>
+                    
             </div>
+
         </main>
     )
 }   

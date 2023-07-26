@@ -2,11 +2,13 @@
 import "./Login_Form.css"
 
 const { useRouter } = require('next/navigation');
-const { useState } = require("react");
+const { useState, useContext } = require("react");
 
 import DOMPurify from "dompurify";
 
-const profilePath = '/userProfile';
+import { UsuarioContext } from '../../../contexts/usuarioContext'
+
+import { userProfilePath } from '../../../helpers/paths';
 
 // function Login_form ==> verificar onde está criada e onde será utilizada
 export default function Login_Form(){
@@ -38,7 +40,7 @@ export default function Login_Form(){
   }
 
   /*
-    handleSubmit{
+    handleSubmit {
       sanitizar as entradas
       validar as entradas
       criar o objeto objUser = {inputs do usuário}
@@ -91,10 +93,14 @@ export default function Login_Form(){
           
         } else {
           // Após tudo okay passamos para o componente do perfil do usuário.
+
           // setar contexto User
+          const { cpfUsuario, setCpfUsuario } = useContext(UsuarioContext);
+          setCpfUsuario(userData.cpf);
+          console.log(`[handleSubmit] context cpfUsuario = ${cpfUsuario} `);
 
           // redirecionar pra profile com o next router
-          router.push(profilePath);
+          router.push(userProfilePath);
         }
       });
     } catch (error) {

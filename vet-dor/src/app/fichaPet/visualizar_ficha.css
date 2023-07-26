@@ -13,9 +13,11 @@ div.header-info {
     grid-template-columns: 1fr 2fr;
 }
 
+
+
 .info-ficha {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr,;
     column-gap: 15px;
 }
 
@@ -44,6 +46,15 @@ div.left img {
 .area-pdfs {
     margin-top: 2%;
     display: grid;
+    grid-template-columns:  repeat(auto-fill, minmax(305px, 1fr));
+    column-gap: 49px;
+    width: 100%;
+    
+}
+
+.area-envio{
+    margin-top: 2%;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 49px;
 }
@@ -55,6 +66,6 @@ div.left img {
 }
 
 object {
-    height: 30rem;
+    height: 5%;
     width: 16rem;
 }

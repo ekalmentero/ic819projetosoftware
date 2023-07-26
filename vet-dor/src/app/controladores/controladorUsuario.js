@@ -222,5 +222,6 @@ async function createUser(req, res) {
 
 module.exports = {
 	getUser,
+  getUserByCpf,
   createUser,
 }

@@ -10,10 +10,10 @@ import DOMPurify from "dompurify";
 import { getDatabase } from "@firebase/database";
 import { database } from "@/app/controles/Firebase";
 
-import { UsuarioContext } from '../../../contexts/usuarioContext'
+import { UsuarioContext } from '../../contexts/usuarioContext'
 
-const validations = require('./../../validacoes');
-import { userProfilePath } from '../../../helpers/paths';
+const validations = require('../validacoes');
+import { userProfilePath } from '../../helpers/paths';
 
 export default function Cadastro_Form() {
   // Next Router
@@ -83,8 +83,10 @@ export default function Cadastro_Form() {
       senha: senhaLimpo
     };
 
+    console.log('fetch para /createUser');
+
     const postData = async () => {
-      console.log("[postData] fetch para /createUser");
+      console.log("[postData]");
 
       console.log(`[postData] userData = ${JSON.stringify(userData)}`);
         
