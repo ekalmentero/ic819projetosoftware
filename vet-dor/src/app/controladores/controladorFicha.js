@@ -10,13 +10,15 @@ async function storeFile(req, res) {
 	console.log(`[/storeFile]`);
 
 	try {
+		const {
+			tipoArquivo, 
+			texto, 
+			data 
+		} = req.body;
 
-  const text = req.body.texto;
-	const date = req.body.data;
-	console.log(`body = ${JSON.stringify(body)}`);
-
-	const textLimpo = DOMPurify.sanitize(text);
-	const dateLimpo = DOMPurify.sanitize(date);
+		const TypeFileLimpo = DOMPurify.sanitize(tipoArquivo);
+		const textLimpo = DOMPurify.sanitize(texto);
+		const dateLimpo = DOMPurify.sanitize(data);
 
 	if (textLimpo.length == 0 ) {
 		console.log("[/storeFile] texto vazio");
@@ -40,7 +42,21 @@ async function storeFile(req, res) {
 			return;
 	}
 
+	if (TypeFileLimpo.length == null ) {
+		console.log("[/storeFile] não foi escolhido tipo de arquivo ");
+
+		res.status(400).send({
+			code: "ARQUIVO_INDETERMINADO",
+			message: "tipo de arquivo não determinado",
+			result: null
+		})
+		return;
+}
+
+	console.log("tudo verificado");
+
 	const dbData = {
+		tipoArquivo: TypeFileLimpo,
 		textConsulta: textLimpo,
 		textDate: dateLimpo
 	}
@@ -48,7 +64,7 @@ async function storeFile(req, res) {
 
 		//! Criar o texto da consulta no banco de dados, Falta definir o nome de coleção.
 		// Definir como Vamos dividir cada coleção: Diagnóstico, Receita, Observações
-		const textSend = await database.collection("").doc(dbData.textDate).set(dbData);
+		const textSend = await database.collection(dbData.tipoArquivo).doc(dbData.textDate).set(dbData);
 
 		console.log(`[/storeFile] textSend =${textSend}`);
 		console.log(`[/storeFile] sucesso`);

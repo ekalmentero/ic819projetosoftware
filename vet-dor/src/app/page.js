@@ -17,7 +17,7 @@ export default function Home() {
     <main>
       {/* <Header/> */}
 
-      {/* <Cadastro_Form/> */}
+      <Cadastro_Form/>
     
     {/* <userProfile/> */}
 

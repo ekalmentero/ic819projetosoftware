@@ -105,7 +105,6 @@ export default function Cadastro_Form() {
       if(resData.code !== "OK") {
         window.alert(resData.message);
         return;
-        
       } else {
         console.log('[handleSubmit] redirecionar para o perfil');
         // Após tudo okay passamos para o componente do perfil do usuário.

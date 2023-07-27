@@ -106,8 +106,8 @@ export default function Visualizar_Ficha() {
 
                     <div className="pdf">
                         <p className="etiqueta grande laranja">Receitas</p>
-                        <input type="file"/>
-                        <button>Enviar Receita</button>
+                        <input  type="file"/>
+                        <button >Enviar Receita</button>
                     </div>
 
                     <div className="pdf">
