@@ -6,10 +6,6 @@ import { useState, useContext } from "react";
 
 import DOMPurify from "dompurify";
 
-// imports referentes a implementação do firebase
-import { getDatabase } from "@firebase/database";
-import { database } from "@/app/controles/Firebase";
-
 import { UsuarioContext } from '../../contexts/usuarioContext'
 
 const validations = require('../validacoes');
@@ -19,22 +15,19 @@ export default function Cadastro_Form() {
   // Next Router
   const router = useRouter();
 
+  // contexto usuario
+  const { cpfUsuario, setCpfUsuario } = useContext(UsuarioContext);
+
   // states do usuário
-  const [userName, setUserName] = useState(null);
-  const [pw, setPw] = useState(null);
-  const [cpf, setCpf] = useState(null);
-  const [phoneNumber, setPhoneNumber] = useState(null)
-  const [birthDate, setBirthDate] = useState(null)
-  const [email, setEmail] = useState(null)
+  const [userName, setUserName] = useState("");
+  const [pw, setPw] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [email, setEmail] = useState("");
 
   // Aqui chamamos o controlador cadastro que é nosso middleware antes de passarmos nossos dados para as rotas
   const handleSubmit = (e)=> {
-    /*
-      sanitizar as entradas
-      validar as entradas
-      criar objeto com as infrormações do usuário
-      fetch para /createUser
-    */
     console.log('[handleSubmit]');
 
     e.preventDefault();
@@ -109,16 +102,18 @@ export default function Cadastro_Form() {
         return;
         
       } else {
-        console.log('[handleSubmit] redirecionar para o perfil');
         // Após tudo okay passamos para o componente do perfil do usuário.
-
+        
         // setar contexto User
-        const { cpfUsuario, setCpfUsuario } = useContext(UsuarioContext);
         setCpfUsuario(userData.cpf);
-        console.log(`[handleSubmit] context cpfUsuario = ${cpfUsuario} `);
+        
+        setTimeout(() => {
+          console.log(`[handleSubmit] context cpfUsuario = ${cpfUsuario}`);
           
-        // redirecionar pra profile com o next router
-        router.push(userProfilePath);
+          // redirecionar pra profile com o next router
+          console.log('[handleSubmit] redirecionar para o perfil');
+          router.push(userProfilePath);
+        }, 3000);
       }
     });
   }
@@ -130,31 +125,31 @@ export default function Cadastro_Form() {
       <div className="form_Flex">
         <form action="/create" method="POST" >
           <div className="first_div" >
-            <label for="name" >Nome Completo</label>
+            <label htmlFor="name" >Nome Completo</label>
             <input id="name" name="name" value={userName} onChange={(e)=> setUserName(e.target.value)}  required  placeholder="Seu nome" type="text"/>
 
-            <label for="cpf" >CPF (somente números) </label>
+            <label htmlFor="cpf" >CPF (somente números) </label>
             <input id="cpf" name="cpf" value={cpf} onChange={(e)=> setCpf(e.target.value)} required  placeholder="XXX-XXX-XXX-XX" type="number"/>
 
-            <label for="dataNasc" >Data de nascimento </label>
+            <label htmlFor="dataNasc" >Data de nascimento </label>
             <input  id="dataNasc" name="dataNasc" value={birthDate} onChange={(e)=> setBirthDate(e.target.value)}  placeholder="DD/MM/AAAA" type="date"/>
 
-            <label for="phoneNumber" >Celular (somente números)</label>
+            <label htmlFor="phoneNumber" >Celular (somente números)</label>
             <input id="phoneNumber" name="phoneNumber" value={phoneNumber} onChange={(e)=> setPhoneNumber(e.target.value)} required  placeholder="(XX)XXXXX-XXXX " type="number"/>
           </div>
 
-          <div className="second_div">
-            <label for="email" >E-mail</label>
-            <input id="email" name="email" value={email} onChange={(e)=> setEmail(e.target.value)} required placeholder="email@exemplo.com" type="email"/>
 
-            <label for="password" >Senha</label>
-            <input  id="password" name="password" value={pw} onChange={(e)=> setPw(e.target.value)} required type="password"/>
+          <label htmlFor="email">E-mail</label>
+          <input id="email" name="email" value={email} onChange={(e)=> setEmail(e.target.value)} required placeholder="email@exemplo.com" type="email"/>
 
-            <div className="form_button" >
-              <button className="submit_google" type="submit">CADASTRAR COM GOOGLE </button>
-              <button onClick={(e) => { handleSubmit (e) }} className="submit_trad"> CADASTRAR </button>
-            </div>
+          <label htmlFor="password" >Senha</label>
+          <input  id="password" name="password" value={pw} onChange={(e)=> setPw(e.target.value)} required type="password"/>
+
+          <div className="form_button" >
+            <button className="submit_google" type="submit">CADASTRAR COM GOOGLE </button>
+            <button onClick={(e) => { handleSubmit (e) }} className="submit_trad"> CADASTRAR </button>
           </div>
+
         </form>
       </div>
     </div>

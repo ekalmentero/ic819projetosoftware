@@ -12,6 +12,8 @@ import { userProfilePath } from '../../../helpers/paths';
 
 // function Login_form ==> verificar onde está criada e onde será utilizada
 export default function Login_Form(){
+  const { cpfUsuario, setCpfUsuario } = useContext(UsuarioContext);
+
   const router = useRouter();
 
   const cpfRegex =  /^[0-9]{0,11}$/;
@@ -95,7 +97,6 @@ export default function Login_Form(){
           // Após tudo okay passamos para o componente do perfil do usuário.
 
           // setar contexto User
-          const { cpfUsuario, setCpfUsuario } = useContext(UsuarioContext);
           setCpfUsuario(userData.cpf);
           console.log(`[handleSubmit] context cpfUsuario = ${cpfUsuario} `);
 

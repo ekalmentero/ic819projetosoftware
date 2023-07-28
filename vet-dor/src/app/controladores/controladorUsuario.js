@@ -164,6 +164,7 @@ async function createUser(req, res) {
       cel: celularLimpo,
       email: emailLimpo
     }
+    
 
     console.log(`[/createUser] dbData = ${dbData}`);
 
@@ -197,8 +198,8 @@ async function createUser(req, res) {
 //     const cpf = req.params["cpf"];
 //     console.log(`getProfile cpf = ${cpf}`);
 
-//     // const { cpf } = req.params
-//     // pegar os dados do usuário pela url com Get
+    // const { cpf } = req.params
+    // pegar os dados do usuário pela url com Get
     
 //     const userRef = database.collection("users").doc(cpf);
 //     const doc = await userRef.get();
@@ -222,6 +223,5 @@ async function createUser(req, res) {
 
 module.exports = {
 	getUser,
-  getUserByCpf,
   createUser,
 }

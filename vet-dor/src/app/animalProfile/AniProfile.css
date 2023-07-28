@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Rajdhani";
+  src: url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap');
+}
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap');
+
+body{
+  font-family: 'Rajdhani', Times, serif, "Jost", monospace
+}
+
+.page_flex{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.AniProfile_flex{
+  display: flex;
+  flex-direction: column;
+  background-color: #D6E5E5;
+  width: 40%;
+  align-items: center;
+}
+
+.AniProfile_flex h1{
+  color: #245D61;
+}
+
+.Title_flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
+.Title_flex svg{
+  position: relative;
+  left: 35%;
+  cursor: pointer;
+}
+
+.Profile_pic{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.Profile_data{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 2%;
+}
+
+.Profile_data label{
+  margin-top: 2%;
+}
+.Profile_data button{
+  font-weight: 600;
+  margin-top: 5%;
+  width: 200px;
+  height: 40px;
+  background-color: #96D701;
+  color: black;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  
+}

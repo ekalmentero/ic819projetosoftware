@@ -1,4 +1,4 @@
-// imports
+  // imports
 const createDOMPurify = require('dompurify');
 const { JSDOM } = require('jsdom');
 
@@ -28,14 +28,14 @@ async function fazerLogin(req, res) {
     console.log(`[fazerLogin] senha limpo ${senhaLimpo}`);
 
     // Validar as entradas
-    // if(!validations.cpfValidation(cpfLimpo)) {
-    //   res.status(400).send({
-    //     code: "CPF_INVALIDO",
-    //     message: "cpf inválido",
-    //     result: null
-    //   });
-    //   return;
-    // }
+    if(!validations.cpfValidation(cpfLimpo)) {
+      res.status(400).send({
+        code: "CPF_INVALIDO",
+        message: "cpf inválido",
+        result: null
+      });
+      return;
+    }
     
     if(!validations.passwordValidation(senhaLimpo)) {
       res.status(400).send({

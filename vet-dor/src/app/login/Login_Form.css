@@ -1,0 +1,123 @@
+.form_All{
+  background-color: #D6E5E5;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 15%;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.form_Flex{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items:center;
+  justify-content: center;
+  margin-bottom: 2.5%;
+}
+
+h2{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5%;
+  color: #245D61;
+}
+
+label{
+  color: black;
+  font-weight: 500;
+}
+
+.first_div{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.first_div input{
+  width: 380px;
+  height: 32px;
+  background-color: white;
+  text-indent: 10px;
+  color: black;
+  border-radius: 5px;
+  border: none;
+}
+
+.second_div{
+  margin-left: 8%;
+  display: flex;
+  flex-direction: column;
+}
+
+.second_div input{
+  width: 380px;
+  height: 32px;
+  background-color: white;
+  text-indent: 10px;
+  color: black;
+  border-radius: 5px;
+  border: none;
+}
+input::placeholder{
+  color: black;
+}
+ 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.form_Flex label{
+  margin-bottom: 1.5%;
+  margin-top: 3.5%;
+  font-weight: 600;
+}
+
+.form_title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #245D61;
+}
+
+.form_button{
+  margin-top: 7%;
+  display: flex;
+  justify-content:space-between
+}
+
+.form_button button{
+  display: flex;
+  height: 42px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+}
+
+.submit_password{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  background-color: #4285F4;
+  cursor: pointer;
+}
+
+.submit_forgot_password{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  background-color: #96D701;
+  color: black;
+  cursor: pointer;
+
+} 

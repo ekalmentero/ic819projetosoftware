@@ -1,7 +1,4 @@
 "use client"
-// const fs = require("fs");
-// const readline = require('readline');
-
 import "./visualizar_ficha.css"
 import { useState } from "react";
 
@@ -10,8 +7,7 @@ export default function Visualizar_Ficha() {
 // Link da documentação do próprio firebase = https://firebase.google.com/docs/storage/web/upload-files
     const [f, setF] = useState({});
 
-    const handleFileChanger = (e) => {
-        
+    const handleFileChange = (e) => {
         if (e.target.files) {
             setF(e.target.files[0]);
         }
@@ -99,7 +95,7 @@ export default function Visualizar_Ficha() {
                     <div className="pdf">
                         <form onSubmit={(e)=>{e.preventDefault()}} id="pdfForm">
                             <p className="etiqueta grande laranja">Diagnóstico</p>
-                            <input id="inputDiagnostico" type="file"  onChange={handleFileChanger} />
+                            <input id="inputDiagnostico" type="file"  onChange={handleFileChange} />
                             <button  type="submit" onClick={handleSubmit } >Enviar arquivo</button>
                         </form>
                     </div>
@@ -116,9 +112,8 @@ export default function Visualizar_Ficha() {
                         <button>Enviar Laudo</button>
                     </div>
                 </div>
-                    
+                
             </div>
-
         </main>
     )
 }   

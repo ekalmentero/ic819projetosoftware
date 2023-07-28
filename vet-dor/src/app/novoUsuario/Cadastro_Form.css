@@ -1,4 +1,4 @@
-.form_All{
+.form_All {
   background-color: #D6E5E5;
   width: 70%;
   display: flex;
@@ -9,7 +9,7 @@
   border-radius: 10px;
 }
 
-.form_Flex{
+.form_Flex {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -18,25 +18,25 @@
   margin-bottom: 2.5%;
 }
 
-h2{
+h2 {
   display: flex;
   justify-content: center;
   margin-bottom: 0.5%;
   color: #245D61;
 }
 
-label{
+label {
   color: black;
   font-weight: 500;
 }
 
-.first_div{
+.first_div {
   display: flex;
   flex-direction: column;
 
 }
 
-.first_div input{
+input {
   width: 380px;
   height: 32px;
   background-color: white;
@@ -46,22 +46,7 @@ label{
   border: none;
 }
 
-.second_div{
-  margin-left: 8%;
-  display: flex;
-  flex-direction: column;
-}
-
-.second_div input{
-  width: 380px;
-  height: 32px;
-  background-color: white;
-  text-indent: 10px;
-  color: black;
-  border-radius: 5px;
-  border: none;
-}
-input::placeholder{
+input::placeholder {
   color: black;
 }
  
@@ -75,26 +60,26 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-.form_Flex label{
+.form_Flex label {
   margin-bottom: 1.5%;
   margin-top: 3.5%;
   font-weight: 600;
 }
 
-.form_title{
+.form_title {
   display: flex;
   align-items: center;
   justify-content: center;
   color: #245D61;
 }
 
-.form_button{
+.form_button {
   margin-top: 7%;
   display: flex;
   justify-content:space-between
 }
 
-.form_button button{
+.form_button button {
   display: flex;
   height: 42px;
   font-weight: 600;
@@ -102,7 +87,7 @@ input[type=number] {
   border: none;
 }
 
-.submit_google{
+.submit_google {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,7 +96,7 @@ input[type=number] {
   cursor: pointer;
 }
 
-.submit_trad{
+.submit_trad {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,5 +104,4 @@ input[type=number] {
   background-color: #96D701;
   color: black;
   cursor: pointer;
-
 } 

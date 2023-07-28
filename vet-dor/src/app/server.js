@@ -53,6 +53,7 @@ app.post('/login', controladorLogin.fazerLogin);
 app.post('/createUser', controladorUsuario.createUser);
 app.post('/createAni', controladorAnimal.createAnimal);
 app.post('/storeFile', controladorFicha.storeFile);
+app.post('/recoverFile', controladorFicha.recuperarFicha);
 // app.get("/userProfile/:cpf", controladorUsuario.getProfile);
 
 
