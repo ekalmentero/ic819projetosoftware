@@ -81,8 +81,6 @@ export default function Cadastro_Form() {
     const postData = async () => {
       console.log("[postData]");
 
-      console.log(`[postData] userData = ${JSON.stringify(userData)}`);
-        
       const response = await fetch("http://localhost:8080/createUser", {
         method: "POST",
         body: JSON.stringify(userData),
@@ -106,16 +104,16 @@ export default function Cadastro_Form() {
         
         // setar contexto User
         setCpfUsuario(userData.cpf);
-        
-        setTimeout(() => {
-          console.log(`[handleSubmit] context cpfUsuario = ${cpfUsuario}`);
-          
-          // redirecionar pra profile com o next router
-          console.log('[handleSubmit] redirecionar para o perfil');
-          router.push(userProfilePath);
-        }, 3000);
       }
     });
+            
+    setTimeout(() => {
+      console.log(`[novoUsuario][setTimeout] context cpfUsuario = ${cpfUsuario}`);
+      
+      // redirecionar pra profile com o next router
+      console.log('[novoUsuario][setTimeout] redirecionar para o perfil');
+      router.push(userProfilePath);
+    }, 3000);
   }
   
   return(

@@ -13,12 +13,14 @@ export default function userProfile() {
   const [editProfile, setEditProfile] = useState(false);
 
   useEffect(() => {
+    console.log(`cpf =${cpfUsuario}`);
+    
     const getUser = async () => {
       console.log("[getUser]");
         
       const response = await fetch("http://localhost:8080/getUser", {
         method: "POST",
-        body: JSON.stringify({ cpfUsuario }),
+        body: JSON.stringify({ cpf: cpfUsuario }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8'
         }
@@ -47,14 +49,7 @@ export default function userProfile() {
         setInfoUsuario(aux);
       }
     });
-    
-    setTimeout(() => {
-      console.log(`1 infoUsuario = ${JSON.stringify(infoUsuario)}`);
-      console.log("[useEffect] ok");
-    }, 3000)
-  });
-
-  console.log(`2 infoUsuario = ${JSON.stringify(infoUsuario)}`);
+  }, []);
 
   return (
     <div className="page_flex">

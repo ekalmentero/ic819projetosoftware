@@ -152,12 +152,17 @@ if (!validations.cpfValidation(idAnimalLimpo)) {
 			
 			console.log("[firebase.getFile]");
 			const fileRef = database.collection("animals").doc(idAnimalLimpo).collection(tipoArquivoLimpo).doc(dataLimpo)
-			const doc = await fileRef.get();
+			const doc1 = await fileRef.get();
+			const aniInfo = database.collection("animals").doc(idAnimalLimpo);
+			const doc = await aniInfo.get();
 
-			const fileUser = doc.data();
-			console.log(` firebase Data = ${JSON.stringify(fileUser)}`);
+			const getAniInfo = doc.data();
+			const getAniFile = doc1.data();
+			console.log(` firebase Data (info) = ${JSON.stringify(getAniInfo)}`);
+			console.log(` firebase Data (file)= ${JSON.stringify(getAniFile)}`);
 
-			if (!doc.exists) {
+
+			if (!doc.exists || !doc1.exists ) {
 				res.status(404).send({   
 					code: "NOT_FOUND",
 					message: "Não existe esse documento salvo",
@@ -170,7 +175,10 @@ if (!validations.cpfValidation(idAnimalLimpo)) {
 			res.status(200).send({
 				code: "OK",
 				message: "Arquivo Recuperado",
-				result: fileUser
+				result: {
+					getAniInfo,
+					getAniFile
+				}
 			});
 		}
 		} catch (error) {

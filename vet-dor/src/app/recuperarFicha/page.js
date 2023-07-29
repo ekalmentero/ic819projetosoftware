@@ -7,9 +7,15 @@ const validations = require("./../validacoes/index");
 
 export default function RecoverFicha() {
 
-  const [IdAnimal, setId] = useState(null);
-  const [Date, setDate] = useState(null);
-  const [TypeFile, setType ] = useState(null);
+  const [IdAnimal, setId] = useState("");
+  const [Date, setDate] = useState("");
+  const [TypeFile, setType ] = useState("");
+
+  const [resText, setResText] = useState("");
+  const [aniName,setAniName ] = useState("");
+  const [aniSex,setAniSex ] = useState("");
+  const [aniRace,setAniRace ] = useState("");
+  const [aniOld,setAniOld ] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,6 +66,11 @@ export default function RecoverFicha() {
       } else {
         // Verificar se o objeto que vou receber é esse mesmo
         console.log(`[recoverData].then ${JSON.stringify(JSON.stringify(resData.result))}`);
+        setResText(resData.result.getAniFile.texto);
+        setAniName(resData.result.getAniInfo.name);
+        setAniSex(resData.result.getAniInfo.sexo);
+        setAniRace(resData.result.getAniInfo.race);
+        setAniOld(resData.result.getAniInfo.age)
       }
     });
 
@@ -95,7 +106,30 @@ export default function RecoverFicha() {
           
         </div>
 
-        <p></p>
+      <div className="AniData">
+        <div className="idAnimal">
+          <label for="paciente" >Nome do paciente </label>
+          <input value={aniName}  name="paciente" type="text"/>
+        </div>
+
+        <div className="idAnimal">
+          <label for="id" >Sexo </label>
+          <input value={aniSex}  name="id" type="text"/>
+        </div>
+
+        <div className="idAnimal">
+          <label for="id" >Raça </label>
+          <input value={aniRace}  name="id" type="text"/>
+        </div>
+        <div className="idAnimal">
+          <label for="id" >Idade </label>
+          <input value={`${aniOld} anos`} name="id" type="text"/>
+        </div>
+        </div>
+
+        <textarea className="Text-area" value={JSON.stringify(resText)} ></textarea>
+
+        {/* <p>{}</p> */}
 
         <button onClick={ (e)=> { handleSubmit(e)}} className="Button-submit" >Enviar o Arquivo</button>
 

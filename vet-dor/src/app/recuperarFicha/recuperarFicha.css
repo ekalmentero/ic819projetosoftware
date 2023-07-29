@@ -40,7 +40,14 @@ input{
   align-items: center;
 }
 
+.AniData{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .Text-area{
+  margin-top: 3.5%;
   width: 55%;
   height: 55%;
   border-style: solid;

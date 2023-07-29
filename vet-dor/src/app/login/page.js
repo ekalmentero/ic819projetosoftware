@@ -14,7 +14,8 @@ const validations = require('../validacoes');
 export default function Login_Form(){
 	// Next Router
   const router = useRouter();
-	
+
+  // contexto usuario
   const { cpfUsuario, setCpfUsuario } = useContext(UsuarioContext);
 
 	// criando agora os estados da função de validação
@@ -54,6 +55,11 @@ export default function Login_Form(){
 			window.alert("Senha Inválida");
       return;
 		}
+
+    const userData = {
+      cpf: cpfLimpo,
+      senha: senhaLimpo
+    }
 		
 		// fetch para o controlador
 		const login = async () => {
@@ -61,7 +67,7 @@ export default function Login_Form(){
 
 			const response = await fetch("http://localhost:8080/login", {
 				method: "POST",
-				body: JSON.stringify(objUser),
+				body: JSON.stringify(userData),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8'
 				}
@@ -80,18 +86,19 @@ export default function Login_Form(){
 				
 			} else {
         // setar contexto User
-        console.log(`objUser.cpf = ${objUser.cpf}`);
-        setCpfUsuario(objUser.cpf);
-        
-        setTimeout(() => {
-          console.log(`[Login] [handleSubmit] context cpfUsuario = ${cpfUsuario}`);
-          
-          // redirecionar pra profile com o next router
-          console.log('[Login] [handleSubmit] redirecionar para o perfil');
-          router.push(userProfilePath);
-        }, 3000);
+        setCpfUsuario(userData.cpf);
+
+        console.log(`ok`);
 			}
 		});
+
+    setTimeout(() => {
+      console.log(`[Login] [setTimeout] context cpfUsuario = ${cpfUsuario}`);
+      
+      // redirecionar pra profile com o next router
+      console.log('[Login] [setTimeout] redirecionar para o perfil');
+      router.push(userProfilePath);
+    }, 3000);
   }
   return (
   <div className="form_All"> 

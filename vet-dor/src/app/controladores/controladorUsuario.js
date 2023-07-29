@@ -9,6 +9,8 @@ const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
 
 async function getUserByCpf(cpf) {
+  console.log(`[getUserByCpf]`);
+  
   const userRef = database.collection('users').doc(cpf);
   const doc = await userRef.get();
   
@@ -19,7 +21,7 @@ async function getUserByCpf(cpf) {
   }
 
   // se há um usuário cadastrado com o cpf, retorna os dados do usuário
-	console.log(`[getUserByCpf] usuário cadastrado = ${JSON.stringfy(doc.data())}`);
+	console.log(`[getUserByCpf] usuário encontrado`);
 	return doc.data();
 }
 
