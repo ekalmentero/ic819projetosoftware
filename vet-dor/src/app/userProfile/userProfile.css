@@ -85,3 +85,18 @@ input{
   justify-content: center;
   align-items: center;
 }
+
+.submit_Ani{
+ font-weight: 600;
+  margin-top: 7%;
+  width: 200px;
+  height: 40px;
+  background-color: #FF7D01;
+  color: black;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

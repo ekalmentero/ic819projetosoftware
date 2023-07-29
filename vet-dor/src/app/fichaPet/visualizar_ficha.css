@@ -13,8 +13,6 @@ div.header-info {
     grid-template-columns: 1fr 2fr;
 }
 
-
-
 .info-ficha {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr,;
@@ -45,14 +43,15 @@ div.left img {
 
 .area-pdfs {
     margin-top: 2%;
-    display: grid;
-    grid-template-columns:  repeat(auto-fill, minmax(305px, 1fr));
-    column-gap: 49px;
     width: 100%;
-    
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
-.area-envio{
+.area-envio {
     margin-top: 2%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -62,10 +61,17 @@ div.left img {
 .pdf {
     display: grid;
     justify-items: center;
-    /* width: 15rem; */
 }
 
-object {
-    height: 5%;
-    width: 16rem;
+.fichaButton {
+    width: 250px;
+    height: 40px;
+    font-weight: bold;
+}
+
+.area-pdfs button {
+    margin-top: 9%;
+    border: none;
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }

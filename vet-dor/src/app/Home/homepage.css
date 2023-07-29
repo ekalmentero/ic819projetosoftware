@@ -83,3 +83,7 @@ div.sobre {
 .section-precos .texto {
     padding-left: 30%;
 }
+
+.botao-cadastro{
+    cursor: pointer;
+}

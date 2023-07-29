@@ -3,6 +3,8 @@ import { useState } from "react";
 
 import "./aniRegister.css";
 import DOMPurify from "dompurify";
+import Header from "../components/Header/header";
+import Footer from "../components/Footer/Footer";
 
 const validations = require('./../validacoes');
 
@@ -109,14 +111,14 @@ export default function aniRegister() {
 
   return(
   <div className="page_flex">
+    <Header/>
     <div className="AniProfile_flex" >
       <div className="Title_flex" >
-        <h1>Perfil do meu PET</h1>
+        <h1>Cadastre seu pet no sistema</h1>
       </div>
 
     <div className="Profile_pic" >
       {/* é necessário termos um componente que ajude nos a termos  */}
-      <h2>Caramelinho</h2>
     </div>
 
     <div className="Profile_data">
@@ -132,7 +134,7 @@ export default function aniRegister() {
       <label for="name" >Sexo</label>
       <input id="name" onChange={(e)=>setGender(e.target.value)} name="name" placeholder="Macho ou Fêmea" type="text"/>
 
-      <label for="name" >CPF do responsável</label>
+      <label className="cpfLabel" for="name" >CPF do responsável</label>
       <input id="name" onChange={(e)=>setOwnerCpf(e.target.value)}  name="name" placeholder="CPF do responsável" type="text"/>
 
       <label for="name" >Especie</label>
@@ -141,6 +143,7 @@ export default function aniRegister() {
         <button className="button_submit" onClick={(e) => handleSubmit(e)} type="submit">Cadastrar novo animal </button>
     </div>
     </div>
+    <Footer/>
   </div>
   );
 }

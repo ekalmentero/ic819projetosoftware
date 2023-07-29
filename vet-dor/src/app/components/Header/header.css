@@ -28,20 +28,21 @@
 }
 
 .menu_header{
-  /* width: 30%;
-  display: flex;
+  width: 100%;
+  /* display: flex;
   justify-content: space-around;
   align-items:flex-end;
   position: relative;
-  margin-left: 5%; */
+  margin-left: 5%;  */
 
   display: grid;
   justify-content: space-around;
   align-items: flex-end;
   position: relative;
   /* margin-left: 5%; */
-  grid-template-columns: 1fr 1fr;
-  column-gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 2em;
+  margin-left: 10%;
 }
 
 .menu_header span{

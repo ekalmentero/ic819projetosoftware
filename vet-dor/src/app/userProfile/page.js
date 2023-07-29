@@ -7,14 +7,21 @@ import Header from "../components/Header/header";
 import Footer from "../components/Footer/Footer";
 const Pic = "/assets/Pic.png"
 
+const { useRouter } = require('next/navigation');
+
 import { UsuarioContext } from "../../contexts/usuarioContext"
+import { aniRegisterPath, animalProfilePath } from "@/helpers/paths"; 
 
 export default function userProfile() {
   const { cpfUsuario } = useContext(UsuarioContext);
   const [infoUsuario, setInfoUsuario] = useState({});
+  
+  const router = useRouter();
 
   useEffect(() => {
     console.log(`cpf =${cpfUsuario}`);
+
+    // TODO se o context não estiver setado, mandar pra HOME!
     
     const getUser = async () => {
       console.log("[getUser]");
@@ -70,6 +77,7 @@ export default function userProfile() {
 
             <label for="cpf">CPF</label>
             <input readOnly id="cpf" value={infoUsuario?.cpf} name="cpf" placeholder="Seu cpf" type="text"/>
+            <button onClick={()=> {router.push(aniRegisterPath)}}  className="submit_Ani" type="submit">Cadastrar Animal</button>
         </div>
         <div className="second_div">
             <label for="celular">Número de celular</label>
@@ -78,7 +86,7 @@ export default function userProfile() {
             <label for="email">Email</label>
             <input  readOnly id="email" value={infoUsuario?.email} name="email" placeholder="Seu email" type="text"/>
             
-            <button className="submit_trad" type="submit">Perfil do Animal</button>
+            <button className="submit_trad" type="button" onClick={()=> {router.push(animalProfilePath)}}>Perfil do Animal</button>
         </div>
       </div>
     </div>

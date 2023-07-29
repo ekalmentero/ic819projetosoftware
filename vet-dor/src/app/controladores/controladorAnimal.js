@@ -166,4 +166,5 @@ async function getAnimal(req, res) {
 
 module.exports = {
 	createAnimal,
+  getAnimal
 }

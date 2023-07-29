@@ -167,7 +167,6 @@ async function createUser(req, res) {
       email: emailLimpo
     }
     
-
     console.log(`[/createUser] dbData = ${dbData}`);
 
     console.log('criar usuário no bd');

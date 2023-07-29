@@ -1,0 +1,13 @@
+.consultaFlex{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6%;
+}
+
+.consultaFlex input{
+  width: 25%;
+  
+}

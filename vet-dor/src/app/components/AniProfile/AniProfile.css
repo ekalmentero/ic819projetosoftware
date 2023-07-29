@@ -7,18 +7,38 @@
 body{
   font-family: 'Rajdhani', Times, serif, "Jost", monospace
 }
+.labelIdade{
+  margin-top: 0%;
+  position: relative;
+  top: 25%;
+}
+
+.labelSexo{
+  margin-top: 0%;
+  position: relative;
+  top: 25%;
+}
 
 .page_flex{
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .AniProfile_flex{
   display: flex;
   flex-direction: column;
   background-color: #D6E5E5;
-  width: 40%;
+  width: 100%;
+  align-items: center;
+  margin-top: 2%;
+}
+
+.foto-botao {
+  display: grid;
+  justify-items: center;
+  row-gap: 10px;
   align-items: center;
 }
 
@@ -46,10 +66,11 @@ body{
 }
 
 .Profile_data{
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  margin: 2%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5%;
+  margin-top: 1%;
+  margin-bottom: 5%;
 }
 
 .Profile_data label{
@@ -67,4 +88,16 @@ body{
   border: none;
   display: flex;
   
+}
+div.first_div input, div.second_div input {
+  width: 100%;
+}
+
+div.first_div, div.second_div {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr
+}
+
+.submit_trad{
+  width: 200px !important;
 }

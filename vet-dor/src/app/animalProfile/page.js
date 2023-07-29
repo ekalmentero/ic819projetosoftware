@@ -1,11 +1,52 @@
-import { MinusCircle } from "react-feather";
+"use client"
 import "./AniProfile.css";
 const Pic = "/assets/Pic.png"
+import { MinusCircle } from "react-feather";
 
-import { UsuarioContext } from '../../../contexts/usuarioContext';
+const { useRouter } = require('next/navigation');
+import { useState, useEffect, useContext } from 'react';
+import { UsuarioContext } from '../../contexts/usuarioContext';
+
+import { fichaPetPath } from "../../helpers/paths";
 
 export default function AniProfile() {
-  const { cpfUsuario, setCpfUsuario } = useContext(UsuarioContext);
+  const router = useRouter();
+
+  const { cpfUsuario } = useContext(UsuarioContext);
+  const [aniInfo, setAniInfo] = useState({});
+
+  useEffect(() => {
+    console.log(`cpf =${cpfUsuario}`);
+    // TODO se o context não estiver setado, mandar pra HOME!
+
+    const getAni = async () => {
+      console.log("[getAni]");
+        
+      const response = await fetch("http://localhost:8080/getAni", {
+        method: "POST",
+        body: JSON.stringify({ cpfResponsavel: cpfUsuario }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      });
+      
+      return response.json();
+    };
+
+    getAni().then((resData) => {
+      console.log(`[getAni.then] resData = ${JSON.stringify(resData)}`);
+
+      if(resData.code !== "OK") {
+        window.alert(resData.message);
+        return;
+      
+      } else {
+        console.log("[getAni.then] tudo certo")
+        const dbResult = resData.result;
+        setAniInfo(dbResult);
+      }
+    });
+  }, []);
 
   return(
     <div className="page_flex">
@@ -17,29 +58,23 @@ export default function AniProfile() {
 
         <div className="Profile_pic" >
           <img width="150px" src={Pic}/>
-          <h2>Caramelinho</h2>
+          <h2>{aniInfo.name}</h2>
         </div>
 
         <div className="Profile_data">
-          <label for="name" >Idade</label>
-          <input id="name" value="5 anos" name="name" placeholder="Seu nome" type="text"/>
+          <label htmlFor="age">Idade</label>
+          <input id="age" value={aniInfo?.age} name="age" type="text"/>
 
-          <label for="name" >Data de Nascimento</label>
-          <input id="name" value="20/03/2018" name="name" placeholder="Seu nome" type="text"/>
+          <label htmlFor="race">Raça</label>
+          <input id="race" value={aniInfo.race} name="race" type="text"/>
 
-          <label for="name" >Raça</label>
-          <input id="name" value="Vira-lata Caramelo" name="name" placeholder="Seu nome" type="text"/>
+          <label htmlFor="sexo">Sexo</label>
+          <input id="sexo" value={aniInfo.sexo} name="sexo" type="text"/>
 
-          <label for="name" >Sexo</label>
-          <input id="name" value="Macho" name="name" placeholder="Seu nome" type="text"/>
+          <label htmlFor="species">Especie</label>
+          <input id="species" value={aniInfo.species} name="species" type="text"/>
 
-          <label for="name" >Nome do Responsável</label>
-          <input id="name" value="Marcos Castro" name="name" placeholder="Seu nome" type="text"/>
-
-          <label for="name" >Especie</label>
-          <input id="name" value="Cachorro" name="name" placeholder="Seu nome" type="text"/>
-
-          <button className="submit_trad" type="submit"> Dados de Consultas </button>
+          <button className="aniConsults" type="button" onClick={()=>{router.push(fichaPetPath)}}>Dados de Consultas</button>
         </div>
       </div>
     </div>

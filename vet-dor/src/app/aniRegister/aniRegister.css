@@ -1,30 +1,57 @@
 .Profile_data {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center
 }
 
 .Profile_data label {
-  margin-top: 1%;
-  margin-bottom: 2px;
+  margin-top: 1.4%;
+  margin-bottom: 7px;
+  margin-right: 22%;
+}
+
+.Profile_data input {
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+
+}
+
+.cpfLabel{
+  margin-right: 17% !important ;
+
+}
+
+.Title_flex{
+  margin-top: 2.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 input {
   border-style: solid;
   border-color: grey;
   border-radius: 4px;
+  width: 25%;
 }
 
 .button_submit {
   display: flex;
-  align-self: center;
-  margin-top: 2%;
-  width: 12%;
-  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 45px;
+  font-weight: 600;
   margin-top: 5%;
   background-color: #96d701;
   color: black;
   cursor: pointer;
   border-radius: 10px;
   border: none;
-  display: flex;
+  margin-bottom: 3%;
+}
+
+.button_submit:hover{
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
 }

@@ -66,5 +66,18 @@ body{
   border-radius: 10px;
   border: none;
   display: flex;
-  
+}
+
+.aniConsults {
+  font-weight: 600;
+  width: 200px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  background-color: #96D701;
+  color: black;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  display: flex;
 }
