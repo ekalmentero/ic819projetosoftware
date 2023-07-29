@@ -7,6 +7,7 @@ const controladorUsuario = require('./controladores/controladorUsuario');
 const controladorLogin = require('./controladores/controladorLogin');
 const controladorAnimal = require('./controladores/controladorAnimal');
 const controladorFicha = require( './controladores/controladorFicha');
+const controladorConsulta = require('./controladores/controladorConsulta');
 
 const app = express();
 const PORT = 8080;
@@ -51,10 +52,16 @@ req.params: { "userId": "34", "bookId": "8989" }
 app.post('/getUser', controladorUsuario.getUser);
 app.post('/login', controladorLogin.fazerLogin);
 app.post('/createUser', controladorUsuario.createUser);
+
 app.post('/createAni', controladorAnimal.createAnimal);
 app.post('/getAni', controladorAnimal.getAnimal);
+
 app.post('/storeFile', controladorFicha.storeFile);
 app.post('/recoverFile', controladorFicha.recuperarFicha);
+
+app.post('/scheduleAppointment', controladorConsulta.scheduleAppointment);
+app.post('/getAppointment', controladorConsulta.getAppointment);
+
 // app.get("/userProfile/:cpf", controladorUsuario.getProfile);
 
 

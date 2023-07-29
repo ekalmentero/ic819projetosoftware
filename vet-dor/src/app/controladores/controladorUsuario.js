@@ -8,6 +8,7 @@ const validations = require('../validacoes');
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
 
+// model function
 async function getUserByCpf(cpf) {
   console.log(`[getUserByCpf]`);
   
@@ -224,5 +225,6 @@ async function createUser(req, res) {
 
 module.exports = {
 	getUser,
+  getUserByCpf,
   createUser,
 }

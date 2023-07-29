@@ -1,13 +1,91 @@
+Header{
+  width: 100%;
+}
+
 .consultaFlex{
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+ 
+}
+
+h2{
   margin-top: 6%;
+  margin-bottom: 1%;
 }
 
 .consultaFlex input{
-  width: 25%;
+  width: 250px;
+  margin-top: 6%;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
   
+}
+
+.consultaFlex label{
+  margin-top: 5%;
+}
+
+.consultaname{
+  display: flex;
+  flex-direction: column;
+}
+
+.consultacpf{
+  display: flex;
+  flex-direction: column;
+}
+
+.consultadata{
+  display: flex;
+  flex-direction: column;
+}
+
+.consultadata input{
+  width: 150px;
+}
+
+.consult_div1{
+  display: flex;
+  flex-direction: column;
+}
+
+.consult_div2{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+}
+
+.consultainfo{
+  display: flex;
+  justify-content: space-around;
+  width: 38%;
+  margin-bottom: 10%;
+}
+
+.consultaButton{
+  margin-top: 10%;
+  width: 180px;
+  height: 45px;
+  border-radius: 10px;
+  font-weight: 500;
+  background-color: #96D701;
+  color: black;
+  cursor: pointer;
+  border: none;
+  
+}
+
+.consultaButton:hover{
+  background-color: #6c9b0093;
+}
+
+
+.consultselect{
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+Footer{
+  width: 100%;
 }

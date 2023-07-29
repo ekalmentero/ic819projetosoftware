@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { LogIn } from "react-feather";
 const logo = "/assets/logo-verde-branco.png";
