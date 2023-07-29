@@ -4,13 +4,14 @@
   flex-direction: column;
   justify-content:center;
   align-items: center;
+  color: var(--branco);
 }
 
 .footer_Info{
   width: 50%;
   margin-top: 4%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .footer_Info span{
@@ -35,4 +36,9 @@
   display: flex;
   justify-content: baseline;
   align-items: center;
+}
+
+.nav-bar-item {
+  color: var(--branco);
+  text-decoration: none;
 }

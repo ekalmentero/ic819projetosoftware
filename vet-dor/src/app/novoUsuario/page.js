@@ -1,5 +1,7 @@
 "use client"
 import "./Cadastro_Form.css"
+import Header from "../components/Header/header";
+import Footer from "../components/Footer/Footer";
 
 const { useRouter } = require('next/navigation');
 import { useState, useContext } from "react";
@@ -118,10 +120,10 @@ export default function Cadastro_Form() {
   
   return(
     <div className="form_All" >
+      <Header/>
       <h2>Cadastre-se e comece a cuidar dos seus pets </h2>
-
       <div className="form_Flex">
-        <form action="/create" method="POST" >
+      <div class="campos">
           <div className="first_div" >
             <label htmlFor="name" >Nome Completo</label>
             <input id="name" name="name" value={userName} onChange={(e)=> setUserName(e.target.value)}  required  placeholder="Seu nome" type="text"/>
@@ -136,20 +138,22 @@ export default function Cadastro_Form() {
             <input id="phoneNumber" name="phoneNumber" value={phoneNumber} onChange={(e)=> setPhoneNumber(e.target.value)} required  placeholder="(XX)XXXXX-XXXX " type="number"/>
           </div>
 
-
+        <div className="second_div">
           <label htmlFor="email">E-mail</label>
           <input id="email" name="email" value={email} onChange={(e)=> setEmail(e.target.value)} required placeholder="email@exemplo.com" type="email"/>
 
           <label htmlFor="password" >Senha</label>
           <input  id="password" name="password" value={pw} onChange={(e)=> setPw(e.target.value)} required type="password"/>
 
-          <div className="form_button" >
+          <div className="form_button cadastro" >
             <button className="submit_google" type="submit">CADASTRAR COM GOOGLE </button>
             <button onClick={(e) => { handleSubmit (e) }} className="submit_trad"> CADASTRAR </button>
           </div>
+        </div>  
 
-        </form>
+        </div>
       </div>
+      <Footer/>
     </div>
   )
 }

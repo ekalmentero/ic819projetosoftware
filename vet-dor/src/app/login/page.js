@@ -1,13 +1,16 @@
 "use client"
 import "./Login_Form.css"
+import Header from "../components/Header/header";
+import Footer from "../components/Footer/Footer";
 
 const { useRouter } = require('next/navigation');
 const { useState, useContext } = require("react");
 
 import DOMPurify from "dompurify";
 
+
 import { UsuarioContext } from '../../contexts/usuarioContext'
-import { userProfilePath } from '../../helpers/paths';
+import { userProfilePath, cadastroPath } from '../../helpers/paths';
 const validations = require('../validacoes');
 
 // function Login_form ==> verificar onde está criada e onde será utilizada
@@ -102,12 +105,13 @@ export default function Login_Form(){
   }
   return (
   <div className="form_All"> 
+  <Header/>
     <h2>Login </h2>
 
-    <div className="form_Flex">
+    <div className="form_Flex form login">
       <form>
         <div className="first_div" >
-          <label htmlFor="cpf">Cpf do Usuário</label>
+          <label htmlFor="cpf">CPF do Usuário</label>
           <input id="cpf" name="cpf" value={cpf} onChange={(e)=> setCpf(e.target.value)} required placeholder="seu cpf" type="text"/>
 
           <label htmlFor="password">Senha</label>
@@ -116,11 +120,14 @@ export default function Login_Form(){
 
         <div className="second_div">
           <div className="form_button" >
-            <button onClick={(e)=>{handleSubmit(e)}} className="submit_password" type="submit">ENVIAR </button>
+            <button className="submit_password botao verde normal" onClick={(e)=>{handleSubmit(e)}} className="submit_password" type="submit">ENVIAR </button>
+            <a className="link texto button-sign-u" onClick={()=>{router.push(cadastroPath)}}  >Ainda não é cadastrado?</a>
           </div>
         </div>
       </form>
     </div>
+
+    <Footer/>
   </div>
   )
 }

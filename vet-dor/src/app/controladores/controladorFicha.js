@@ -34,7 +34,7 @@ async function storeFile(req, res) {
 		return;
 	}
 
-		if (dateLimpo.length == 0 ) {
+		if (dateLimpo.length == 0 ) { 
 			console.log("[/storeFile] Data vazia vazia");
 	
 			res.status(400).send({
@@ -151,7 +151,7 @@ if (!validations.cpfValidation(idAnimalLimpo)) {
 			}
 			
 			console.log("[firebase.getFile]");
-			const fileRef = database.collection("animals").doc(idAnimalLimpo).collection(tipoArquivoLimpo).doc(dataLimpo)
+			const fileRef = database.collection("animals").doc(idAnimalLimpo).collection(tipoArquivoLimpo).doc(dataLimpo);
 			const doc1 = await fileRef.get();
 			const aniInfo = database.collection("animals").doc(idAnimalLimpo);
 			const doc = await aniInfo.get();

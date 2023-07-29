@@ -1,0 +1,85 @@
+.home-banner img {
+    width: 100%;
+}
+
+main.homepage {
+padding-top: 3rem;
+}
+
+.tabela img {
+    width: 50%;
+}
+
+.section-sobre img {
+    width: 100%;
+}
+
+.section-sobre.consultas {
+    display: grid;
+    grid-template-columns: 80% 15%;
+}
+
+.section-sobre {
+    align-items: center;
+    column-gap: 40px;
+}
+
+.section-sobre.vacinas {
+    display: grid;
+    grid-template-columns: 15% 80%;
+    text-align: end;
+}
+
+.section-sobre.vacinas .titulo {
+    justify-content: flex-end;
+}
+
+section.section-sobre .titulo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-sobre h2 {
+    margin: 0;
+    margin-left: 5px;
+}
+
+.titulo .icon {
+    stroke: var(--azul);
+}
+
+div.sobre {
+    display: grid;
+    row-gap: 4rem;
+}
+
+.section-precos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* justify-items: center; */
+    column-gap: 3rem;
+    margin-top: 5rem;
+}
+
+.section-precos .esquerda {
+    display:grid;
+    /* grid-template-rows: 1fr 1fr; */
+    /* justify-items: end; */
+    text-align: end;
+    /* align-items: center; */
+    align-content: center;
+    row-gap: 2rem;
+}
+
+.section-precos h3 {
+    color: var(--azul);
+}
+
+.botao-cadastro {
+    padding-top: 20px;
+}
+
+.section-precos .texto {
+    padding-left: 30%;
+}

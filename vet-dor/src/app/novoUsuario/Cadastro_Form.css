@@ -1,12 +1,17 @@
+
+.campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5%;
+  width: 50%;
+  
+}
+
 .form_All {
-  background-color: #D6E5E5;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 15%;
-  align-items: center;
-  border-radius: 10px;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 .form_Flex {
@@ -15,7 +20,7 @@
   width: 100%;
   align-items:center;
   justify-content: center;
-  margin-bottom: 2.5%;
+  margin-bottom: 8.8%;
 }
 
 h2 {
@@ -30,11 +35,32 @@ label {
   font-weight: 500;
 }
 
-.first_div {
-  display: flex;
-  flex-direction: column;
-
+.first_div input{
+  width: 380px;
+  height: 32px;
+  background-color: white;
+  text-indent: 10px;
+  color: black;
+  border-radius: 5px;
+  border: none;
 }
+
+
+.second_div input{
+  width: 380px;
+  height: 32px;
+  background-color: white;
+  text-indent: 10px;
+  color: black;
+  border-radius: 5px;
+  border: none;
+}
+
+.first_div, .second_div {
+  display: grid;
+  /* grid-template-rows: 1fr 1fr 1fr 1fr; */
+}
+
 
 input {
   width: 380px;
@@ -61,7 +87,7 @@ input[type=number] {
 }
 
 .form_Flex label {
-  margin-bottom: 1.5%;
+  margin-bottom: 0.5%;
   margin-top: 3.5%;
   font-weight: 600;
 }
@@ -72,14 +98,13 @@ input[type=number] {
   justify-content: center;
   color: #245D61;
 }
-
-.form_button {
-  margin-top: 7%;
-  display: flex;
-  justify-content:space-between
+.form_button.cadastro{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
 }
 
-.form_button button {
+.form_button.cadastro button{
   display: flex;
   height: 42px;
   font-weight: 600;
@@ -92,8 +117,7 @@ input[type=number] {
   align-items: center;
   justify-content: center;
   width: 200px;
-  background-color: #4285F4;
-  cursor: pointer;
+  background-color: #aab0b9;
 }
 
 .submit_trad {
@@ -105,3 +129,11 @@ input[type=number] {
   color: black;
   cursor: pointer;
 } 
+
+Header{
+  width: 100%;
+}
+
+Footer{
+  width: 100%;
+}
