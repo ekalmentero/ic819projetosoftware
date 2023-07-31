@@ -34,7 +34,7 @@ export default function Cadastro_Form() {
 
     e.preventDefault();
 
-    // sanitizar as entradas
+    //! sanitizar as entradas
     const nomeLimpo = DOMPurify.sanitize(userName);
     const cpfLimpo = DOMPurify.sanitize(cpf);
     const celularLimpo = DOMPurify.sanitize(phoneNumber);
@@ -47,7 +47,7 @@ export default function Cadastro_Form() {
     console.log(`emailLimpo = ${emailLimpo}`);
     console.log(`senhaLimpo = ${senhaLimpo}`);
 
-    // validar as entradas
+    //! validar as entradas
     if(!validations.nameValidation(nomeLimpo)) {
       window.alert("Nome Inválido");
     }
@@ -104,7 +104,7 @@ export default function Cadastro_Form() {
       } else {
         // Após tudo okay passamos para o componente do perfil do usuário.
         
-        // setar contexto User
+        // setar contexto UserOl123asdas
         setCpfUsuario(userData.cpf);
       }
     });

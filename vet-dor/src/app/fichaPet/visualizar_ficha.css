@@ -6,6 +6,10 @@
     justify-items: center;
 }
 
+input{
+    width: 40% !important;
+}
+
 div.header-info {
     display: grid;
     grid-column-gap: 10px;

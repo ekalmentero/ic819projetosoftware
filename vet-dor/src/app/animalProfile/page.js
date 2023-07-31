@@ -6,8 +6,9 @@ import { MinusCircle } from "react-feather";
 const { useRouter } = require('next/navigation');
 import { useState, useEffect, useContext } from 'react';
 import { UsuarioContext } from '../../contexts/usuarioContext';
-
-import { fichaPetPath } from "../../helpers/paths";
+import Header from "../components/Header/header";
+import Footer from "../components/Footer/Footer";
+import { fichaPetPath, LoginPath } from "../../helpers/paths";
 
 export default function AniProfile() {
   const router = useRouter();
@@ -17,7 +18,12 @@ export default function AniProfile() {
 
   useEffect(() => {
     console.log(`cpf =${cpfUsuario}`);
-    // TODO se o context não estiver setado, mandar pra HOME!
+
+    // se o context não estiver setado, o usuario não está logado: mandar pra LOGIN!
+    // if (!cpfUsuario) {
+      // alert("usuario não logado");
+    //   router.push(LoginPath)
+    // }
 
     const getAni = async () => {
       console.log("[getAni]");
@@ -50,6 +56,7 @@ export default function AniProfile() {
 
   return(
     <div className="page_flex">
+      <Header/>
       <div className="AniProfile_flex" >
         <div className="Title_flex" >
           <h1>Perfil do meu PET</h1>
@@ -77,6 +84,7 @@ export default function AniProfile() {
           <button className="aniConsults" type="button" onClick={()=>{router.push(fichaPetPath)}}>Dados de Consultas</button>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import "./Home/homepage.css";
 import Footer from './components/Footer/Footer'
 import Header from "./components/Header/header";
 
-import { cadastroPath } from "../helpers/paths";
+import { cadastroPath, DevsPath } from "../helpers/paths";
 import { Activity } from "react-feather";
 import { Droplet } from "react-feather";
 

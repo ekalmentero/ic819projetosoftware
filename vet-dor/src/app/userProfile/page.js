@@ -10,7 +10,7 @@ const Pic = "/assets/Pic.png"
 const { useRouter } = require('next/navigation');
 
 import { UsuarioContext } from "../../contexts/usuarioContext"
-import { aniRegisterPath, animalProfilePath } from "@/helpers/paths"; 
+import { aniRegisterPath, animalProfilePath, LoginPath } from "@/helpers/paths"; 
 
 export default function userProfile() {
   const { cpfUsuario } = useContext(UsuarioContext);
@@ -21,7 +21,11 @@ export default function userProfile() {
   useEffect(() => {
     console.log(`cpf =${cpfUsuario}`);
 
-    // TODO se o context não estiver setado, mandar pra HOME!
+    // se o context não estiver setado, o usuario não está logado: mandar pra LOGIN!
+    // if (!cpfUsuario) {
+      // alert("usuario não logado");
+    //   router.push(LoginPath)
+    // }
     
     const getUser = async () => {
       console.log("[getUser]");
@@ -62,7 +66,6 @@ export default function userProfile() {
   return (
     <div className="page_flex">
       <Header/> 
-       
       
       <div className="UserProfile_flex" >
       

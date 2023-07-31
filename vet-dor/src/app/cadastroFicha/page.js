@@ -6,7 +6,12 @@ import DOMPurify from "dompurify";
 import { async } from "@firebase/util";
 const validations = require("./../validacoes/index");
 
+const { useRouter } = require('next/navigation');
+import { recuperarFichaPetPath } from "../../helpers/paths";
+
 export default function CadastroFicha() {
+  const router = useRouter();
+
   const [IdAnimal, setId] = useState(null);
   const [Date, setDate] = useState(null);
   const [text,setText] = useState(null);
@@ -38,8 +43,6 @@ export default function CadastroFicha() {
         window.alert("código do paciente digitado de maneira incorreta ou não foi digitado")
     }
     
-    
-    
     console.log(`handleSubmit= tudo válido`);
 
     const PetFicha = {
@@ -67,10 +70,12 @@ export default function CadastroFicha() {
     postData().then((resdata)=>{
       console.log(`[postData.then] resData= ${JSON.stringify(resdata)}`);
 
-        if (resdata.code !== "OK") {
-          window.alert(resdata.message);  
-          return;
+      if (resdata.code !== "OK") {
+        window.alert(resdata.message);  
+        return;
       }
+
+      router.push(recuperarFichaPetPath)
     });
   }
 
@@ -95,7 +100,7 @@ export default function CadastroFicha() {
           </select>
           </div>
           <div className="dataDiv">
-            <label for="id" >Digite aqui a ID do animal atendido </label>
+            <label for="id" >Cpf do responsável do animal</label>
               <input onChange={(e)=> {setId(e.target.value) }} name="id" type="text" className="date"/>
           </div>
 

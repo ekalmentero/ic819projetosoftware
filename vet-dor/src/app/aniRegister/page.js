@@ -1,5 +1,7 @@
 "use client"
 import { useState } from "react";
+const { useRouter } = require('next/navigation');
+
 
 import "./aniRegister.css";
 import DOMPurify from "dompurify";
@@ -7,8 +9,10 @@ import Header from "../components/Header/header";
 import Footer from "../components/Footer/Footer";
 
 const validations = require('./../validacoes');
+import { animalProfilePath } from '../../helpers/paths';
 
 export default function aniRegister() {
+  const router = useRouter();
   const [nome, setNome] = useState(null);
   const [age, setAge] = useState(null);
   const [race, setRace] = useState(null);
@@ -17,7 +21,7 @@ export default function aniRegister() {
   const [species, setSpecies] = useState(null)
 
   const handleSubmit = (e)=>{
-    e.preventDefault();
+   e.preventDefault();
 
     console.log('[handleSubmit]');
 
@@ -85,7 +89,7 @@ export default function aniRegister() {
 
     console.log("fetch para a rota de cadastro do animal");
 
-    const PostDataAni = async () => {
+    const postDataAni = async () => {
       const response = await fetch("http://localhost:8080/createAni", {
         method: "POST",
         body: JSON.stringify(aniData),
@@ -96,18 +100,20 @@ export default function aniRegister() {
       return response.json();
     };
 
-    PostDataAni().then((resData) =>{
+    postDataAni().then((resData) => {
       if (resData.code !== "OK" ) {
         window.alert(resData.message);
         return;
       } else {
         console.log("Redirecionando para o perfil do Animal");
-        
-        // Setar context Ani
-      }
-    });
-}
+    }
 
+    setTimeout(() => {      
+      console.log('[novoAnimal][setTimeout] redirecionar para o perfil');
+      router.push(animalProfilePath);
+    }, 3000);
+  });
+}
 
   return(
   <div className="page_flex">

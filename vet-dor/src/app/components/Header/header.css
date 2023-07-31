@@ -37,11 +37,11 @@
 
   display: grid;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: center;
   position: relative;
   /* margin-left: 5%; */
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 2em;
+  column-gap: 5em;
   margin-left: 10%;
 }
 

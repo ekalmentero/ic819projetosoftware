@@ -1,0 +1,30 @@
+.equipe-membros{
+  margin: 5px;
+  padding: 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.foto{
+  width: 150px;
+}
+
+.equipeDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.foto {
+  width: 150px;
+  border-radius: 30px;
+}
+
+.fotomax{
+  width: 150px;
+  border-radius: 20px;
+}

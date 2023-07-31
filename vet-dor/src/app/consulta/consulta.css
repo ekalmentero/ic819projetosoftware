@@ -1,4 +1,4 @@
-Header{
+Header {
   width: 100%;
 }
 
@@ -8,7 +8,6 @@ Header{
   width: 100%;
   align-items: center;
   justify-content: center;
- 
 }
 
 h2{
@@ -20,7 +19,6 @@ h2{
   width: 250px;
   margin-top: 6%;
   box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
-  
 }
 
 .consultaFlex label{
@@ -81,9 +79,35 @@ h2{
   background-color: #6c9b0093;
 }
 
-
 .consultselect{
   box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+.consultasMarcadas {
+  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.consultasMarcadas p {
+  margin-bottom: 1%;
+}
+
+.consultaItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: 250px;
+  height: 40px;
+  margin-bottom: 1%;
+
+  background-color: antiquewhite;
+  border-radius: 10px;
 }
 
 Footer{

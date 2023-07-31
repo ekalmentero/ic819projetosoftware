@@ -6,19 +6,24 @@ import DOMPurify from "dompurify";
 
 const { useRouter } = require('next/navigation');
 
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { UsuarioContext } from '../../contexts/usuarioContext';
 
-import { recuperarFichaPetPath } from "../../helpers/paths";
+import { recuperarFichaPetPath, LoginPath } from "../../helpers/paths";
 const validations = require("./../validacoes/index");
 
 export default function RecoverFicha() {
   const router = useRouter();
-
   const { cpfUsuario } = useContext(UsuarioContext);
 
   console.log(`cpf =${cpfUsuario}`);
-  // TODO se o context não estiver setado, mandar pra HOME no useEffect!
+  useEffect(() => {
+    // se o context não estiver setado, o usuario não está logado: mandar pra LOGIN!
+    // if (!cpfUsuario) {
+      // alert("usuario não logado");
+    //   router.push(LoginPath)
+    // }
+  }, []);   
 
   const [Date, setDate] = useState("");
   const [TypeFile, setType ] = useState("");

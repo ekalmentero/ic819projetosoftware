@@ -6,7 +6,7 @@ const { useRouter } = require('next/navigation');
 import { useState, useEffect, useContext } from 'react';
 import { UsuarioContext } from '../../contexts/usuarioContext';
 
-import { recuperarFichaPetPath } from "../../helpers/paths";
+import { recuperarFichaPetPath, LoginPath } from "../../helpers/paths";
 
 export default function Visualizar_Ficha() {
   // Link para um artigo ensinando a enviar artigo = https://blog.logrocket.com/firebase-cloud-storage-firebase-v9-react/
@@ -19,7 +19,12 @@ export default function Visualizar_Ficha() {
 
   useEffect(() => {
     console.log(`cpf =${cpfUsuario}`);
-    // TODO se o context não estiver setado, mandar pra HOME!
+    
+    // se o context não estiver setado, o usuario não está logado: mandar pra LOGIN!
+    // if (!cpfUsuario) {
+      // alert("usuario não logado");
+    //   router.push(LoginPath)
+    // }
 
     const getAni = async () => {
       console.log("[getAni]");
@@ -47,8 +52,8 @@ export default function Visualizar_Ficha() {
         const dbResult = resData.result;
         setAniInfo(dbResult);
       }
-    }, []);
-  })
+    });
+  }, [])
 
   return (
     <main>
@@ -68,7 +73,7 @@ export default function Visualizar_Ficha() {
               </div>
               
               <div className="item">
-                <label for="crm">CRM</label>
+                <label for="crm">CRMV</label>
                 <input readOnly type="text" name="crm" id="crm" value="123456789" readonly/>
               </div>
               
@@ -86,7 +91,7 @@ export default function Visualizar_Ficha() {
             <button className="botao verde" onClick={()=>{ router.push(recuperarFichaPetPath)}}>Acessar</button>
           </div>
           <div className="pdf">
-            <p className="etiqueta grande laranja">Receita</p>
+            <p className="etiqueta grande laranja">Observações</p>
             <button className="botao verde" onClick={()=>{ router.push(recuperarFichaPetPath)}}>Acessar</button>
 
           </div>

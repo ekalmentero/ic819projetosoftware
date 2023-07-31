@@ -5,3 +5,5 @@ export const aniRegisterPath = "/aniRegister";
 export const fichaPetPath = '/fichaPet';
 export const recuperarFichaPetPath = '/recuperarFicha';
 export const LoginPath = "/login"
+export const DevsPath = "/equipe"
+export const sobreNosPath = '/sobreNos'

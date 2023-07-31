@@ -8,10 +8,12 @@
 }
 
 .form_All {
+  display: flex;
+  flex-direction: column;
   background-color: transparent;
   width: 100%;
-  height: 100%;
   margin: 0;
+  height: 100vh;
 }
 
 .form_Flex {
@@ -20,7 +22,8 @@
   width: 100%;
   align-items:center;
   justify-content: center;
-  margin-bottom: 8.8%;
+  margin-bottom: 3.8%;
+  flex: 1;
 }
 
 h2 {

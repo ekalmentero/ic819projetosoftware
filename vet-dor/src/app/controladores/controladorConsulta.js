@@ -13,7 +13,13 @@ const DOMPurify = createDOMPurify(window);
 function getDateTimeFormat(date, time) {
 	// criar um padrão pra data e hora
 
-	const dateTimeFormat = date.toString() + time.toString();
+	console.log(`date.toString() = ${date.toString()}`);
+	console.log(`time.toString() = ${time.toString()}`);
+
+	const dateTimeFormat = date.toString() + ":" + time.toString();
+
+	console.log(`dateTime = ${dateTimeFormat}`);
+
 	return dateTimeFormat;
 }
 
@@ -21,7 +27,7 @@ function getDateTimeFormat(date, time) {
 async function getAppointmentByDateAndTime(dateTime) {
 	console.log(`[getAppointmentByDateAndTime]`);
   
-  const appointmentRef = database.collection('appointments').doc(dateTime);
+  const appointmentRef = await database.collection('appointments').doc(dateTime);
   const doc = await appointmentRef.get();
   
 	// se não há um usuário cadastrado com o cpf, retorna false
@@ -33,6 +39,40 @@ async function getAppointmentByDateAndTime(dateTime) {
   // se há um usuário cadastrado com o cpf, retorna os dados do usuário
 	console.log(`[getAppointmentByDateAndTime] consulta encontrada`);
 	return doc.data();
+}
+
+// model function 
+async function getAllDbAppointments() {
+	const appointmentsRef = db.collection('appoitments');
+	const snapshot = await appointmentsRef.get();
+
+	if(snapshot.length === 0) {
+		return false
+	}
+	
+	return snapshot;
+}
+
+async function getAllAppointments(req, res) {
+	try {
+		const appointments = await getAllDbAppointments();
+
+		res.status(200).send({
+			code: 'OK',
+			message: 'sucesso',
+			result: appointments
+		})
+
+		return appointments;
+		
+	} catch (error) {
+		console.log(`[getAllAppointments] error = ${error}`);
+		res.status(500).send({
+			code: "ERRO_INESPERADO",
+			message: "Um erro inesperado aconteceu.",
+			result: error,
+		});
+	}
 }
 
 /*
@@ -109,7 +149,7 @@ async function scheduleAppointment(req, res) {
 		const dateTime = getDateTimeFormat(dataLimpo, horaLimpo);
 
 		// verificar no BD se já existe uma consulta marcada no horário
-		const dbResult = getAppointmentByDateAndTime(dateTime);
+		const dbResult = await getAppointmentByDateAndTime(dateTime);
 
 		if(dbResult !== false) {
 			console.log('[scheduleAppointment] conflito de horário de consulta');
@@ -125,7 +165,8 @@ async function scheduleAppointment(req, res) {
 		const dbData = {
 			ownerCpf: cpfLimpo,
 			ownerName: nomeLimpo,
-			dateTime,
+			date: dataLimpo,
+			time: horaLimpo
 		}
 
     console.log(`[scheduleAppointment] dbData = ${dbData}`);
@@ -226,5 +267,7 @@ async function getAppointment(req, res) {
 module.exports  = {
 	scheduleAppointment,
 	getAppointment,
-	getAppointmentByDateAndTime
+	getAppointmentByDateAndTime,
+	getAllAppointments,
+	getAllDbAppointments
 }

@@ -1,15 +1,15 @@
-input{
+input {
   outline: none;
 }
 
 .page_flex {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+  
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
 }
-
-
 
 .UserProfile_flex {
   display: flex;
@@ -26,6 +26,8 @@ input{
 
 .Flex{
   display: flex;
+  flex-direction: row;
+
 }
 
 .Flex label{

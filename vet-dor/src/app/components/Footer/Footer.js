@@ -1,9 +1,15 @@
+"use client"
 import React from "react";
 import "./Footer.css";
 import {MessageCircle} from "react-feather"; 
 import {Facebook} from "react-feather"; 
+const { useRouter } = require('next/navigation');
+import { DevsPath } from "../../../helpers/paths";
 
 export default function Footer() {
+
+  const router = useRouter();
+
   return(
     <footer>
         <div className="footer_Flex" >
@@ -12,7 +18,7 @@ export default function Footer() {
               <a class="nav-bar-item sobre-clinica" href="">Sobre a clínica</a>
             </span>
             <span>
-              <a class="nav-bar-item dev" href="">Desenvolvedores</a>
+              <a onClick={()=>{router.push(DevsPath)}} class="nav-bar-item dev" href="">Desenvolvedores</a>
             </span>
           </div>
 
