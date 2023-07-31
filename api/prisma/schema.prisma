@@ -1,0 +1,115 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  name     String   @db.VarChar(255)
+  password String   @db.VarChar(255)
+  cpf      String   @unique @db.VarChar(255)
+  email    String   @unique @db.VarChar(255)
+  phone    String   @db.VarChar(255)
+  admin    Boolean  @default(false)
+  payments Payment[]
+  services Service[]
+  pets     Pet[]
+  address  Address?
+}
+
+model Address {
+  id           Int    @id @default(autoincrement())
+  code         String @db.VarChar(255)
+  street       String @db.VarChar(255)
+  number       String @db.VarChar(20)
+  neighborhood String @db.VarChar(255)
+  city         String @db.VarChar(255)
+  state        String @db.VarChar(255)
+  complement   String @db.VarChar(255)
+  user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       Int    @unique
+}
+
+model Pet {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(255)
+  species     String    @db.VarChar(255)
+  breed       String    @db.VarChar(255)
+  description String    @db.VarChar(255)
+  gender      Gender
+  age         Int
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      Int
+  services    Service[]
+}
+
+enum Gender {
+  M
+  F
+}
+
+model Service {
+  id         Int      @id @default(autoincrement())
+  startDate  DateTime @db.Date
+  endDate    DateTime @db.Date
+  finished   Boolean  @default(false)
+  pet        Pet      @relation(fields: [petId], references: [id], onDelete: Cascade)
+  petId      Int
+  user        User          @relation(fields: [userId], references: [id])
+  userId      Int
+  room       Room     @relation(fields: [roomNumber], references: [number])
+  roomNumber Int
+  paymentId  Int?      
+  payment    Payment?  @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+}
+
+model Hotel {
+  id           Int    @id @default(autoincrement())
+  phone        String @db.VarChar(255)
+  code         String @db.VarChar(255)
+  dailyPrice   Float  @db.Double
+  cashDiscount Float  @db.Double
+  street       String @db.VarChar(255)
+  neighborhood String @db.VarChar(255)
+  city         String @db.VarChar(255)
+  rooms        Room[]
+}
+
+model Payment {
+  id          Int           @id @default(autoincrement())
+  date        DateTime      @db.Date
+  time        DateTime      @db.Date
+  total       Float         @db.Double
+  subtotal    Float         @db.Double
+  installment Int           @db.Int
+  discount    Float         @db.Double
+  interest    Float         @db.Double
+  user        User          @relation(fields: [userId], references: [id])
+  userId      Int
+  method      PaymentMethod
+  status      PaymentStatus
+  services    Service[]
+}
+
+model Room {
+  number    Int       @id
+  available Boolean   @default(true)
+  services  Service[]
+  hotel     Hotel     @relation(fields: [hotelId], references: [id])
+  hotelId   Int
+}
+
+enum PaymentStatus {
+  Paid
+  Pending
+  Refused
+}
+
+enum PaymentMethod {
+  PIX
+  CreditCard
+}
