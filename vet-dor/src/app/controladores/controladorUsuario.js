@@ -172,7 +172,7 @@ async function createUser(req, res) {
 
     console.log('criar usuário no bd');
 
-    //! criar o usuário no banco de dados, ou seja faz o contato com o firebase
+    //! criar o usuário no banco de dados, ou seja faz o contato com o firebase e envia os dados do front end
     const userRef = await database.collection('users').doc(dbData.cpf).set(dbData);
 
     console.log(`[/createUser] userRef = ${userRef}`);
