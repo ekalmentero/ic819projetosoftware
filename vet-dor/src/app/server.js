@@ -61,7 +61,7 @@ app.post('/recoverFile', controladorFicha.recuperarFicha);
 
 app.post('/scheduleAppointment', controladorConsulta.scheduleAppointment);
 app.post('/getAppointment', controladorConsulta.getAppointment);
-app.get('/getAllAppoitments', controladorConsulta.getAllAppointments)
+app.get('/getAllAppointments', controladorConsulta.getAllAppointments)
 
 // app.get("/userProfile/:cpf", controladorUsuario.getProfile);
 

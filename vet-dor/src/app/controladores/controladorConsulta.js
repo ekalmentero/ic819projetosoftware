@@ -43,19 +43,24 @@ async function getAppointmentByDateAndTime(dateTime) {
 
 // model function 
 async function getAllDbAppointments() {
-	const appointmentsRef = db.collection('appoitments');
-	const snapshot = await appointmentsRef.get();
+	const appointmentsRef = database.collection('appointments');
+	const snapshot = await appointmentsRef.orderBy('name').get();
 
-	if(snapshot.length === 0) {
+	console.log(`[getAllDbAppointments] snapshot = ${JSON.stringify(snapshot, null, 2)}`);
+
+	if(snapshot.size === 0) {
 		return false
 	}
 	
-	return snapshot;
+	return snapshot.docs;
 }
 
 async function getAllAppointments(req, res) {
+	console.log('[getAllAppointmets]');
 	try {
 		const appointments = await getAllDbAppointments();
+		
+		console.log(`[getAllAppointmets] appointments = ${JSON.stringify(appointments, null, 2) }}`);
 
 		res.status(200).send({
 			code: 'OK',
@@ -123,6 +128,8 @@ async function scheduleAppointment(req, res) {
 		}
 
 		const now = new Date();
+		console.log(`[scheduleAppointment] now = ${now}`);
+
 		if(!dataLimpo || dataLimpo === null || dataLimpo === '' || dataLimpo < now) {
 			console.log('[scheduleAppointment] data inválida');
 
@@ -169,9 +176,9 @@ async function scheduleAppointment(req, res) {
 			time: horaLimpo
 		}
 
-    console.log(`[scheduleAppointment] dbData = ${dbData}`);
+		console.log(`[scheduleAppointment] dbData = ${JSON.stringify(dbData)}`);
 
-		const appointmentRef = await database.collection('appointments').doc(dbData.dateTime).set(dbData);
+		const appointmentRef = await database.collection('appointments').doc(dateTime).set(dbData);
 
 		res.status(200).send({
 			code: "OK",

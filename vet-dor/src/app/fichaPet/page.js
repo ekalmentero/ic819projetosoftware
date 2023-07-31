@@ -7,6 +7,9 @@ import { useState, useEffect, useContext } from 'react';
 import { UsuarioContext } from '../../contexts/usuarioContext';
 
 import { recuperarFichaPetPath, LoginPath } from "../../helpers/paths";
+import Header from "../components/Header/header"
+
+import Footer from "../components/Footer/Footer"
 
 export default function Visualizar_Ficha() {
   // Link para um artigo ensinando a enviar artigo = https://blog.logrocket.com/firebase-cloud-storage-firebase-v9-react/
@@ -58,6 +61,8 @@ export default function Visualizar_Ficha() {
   return (
     <main>
       <div className="form">
+      <Header/>
+
         <h1>Ficha do Pet</h1>
         <div className="header-info">
           <div className="left">
@@ -101,6 +106,7 @@ export default function Visualizar_Ficha() {
             <button className="botao verde" onClick={()=>{ router.push(recuperarFichaPetPath)}}>Acessar</button>
           </div>
         </div>  
+        <Footer/>
       </div>
     </main>
   )

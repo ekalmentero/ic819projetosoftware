@@ -13,33 +13,35 @@ export default function Consulta() {
   const [horaConsulta, setHora] = useState("");
 
   const [consultasCadastradas, setConsultasCadastradas] = useState([]);
+  let keyConsultas = 0;
 
   useEffect(() => {
-    setConsultasCadastradas([{ date: '2023-06-19', time: 15 }, { date: '2023-08-10', time: 10 }]);
+    // setConsultasCadastradas([{ date: '2023-06-19', time: 15 }, { date: '2023-08-10', time: 10 }]);
 
-    // async function getData() {
-    //   const response = await fetch('http://localhost:8080/getAllAppointments', {
-    //     method: 'GET',
-    //   })
+    async function getData() {
+      const response = await fetch('http://localhost:8080/getAllAppointments', {
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json'
+        }
+      })
 
-    //   return response.json()
-    // };
+      return response.json()
+    };
 
-    // getData().then((resData) => {
-    //   console.log(`[getData.then] resData = ${resData}`);
+    getData().then((resData) => {
+      // console.log(`[getData.then] resData = ${JSON.stringify(resData)}`);
 
-    //   if (resData.code !== 'OK') {
-    //     window.alert(resData.message);
-    //     return;
-    //   }
+      if (resData.code !== 'OK') {
+        window.alert(resData.message);
+        return;
+      }
 
-    //   const appointments = resData.result;
-    //   setConsultasCadastradas(appointments);
-    // })
-
-   console.log(`[useEffect] fim`);
+      const appointments = resData.result;
+      setConsultasCadastradas(appointments);
+    })
   }, []);
-
+  
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -77,7 +79,7 @@ export default function Consulta() {
 
     // fecth para /scheduleAppointment
     const postData = async () => {
-      console.log(`[postData] consultaData = ${JSON.stringify(consultaData)}`);
+      // console.log(`[postData] consultaData = ${JSON.stringify(consultaData)}`);
 
       const response = await fetch("http://localhost:8080/scheduleAppointment", {
         method: "POST",
@@ -90,7 +92,7 @@ export default function Consulta() {
       return response.json();
     }
     postData().then((resData) => {
-      console.log(`[postData.then] resData = ${resData}`);
+      // console.log(`[postData.then] resData = ${resData}`);
 
       window.alert(resData.message);
       return;
@@ -138,15 +140,16 @@ export default function Consulta() {
         <h2>Consultas Marcadas</h2>
         <p>Consulte aqui os horários que já estão reservados para outras consultas</p>
         {consultasCadastradas ?
-
-          consultasCadastradas.map((c) => (
-              <div className="consultaItem">
-                <span> Dia:  {c.date} </span>
-                {' '}
-                <span> Horário {c.time}</span>
+          consultasCadastradas.map((c) => {
+            // console.log(`item = ${JSON.stringify(c)}`);
+            keyConsultas++;
+            return (
+              <div className="consultaItem" key={keyConsultas}>
+                <span> Dia:  {c._fieldsProto.date.stringValue} </span>
+                <span> Horário {c._fieldsProto.time.stringValue}:00 h</span>
               </div>
             )
-          )
+          })
         :
           <p>Nehnuma consulta cadastrada ainda</p>
         }
