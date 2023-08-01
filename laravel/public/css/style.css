@@ -1,0 +1,72 @@
+body {
+    min-width: 372px;
+    height: 100%;
+}
+
+.show-footer {
+    display: block !important;
+}
+
+* {
+  margin: 0;
+}
+
+.espacamento {
+    margin-left: 10px;
+}
+
+.background {
+    background-color: #edd4d48a;
+    color: black;
+    border: 1px solid #C3E6CB;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+.footer {
+    background-color: rgba(0, 0, 0, 0.712);
+    bottom: 0;
+    position: relative;
+}
+
+.logo {
+    width: 3%;
+    height: 3%;
+}
+
+.error {
+    margin-top: 0px;
+    background-color: rgba(0, 0, 0, 0.26);
+    color: #DC3545;
+}
+
+.success {
+    margin-top: 0px;
+    font-size: 32px;
+    background-color: rgba(0, 0, 0, 0.26);
+    color: #0c6301;
+}
+
+.custom-cursor-pointer:hover {
+    cursor: pointer;
+}
+
+.form-check-input:checked + .form-check-label {
+    color: green; 
+}
+
+.form-check-label {
+    color: #000; 
+}
+
+.card-img-top{
+    width: 150px;
+    height: 150px;
+}
+
+.img-thumbnail{
+    max-height: 150px;
+}
+
