@@ -1,0 +1,176 @@
+<div id="container-box" class="container">
+    <div class="text-center">
+        <img id="img-logo-short" src="./assets/imagens/logo-short.png" alt="logo-short">
+        <h1>Cadastre um livro</h1>
+    </div>
+    <form class="row g-3" [formGroup]="registerForm" (ngSubmit)="submit()">
+        <div class="col-md-6">
+            <label for="input-img" class="form-label">Upload da capa</label>
+            <input class="form-control" type="file" id="input-img" formControlName="cover">
+
+            <label for="input-title" class="form-label">Título</label>
+            <input id="input-title" type="text" class="form-control" formControlName="titulo" [ngClass]="{
+                'is-invalid': submitted && f['titulo'].errors && (f['titulo'].dirty || f['titulo'].touched),
+                'is-valid': f['titulo'].valid && (f['titulo'].dirty || f['titulo'].touched)}">
+            <div *ngIf="submitted && f['titulo'].errors?.['required']" class="invalid-feedback">
+                Título é obrigatório
+            </div>
+
+            <label for="input-author" class="form-label">Autor</label>
+            <input id="input-author" type="text" class="form-control" formControlName="autor" [ngClass]="{
+                'is-invalid': submitted && f['autor'].errors && (f['autor'].dirty || f['autor'].touched),
+                'is-valid': f['autor'].valid && (f['autor'].dirty || f['autor'].touched)}">
+            <div *ngIf="submitted && f['autor'].errors?.['required']" class="invalid-feedback">
+                Autor é obrigatório
+            </div>
+
+            <label for="input-language" class="form-label">Idioma</label>
+            <input id="input-language" type="text" class="form-control" formControlName="idioma" [ngClass]="{
+                'is-invalid': submitted && f['idioma'].errors && (f['idioma'].dirty || f['idioma'].touched),
+                'is-valid': f['idioma'].valid && (f['idioma'].dirty || f['idioma'].touched)}">
+            <div *ngIf="submitted && f['idioma'].errors?.['required']" class="invalid-feedback">
+                Idioma é obrigatório
+            </div>
+
+            <label for="input-synopsis" class="form-label">Sinopse</label>
+            <textarea id="input-synopsis" class="form-control" rows="5" formControlName="sinopse"></textarea>
+
+            <label for="input-isbn-10" class="form-label">ISBN-10</label>
+            <input id="input-isbn-10" type="text" class="form-control" formControlName="sbn10" [ngClass]="{
+                'is-invalid': submitted && f['sbn10'].errors && (f['sbn10'].dirty || f['sbn10'].touched),
+                'is-valid': f['sbn10'].valid && (f['sbn10'].dirty || f['sbn10'].touched)}">
+            <div *ngIf="submitted && f['sbn10'].errors && (f['sbn10'].dirty || f['sbn10'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="f['sbn10'].errors['minlength']">Deve possuir ao menos 10 caracteres</div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <label for="input-publisher" class="form-label">Editora</label>
+            <input id="input-publisher" type="text" class="form-control" formControlName="editora">
+
+            <label for="input-edition" class="form-label">Edição</label>
+            <input id="input-edition" type="text" class="form-control" formControlName="edicao">
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="input-publication-year" class="form-label">Ano de publicação</label>
+                    <input id="input-publication-year" type="text" class="form-control" formControlName="ano" [ngClass]="{
+                        'is-invalid': submitted && f['ano'].errors && (f['ano'].dirty || f['ano'].touched),
+                        'is-valid': f['ano'].valid && (f['ano'].dirty || f['ano'].touched)}">
+                    <div *ngIf="submitted && f['ano'].errors && (f['ano'].dirty || f['ano'].touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="f['ano'].errors['minlength']"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="input-pages-number" class="form-label">Nº de páginas</label>
+                    <input id="input-pages-number" type="number" class="form-control" formControlName="numPag">
+                    <div *ngIf="submitted && (f['numPag']['errors']?.['required'] || f['numPag']['errors']?.['min'])"
+                        class="invalid-feedback">
+                        <div *ngIf="f['numPag']['errors']?.['required']">O número de páginas é obrigatório</div>
+                        <div *ngIf="f['numPag']['errors']?.['min']">O número de páginas deve ser maior ou igual a 1
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <label for="categoria1" class="form-label">Categoria</label>
+            <select id="categoria1" class="form-control" formControlName="categoria1" [ngClass]="{
+                'is-invalid': submitted && f['categoria1'].errors && (f['categoria1'].dirty || f['categoria1'].touched),
+                'is-valid': f['categoria1'].valid && (f['categoria1'].dirty || f['categoria1'].touched)}">
+                <option value="Selecione..." selected>Selecione...</option>
+                <option value="romance">Romance</option>
+                <option value="ficcao-cientifica">Ficção Científica</option>
+                <option value="fantasia">Fantasia</option>
+                <option value="terror">Terror</option>
+                <option value="drama">Drama</option>
+                <option value="aventura">Aventura</option>
+                <option value="policial">Policial</option>
+                <option value="comedia">Comédia</option>
+                <option value="historico">Histórico</option>
+                <option value="biografia">Biografia</option>
+                <option value="autoajuda">Autoajuda</option>
+                <option value="poesia">Poesia</option>
+                <option value="ensaio">Ensaio</option>
+                <option value="mitologia">Mitologia</option>
+                <option value="filosofia">Filosofia</option>
+                <option value="tecnologia">Tecnologia</option>
+                <option value="viagem">Viagem</option>
+                <option value="infantil">Infantil</option>
+                <option value="suspense">Suspense</option>
+                <option value="historia-em-quadrinhos">História em Quadrinhos</option>
+            </select>
+            <div *ngIf="submitted && f['categoria1'].errors && (f['categoria 1'].dirty || f['categoria1'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="f['categoria1']['errors']?.['required']">Categoria é obrigatório</div>
+            </div>
+
+            <label for="categoria2" class="form-label">Categoria Adicional</label>
+            <select formControlName="categoria2" id="categoria2" class="form-control">
+                <option value="Selecione..." selected>Selecione...</option>
+                <option value="romance">Romance</option>
+                <option value="ficcao-cientifica">Ficção Científica</option>
+                <option value="fantasia">Fantasia</option>
+                <option value="terror">Terror</option>
+                <option value="drama">Drama</option>
+                <option value="aventura">Aventura</option>
+                <option value="policial">Policial</option>
+                <option value="comedia">Comédia</option>
+                <option value="historico">Histórico</option>
+                <option value="biografia">Biografia</option>
+                <option value="autoajuda">Autoajuda</option>
+                <option value="poesia">Poesia</option>
+                <option value="ensaio">Ensaio</option>
+                <option value="mitologia">Mitologia</option>
+                <option value="filosofia">Filosofia</option>
+                <option value="tecnologia">Tecnologia</option>
+                <option value="viagem">Viagem</option>
+                <option value="infantil">Infantil</option>
+                <option value="suspense">Suspense</option>
+                <option value="historia-em-quadrinhos">História em Quadrinhos</option>
+            </select>
+
+            <label for="categoria3" class="form-label">Categoria Adicional</label>
+            <select formControlName="categoria3" id="categoria3" class="form-control">
+                <option value="Selecione..." selected>Selecione...</option>
+                <option value="romance">Romance</option>
+                <option value="ficcao-cientifica">Ficção Científica</option>
+                <option value="fantasia">Fantasia</option>
+                <option value="terror">Terror</option>
+                <option value="drama">Drama</option>
+                <option value="aventura">Aventura</option>
+                <option value="policial">Policial</option>
+                <option value="comedia">Comédia</option>
+                <option value="historico">Histórico</option>
+                <option value="biografia">Biografia</option>
+                <option value="autoajuda">Autoajuda</option>
+                <option value="poesia">Poesia</option>
+                <option value="ensaio">Ensaio</option>
+                <option value="mitologia">Mitologia</option>
+                <option value="filosofia">Filosofia</option>
+                <option value="tecnologia">Tecnologia</option>
+                <option value="viagem">Viagem</option>
+                <option value="infantil">Infantil</option>
+                <option value="suspense">Suspense</option>
+                <option value="historia-em-quadrinhos">História em Quadrinhos</option>
+            </select>
+
+            <label for="input-isbn-13" class="form-label">ISBN-13</label>
+            <input id="input-isbn-13" type="text" class="form-control" formControlName="sbn13" [ngClass]="{
+                    'is-invalid': submitted && f['sbn13'].errors && (f['sbn13'].dirty || f['sbn13'].touched),
+                    'is-valid': f['sbn13'].valid && (f['sbn13'].dirty || f['sbn13'].touched)}">
+            <div *ngIf="submitted && f['sbn13'].errors && (f['sbn13'].dirty || f['sbn13'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="f['sbn13'].errors['minlength']">Deve possuir ao menos 13 caracteres</div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <button type="submit" id="btn-primary-long" style="width: 400px;">Cadastrar</button>
+        </div>
+    </form>
+
+</div>

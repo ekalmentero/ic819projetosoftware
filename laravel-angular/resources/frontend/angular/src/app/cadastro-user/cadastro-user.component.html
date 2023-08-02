@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="centralizar">
+        <img src="./assets/imagens/logo-short.png" alt="sharedLib icon" class="sharedLibIcon">
+        <h1>Crie uma conta</h1>
+    </div>
+
+    <form class="row g-3" (ngSubmit)="submit()" [formGroup]="registerForm" enctype="multipart/form-data">
+        <div class="col-md-6">
+            <label for="inputName" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="inputName" formControlName="nome" [ngClass]="{
+                'is-invalid': submitted && f['nome'].invalid && (f['nome'].dirty || f['nome'].touched),
+                'is-valid': f['nome'].valid && (f['nome'].dirty || f['nome'].touched)}">
+            <div *ngIf="submitted && f['nome'].errors && (f['nome'].dirty || f['nome'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="f['nome'].errors['required']">Nome é obrigatório</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="inputCity" formControlName="cidade" [ngClass]="{
+                'is-invalid': submitted && f['cidade'].errors && (f['cidade'].dirty || f['cidade'].touched),
+                'is-valid': f['cidade'].valid && (f['cidade'].dirty || f['cidade'].touched)}">
+            <div *ngIf="submitted && f['cidade'].errors && (f['cidade'].dirty || f['cidade'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="f['cidade'].errors['required']">Cidade é obrigatória</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" formControlName="email" [ngClass]="{
+                'is-invalid': submitted && f['email'].errors && (f['email'].dirty || f['email'].touched),
+                'is-valid': f['email'].valid && (f['email'].dirty || f['email'].touched)}">
+            <div *ngIf="submitted && f['email'].errors && (f['email'].dirty || f['email'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email é obrigatório</div>
+                <div *ngIf="f['email'].errors['email']">Email inválido</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="inputState" class="form-label">Estado</label>
+            <select id="inputState" class="form-select" formControlName="estado">
+                <option selected>Selecione...</option>
+                <option [value]="'RJ'">Rio de Janeiro (RJ)</option>
+                <option [value]="'SP'">São Paulo (SP)</option>
+                <option [value]="'MG'">Minas Gerais (MG)</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="inputPassword" formControlName="password" [ngClass]="{
+                'is-invalid': submitted && f['password'].errors && (f['password'].dirty || f['password'].touched),
+                'is-valid': f['password'].valid && (f['password'].dirty || f['password'].touched)}">
+            <div *ngIf="submitted && f['password'].errors && (f['password'].dirty || f['password'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="f['password'].errors['required']">Senha é obrigatória</div>
+                <div *ngIf="f['password'].errors['minlength']">A senha deve ter pelo menos 6 caracteres</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="inputAge" class="form-label">Idade</label>
+            <input class="form-control" id="inputAge" formControlName="idade" [ngClass]="{
+                'is-invalid': submitted && f['idade'].errors && (f['idade'].dirty || f['idade'].touched),
+                'is-valid': f['idade'].valid && (f['idade'].dirty || f['idade'].touched)}">
+            <div *ngIf="submitted && f['idade'].errors && (f['idade'].dirty || f['idade'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="f['idade'].errors['required']">Idade é obrigatória</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="inputGender" class="form-label">Sexo</label>
+            <select id="inputGender" class="form-select" formControlName="sexo">
+                <option selected>Selecione...</option>
+                <option [value]="'f'">Feminino</option>
+                <option [value]="'m'">Masculino</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputPasswordConfirm" class="form-label">Confirme a senha</label>
+            <input type="password" class="form-control" id="inputPasswordConfirm" formControlName="passwordConfirm"
+                [ngClass]="{
+                'is-invalid': submitted && f['passwordConfirm'].errors && (f['passwordConfirm'].dirty || f['passwordConfirm'].touched),
+                'is-valid': f['passwordConfirm'].valid && (f['passwordConfirm'].dirty || f['passwordConfirm'].touched)}">
+            <div *ngIf="submitted && f['passwordConfirm'].errors && (f['passwordConfirm'].dirty || f['passwordConfirm'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="f['passwordConfirm'].errors['required']">Confirmação de senha é obrigatória</div>
+                <div *ngIf="f['passwordConfirm'].errors['passwordMustmatch']">As senhas não coincidem</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="inputTel" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="inputTel" formControlName="telefone" [ngClass]="{
+                'is-invalid': submitted && f['telefone'].errors && (f['telefone'].dirty || f['telefone'].touched),
+                'is-valid': f['telefone'].valid && (f['telefone'].dirty || f['telefone'].touched)}">
+            <div *ngIf="submitted && f['telefone'].errors && (f['telefone'].dirty || f['telefone'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="f['telefone'].errors['required']">Telefone é obrigatório</div>
+            </div>
+        </div>
+        <div class="col-md-6" style="margin-bottom: 20px;">
+            <label for="inputBio" class="form-label">Biografia</label>
+            <textarea class="form-control" id="inputBio" rows="4" formControlName="bio"></textarea>
+        </div>
+        <div class="col-md-6">
+            <label for="input-img" class="form-label">Foto de Perfil</label>
+            <input class="form-control" type="file" id="input-img" formControlName="fotoPerfil" (change)="onFileChange($event)" accept="image/*">
+        </div>
+        <div class="col-12">
+            <div class="centralizar">
+                <p>Já tem uma conta? <a routerLink="/login-user">Entre aqui.</a></p>
+                <button type="submit" class="btn-primary-long" style="width: 400px;">Cadastrar</button>
+            </div>
+        </div>
+    </form>
+</div>

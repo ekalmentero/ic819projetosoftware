@@ -1,0 +1,135 @@
+#frase {
+    font-size: 45px;
+    color: #042932;
+    font-weight: 600;
+}
+
+#frase span {
+    color: #0B9D92;
+}
+
+#crie-conta {
+    color: #042932;
+}
+
+#slogan img {
+    transform: scaleX(-1);
+    filter: brightness(0.5);
+}
+
+
+#slogan {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+#search-bar {
+    position: relative;
+    margin-bottom: 80px;
+}
+
+#search-icon {
+    position: absolute;
+    top: 50%;
+    left: 23px;
+    transform: translateY(-50%);
+    color: grey;
+}
+
+#search-bar input[type="text"] {
+    padding-left: 35px;
+}
+
+#livro img {
+    width: 100px;
+}
+
+#livro {
+    padding: 0;
+}
+
+#row-livros {
+    width: 100%;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+#historico-de-emprestimos {
+    margin-bottom: 80px;
+}
+
+.titulo {
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.autor {
+    font-size: 13px;
+}
+
+#sobre {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    border-radius: 10px;
+    background-color: #042932;
+    color: white;
+    padding: 45px 75px;
+}
+
+#sobre h2 {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+#search{
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1); 
+}
+
+#search input{
+    height: 50px;
+    text-indent: 25px;
+    border: 2px solid #d6d6d6;
+    border-radius: 10px;
+}
+
+#search input:focus{
+    box-shadow: none;
+}
+
+#search .fa-search{
+    position: absolute;
+    top: 18px;
+    left: 16px;
+}
+
+#search button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 40px;
+    width: 110px;
+    background: #042932;;
+    border-radius: 10px;
+}
+
+#search button:hover{
+    background: #0B9D92;
+    border: none;
+}
+
+.fa-red {
+    color: #EE6363;
+}
+
+.fa-green {
+    color: lightgreen;
+}
+
+#bookmark {
+    align-self: center;
+    margin-left: 4px;
+    margin-top: 4px;
+}

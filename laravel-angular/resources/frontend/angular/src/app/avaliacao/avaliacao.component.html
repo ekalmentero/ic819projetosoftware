@@ -1,0 +1,119 @@
+<div class="container" id="container-path">
+    <p>Perfil - Meus empréstimos - Livro: title - Avaliação</p>
+</div>
+<div class="row align-items-start" id="row-title">
+    <div class="col-1 align-self-center" id="col-title">
+        <h1>Avaliação</h1>
+    </div>
+    <div class="col" id="col-title-cut"></div>
+</div>
+<form [formGroup]="updateForm" (ngSubmit)="submit()">
+    <div id="container-box" class="container">
+        <div id="book" class="row">
+            <div class="col-md-3 align-self-center">
+                <img src="./assets/imagens/capa-livro.png" alt="Foto de perfil"><br><br>
+                <h3><b>{{livro.titulo}}</b></h3>
+                <h4>{{livro.autor}}</h4>
+            </div>
+            <div class="col-md-4">
+                <label for="inputNote" class="form-label"><b>Nota</b></label>
+                <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+                <div class="estrelas">
+                    <input type="radio" id="cm_star-empty" value="" checked formControlName="avaliacao"/>
+                    <label for="cm_star-1"><i class="fa"></i></label>
+                    <input type="radio" id="cm_star-1" value="1" formControlName="avaliacao"/>
+                    <label for="cm_star-2"><i class="fa"></i></label>
+                    <input type="radio" id="cm_star-2" value="2" formControlName="avaliacao"/>
+                    <label for="cm_star-3"><i class="fa"></i></label>
+                    <input type="radio" id="cm_star-3" value="3" formControlName="avaliacao"/>
+                    <label for="cm_star-4"><i class="fa"></i></label>
+                    <input type="radio" id="cm_star-4" value="4" formControlName="avaliacao"/>
+                    <label for="cm_star-5"><i class="fa"></i></label>
+                    <input type="radio" id="cm_star-5" value="5" formControlName="avaliacao"/>
+                </div><br>
+                <label for="relato" class="form-label"><b>Relato do empréstimo</b></label>
+                <textarea class="form-control" id="relato" rows="4" formControlName="relato" [(ngModel)]="relato"></textarea>
+            </div>
+            <div class="col-md-5" id="loan-details">
+                <div class="row">
+                    <div class="col">
+                        <h2><b>Detalhes do empréstimo</b></h2>
+                    </div>
+                </div>
+                <div class="row" id="foto-perfil">
+                    <div class="col-md-2 align-self-center">
+                        <img src="./assets/imagens/foto-de-perfil.png" alt="Foto de perfil">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="col"> <b>{{user?.nome}} </b> </h5>
+                                <i id="location-logo" class="fa-solid fa-location-dot"></i>
+                                <p id="location-text"> {{user?.cidade}}, {{user?.estado}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row">
+                            <p><b>Status:</b> {{ anuncio.ativo === 1 ? 'Ativo' : 'Finalizado' }}</p>
+                        </div>
+                        <div class="col">
+                            <p><b>Início:</b> {{anuncio?.dataInicioPrazo}}</p>
+                            <p><b>Término:</b> {{anuncio?.dataFimPrazo}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h5><b>Regras</b></h5>
+                            <ul>
+                                <li>É proibído rasurar, rabiscar, marcar ou desenhar em qualquer parte do livro.</li>
+                                <li>É proíbido tirar cópias do livro.</li>
+                                <li>É proibido emprestar o livro para terceiros.</li>
+                                <li>Qualquer atraso não conscentido na devolução gera um multa de R$ XX.</li>
+                                <li>As responsabilidades de busca de devolução do livro integralmente do requerente.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <button type="submit" id="btn-primary-long" *ngIf="anuncio.avaliacao === null">Avaliar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="book-data" class="row text-center">
+            <div class="col-md-2">
+                <p>Nº de páginas</p>
+                <i class="fa-regular fa-file"></i>
+                <p><b>{{livro?.numPag}}</b></p>
+            </div>
+            <div class="col-md-2">
+                <p>Idioma</p>
+                <i class="fa-solid fa-language"></i>
+                <p><b>{{livro?.idioma}}</b></p>
+            </div>
+            <div class="col-md-2">
+                <p>Editora</p>
+                <i class="fa-regular fa-building"></i>
+                <p><b>{{livro?.editora}}</b></p>
+            </div>
+            <div class="col-md-2">
+                <p>Ano de publicação</p>
+                <i class="fa-regular fa-calendar"></i>
+                <p><b>{{livro?.ano}}</b></p>
+            </div>
+            <div class="col-md-2">
+                <p>ISBN-10</p>
+                <i class="fa-solid fa-barcode"></i>
+                <p><b>{{livro?.sbn10}}</b></p>
+            </div>
+            <div class="col-md-2">
+                <p>ISBN-13</p>
+                <i class="fa-solid fa-barcode"></i>
+                <p><b>{{livro?.sbn13}}</b></p>
+            </div>
+        </div>
+    </div>
+</form>

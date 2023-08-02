@@ -1,0 +1,28 @@
+<div id="container-box" class="container">
+    <div class="text-center">
+        <img id="img-logo-short" src="./assets/imagens/logo-short.png" alt="logo-short">
+        <h1>Cadastre um livro</h1>
+    </div>
+    <form class="row g-3" (ngSubmit)="submit()" [formGroup]="registerForm">
+        <div class="col-md-9">
+            <label for="input-category" class="form-label">Livro</label>
+            <select id="input-category" class="form-select" [(ngModel)]="livroSelecionado" formControlName="livroSelected"  [ngClass]="{
+                'is-invalid': submitted && f['livroSelected'].errors && (f['livroSelected'].dirty || f['livroSelected'].touched),
+                'is-valid': f['livroSelected'].valid && (f['livroSelected'].dirty || f['livroSelected'].touched)}">
+                <option selected>Selecione...</option>
+                <option *ngFor="let livro of livros" [ngValue]="livro.id">{{ livro.titulo }}</option>
+            </select>
+            <div *ngIf="submitted && f['livroSelected'].errors?.['required']" class="invalid-feedback">
+                Livro é obrigatório
+            </div>
+          </div>
+          
+        <div class="col-md-3">
+            <label for="input-new-books" class="form-label">Cadastre um novo livro</label>
+            <button id="btn-new-books" routerLink="/cadastro-livro"> + </button>
+        </div>
+        <div class="row justify-content-center">
+            <button type="submit" id="btn-primary-long" style="width: 400px;">Cadastrar</button>
+        </div>
+    </form>
+</div>

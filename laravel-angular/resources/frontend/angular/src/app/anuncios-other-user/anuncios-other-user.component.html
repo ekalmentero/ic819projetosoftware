@@ -1,0 +1,28 @@
+<div class="container" id="container-path">
+    <p>Perfil - Livros</p>
+</div>
+<div class="row align-items-start" id="row-title">
+    <div class="col-1 align-self-center" id="col-title">
+        <h1>Anúncios de {{user?.nome}}</h1>
+    </div>
+    <div class="col" id="col-title-cut"></div>
+</div>
+<div class="container">
+    <div class="row" id="row-card" *ngFor="let item of livros">
+        <div class="col-1" id="col-logo">
+          <img height="160" src="./assets/imagens/capa-livro.png" alt="capa-livro">
+        </div>
+        <div class="col-auto me-auto align-self-center">
+          <h3>{{item.livro.titulo}}</h3>
+          <p>{{item.livro.autor}}</p>
+          <p><b>Status:</b> <span *ngIf="item.anuncio.emprestado" style="color: #EE6363;"><b> Emprestado</b></span>
+            <span *ngIf="!item.anuncio.emprestado"> Disponível</span></p>
+          <p><b>Idioma:</b> {{item.livro.idioma}}</p>
+          <p><b>Nº de páginas:</b> {{item.livro.numPag}}</p>
+        </div>
+        <div class="col-auto align-self-end" id="col-btn-primary">
+          <button id="btn-primary" (click)="verAnuncio(item.anuncio.id)">Ver mais</button>
+        </div>
+      </div>
+      
+</div>

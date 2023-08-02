@@ -1,0 +1,139 @@
+.foto-perfil {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#perfil {
+    color: #042932;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 120px;
+    margin-top: -250px;
+    margin-bottom: 100px;
+    z-index: 10000;
+    background-color: white;
+}
+
+#biografia {
+    text-align: left;
+}
+
+#biografia h4 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#nota {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+#avaliacao {
+    justify-content: center;
+}
+
+#avaliacao i {
+    color: #0B9D92;
+}
+
+#user-name {
+    text-align: center;
+}
+
+#location-logo, #location-text, #nota {
+    display: inline;
+}
+
+#background {
+    background-color: #042932;
+    height: 400px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#infos .numbers{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+#actions i {
+    color: #0B9D92;
+}
+
+#actions p {
+    color: rgb(136, 136, 136);
+}
+
+.perfil-dados {
+    text-align: center;
+}
+  
+#livro img {
+    width: 100px;
+}
+
+#livro {
+    padding: 0;
+}
+
+#row-livros {
+    width: 100%;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+#historico-de-emprestimos {
+    margin-bottom: 80px;
+}
+
+.titulo {
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.autor {
+    font-size: 13px;
+}
+
+#bookmark {
+    color: #EE6363;
+    align-self: center;
+    margin-left: 4px;
+    margin-top: 4px;
+}
+
+#meus-emprestimos {
+    background-color: #042932;
+    border-radius: 10px;
+    margin-bottom: 80px;
+}
+
+#meus-emprestimos h2 {
+    text-align: center;
+    color: white;
+    padding-top: 50px;
+    font-size: 35px;
+}
+
+#meus-emprestimos #row-livros {
+    color: white;
+}
+
+#btn-secundary {
+    margin-bottom: 35px
+}
+
+#location-logo, #location-text {
+    color: grey;
+}

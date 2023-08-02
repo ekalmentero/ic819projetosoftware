@@ -1,0 +1,74 @@
+<div id="container-box" class="container">
+    <div class="row" id="foto-perfil">
+        <div class="col-md-1">
+            <img src="./assets/imagens/foto-de-perfil.png" alt="Foto de perfil">
+        </div>
+        <div class="col-md-11">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h2 class="col" style="display: inline;"><a (click)="seeUserProfile(user?.id)" style="cursor: pointer;"> {{user?.nome}} </a></h2>
+                    <i id="location-logo" class="fa-solid fa-location-dot"></i>
+                    <p id="location-text"> {{user?.cidade}}, {{user?.estado}} </p>
+                </div>
+            </div>
+            <div class="row align-items-center" id="avaliacao">
+                <div class="col" id="avaliacao">
+                    <p id="nota">Nota: {{ user?.nota != 0 ? (user?.nota | number: '1.2-2') : 'Sem avaliações' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="book" class="row">
+        <div class="col-md-3 align-self-center">
+            <img src="./assets/imagens/capa-livro.png" alt="Foto de perfil">
+        </div>
+        <div class="col-md-9">
+            <h2><b>{{livro?.titulo}}</b></h2>
+            <h3>{{livro?.autor}}</h3>
+            <h4>Sinopse:</h4>
+            <p>{{livro?.sinopse}}</p>
+            <div id="search-categories" class="row height d-flex justify-content-start align-items-center">
+                <button id="btn-primary" class="btn btn-primary mx-2 my-2">{{livro.categoria1}}</button>
+                <button id="btn-primary" class="btn btn-primary mx-2 my-2" *ngIf="livro.categoria2 != 'Selecione...'">{{livro.categoria2}}</button>
+                <button id="btn-primary" class="btn btn-primary mx-2 my-2" *ngIf="livro.categoria3 != 'Selecione...'">{{livro.categoria3}}</button>
+            </div> 
+        </div>
+    </div>
+    <div id="book-data" class="row text-center">
+        <div class="col-md-2">
+            <p>Nº de páginas</p>
+            <i class="fa-regular fa-file"></i>
+            <p><b>{{livro?.numPag}}</b></p>
+        </div>
+        <div class="col-md-2">
+            <p>Idioma</p>
+            <i class="fa-solid fa-language"></i>
+            <p><b>{{livro?.idioma}}</b></p>
+        </div>
+        <div class="col-md-2">
+            <p>Editora</p>
+            <i class="fa-regular fa-building"></i>
+            <p><b>{{livro?.editora}}</b></p>
+        </div>
+        <div class="col-md-2">
+            <p>Ano de publicação</p>
+            <i class="fa-regular fa-calendar"></i>
+            <p><b>{{livro?.ano}}</b></p>
+        </div>
+        <div class="col-md-2">
+            <p>ISBN-10</p>
+            <i class="fa-solid fa-barcode"></i>
+            <p><b>{{livro?.sbn10}}</b></p>
+        </div>
+        <div class="col-md-2">
+            <p>ISBN-13</p>
+            <i class="fa-solid fa-barcode"></i>
+            <p><b>{{livro?.sbn13}}</b></p>
+        </div>
+    </div>
+
+    <div class="row justify-content-end">
+        <button id="btn-primary-long" [hidden]="!isValid" (click)="solicitarEmprestimo(this.anuncio.id)">Pedir emprestado</button>
+    </div>
+
+</div>

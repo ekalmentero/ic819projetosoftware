@@ -1,0 +1,132 @@
+<div id="background">
+    <span></span>
+</div>
+
+<div class="container" id="perfil">
+    <div class="row">
+        <div class="col-md-3" id="infos">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="numbers">{{this.emprestimosConcedidos}}</p>
+                    <p>Empréstimos oferecidos</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="numbers">{{this.emprestimosRequeridos}}</p>
+                    <p>Empréstimos requiridos</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="text-center">
+                <img height="300px" style="margin-top: -190px; border-radius: 50%;"
+                    src="./assets/imagens/foto-de-perfil.png" alt="Foto de perfil">
+            </div><br>
+            <div class="container text-center">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h2 class="col" style="display: inline;"> {{ this.nome }} </h2><br>
+                        <i id="location-logo" class="fa-solid fa-location-dot"></i>
+                        <p id="location-text"> {{ this.cidade }}, {{ this.estado }} </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="container text-center">
+                <div class="row align-items-center" id="avaliacao">
+                    <div class="col" id="avaliacao">
+                        <p id="nota">Nota: {{ this.nota != 0 ? (this.nota | number: '1.2-2') : 'Sem avaliações' }} </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div id="biografia">
+                <div class="row">
+                    <h4>Biografia</h4>
+                </div>
+                <div class="row" id="bio">
+                    <p> {{ bio }} </p>
+                </div>
+            </div>
+            <div class="row">
+                <p><b>Email: </b> {{ email }} </p>
+                <p><b>Celular: </b> {{ telefone }} </p>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="perfil-dados">
+    </div>
+</div>
+
+<div id="livros-user">
+    <div class="row align-items-start" id="row-title">
+        <div class="col-1 align-self-center" id="col-title">
+            <h1>Meus Livros</h1>
+        </div>
+        <div class="col" id="col-title-cut"></div>
+    </div>
+
+    <div class="container text-center" id="historico-de-emprestimos">
+        <div class="row" id="row-livros">
+            <div class="col" *ngFor="let livroDono of livrosDono.slice(0, 5)">
+                <div class="livro-item">
+                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro" width="120px">
+                    <div class="d-flex justify-content-center">
+                        <p class="titulo"><b>{{livroDono.titulo}}</b></p>
+                    </div>
+                    <p class="autor">{{livroDono.autor}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
+            <button id="btn-primary" routerLink="/livros-user">Ver mais</button>
+        </div>
+    </div>
+
+    <div class="row align-items-start" id="row-title">
+        <div class="col-1 align-self-center" id="col-title">
+            <h1>Meus Anúncios</h1>
+        </div>
+        <div class="col" id="col-title-cut"></div>
+    </div>
+
+    <div class="container text-center" id="historico-de-emprestimos">
+        <div class="row" id="row-livros">
+            <div class="col" *ngFor="let livro of livros.slice(0, 5)">
+                <div class="livro-item">
+                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro" width="120px">
+                    <div class="d-flex justify-content-center">
+                        <p class="titulo"><b>{{livro.titulo}}</b></p>
+                        <i [class]="livro.status === 1 ? 'fa-solid fa-bookmark fa-red' : 'fa-solid fa-bookmark fa-green'" id="bookmark"></i>
+                    </div>
+                    <p class="autor">{{livro.autor}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
+            <button id="btn-primary" routerLink="/anuncios-user">Ver mais</button>
+        </div>
+    </div>
+
+
+    <div class="container text-center" id="meus-emprestimos">
+        <h2>Meus Empréstimos</h2>
+        <div class="container">
+            <div class="row row-cols-5" id="row-livros">
+                <div class="col" id="livro" *ngFor="let livro of livrosOutraArray.slice(0, 5)">
+                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                    <div class="d-flex justify-content-center">
+                        <p class="titulo"><b>{{livro?.titulo}}</b></p>
+                    </div>
+                    <p class="autor">{{livro?.autor}}</p>
+                </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
+                <button id="btn-secundary" (click)="verMeusEmprestimos(id)">Ver mais</button>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="d-flex align-items-center" id="slogan">
+            <div>
+                <p id="frase">Conectando leitores, <span>compartilhando</span> conhecimento.</p>
+                <div id="crie-conta">
+                    <p>Ainda não está cadastrado? Crie sua conta e comece a explorar novos livros hoje mesmo!</p>
+                    <button id="btn-primary">Crie uma conta</button>
+                </div>
+            </div>
+            <div>
+                <img src="./assets/imagens/menino-lendo.png" alt="menino lendo">
+            </div>
+        </div>
+    </div>
+    <div id="search-input" class="row height d-flex justify-content-center align-items-center">
+        <form>
+            <div class="col">
+                <div id="search" class="search">
+                    <i class="fa fa-search"></i>
+                    <input type="text" class="form-control" placeholder="Procure o livro que deseja!"
+                        (keydown.enter)="buscarLivros()" [(ngModel)]="filtroTitulo" name="filtroTitulo">
+                    <button class="btn btn-primary"><i class="fa-solid fa-filter"></i></button>
+                </div>
+            </div>
+        </form>
+    </div><br><br>
+</div>
+
+<div id="anuncios">
+    <div class="row align-items-start" id="row-title">
+        <div class="col-1 align-self-center" id="col-title">
+            <h1>Anúncios Recentes</h1>
+        </div>
+        <div class="col" id="col-title-cut"></div>
+    </div>
+    <div class="container text-center" id="historico-de-emprestimos">
+        <div class="row row-cols-5" id="row-livros">
+            <div class="col" id="livro" *ngFor="let livro of livros">
+                <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                <div class="d-flex justify-content-center">
+                    <p class="titulo"><b>{{livro.titulo}}</b></p>
+                    <i [class]="livro.status === 1 ? 'fa-solid fa-bookmark fa-red' : 'fa-solid fa-bookmark fa-green'" id="bookmark"></i>
+                </div>
+                <p class="autor">{{livro.autor}}</p>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
+            <button id="btn-primary" routerLink="/livros">Ver mais</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="sobre">
+    <h2>O que é Shared Lib?</h2>
+    <p>O SharedLib é um software de biblioteca comunitária que tem como objetivo principal permitir que os usuários
+        emprestem e compartilhem livros, promovendo assim a aquisição e a disseminação de conhecimento. O sistema de
+        empréstimos pode ser um recurso valioso para permitir que as pessoas acessem livros que talvez não possam
+        comprar ou encontrar em outros lugares. O SharedLib será uma valiosa fonte de recursos para os amantes de
+        leitura que buscam aprimorar seus conhecimentos e ampliar seus horizontes.</p>
+</div>

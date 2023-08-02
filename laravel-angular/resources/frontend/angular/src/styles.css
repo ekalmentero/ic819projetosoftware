@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#btn-primary-long, .btn-primary-long {
+    width: 100%;
+    padding: 10px;
+    background-color: #0B9D92;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.btn-primary-long:hover, #btn-primary-long:hover {
+    background-color: #042932;
+    border: 1px solid white;
+}
+
+#btn-primary {
+    background-color: #0B9D92;
+    border: 1px solid #0B9D92;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 4px;
+    width: 120px;
+    display: inline-block;
+}
+
+#btn-primary:hover {
+    background-color: #042932;
+    border: 1px solid white;
+}
+
+.btn-secundary-long, #btn-secundary-long {
+    width: 100%;
+    padding: 10px;
+    background-color: #042932;
+    color: white;
+    border-color: #0B9D92;
+    border-width: 2;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.btn-secundary-long:hover, #btn-secundary-long:hover {
+    width: 100%;
+    padding: 10px;
+    background-color: #0B9D92;
+    color: white;
+    border-color: #0B9D92;
+    border-width: 2;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#btn-secundary {
+    background-color: #042932;
+    border-color: #0B9D92;
+    border-width: 2;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 4px;
+    width: 120px;
+    display: inline-block;
+}
+
+#btn-secundary:hover {
+    background-color: #0B9D92;
+    border-color: #0B9D92;
+    border-width: 2;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 4px;
+    width: 120px;
+    display: inline-block;
+}
+
+#container-path p {
+    color: gray;
+    margin-top: 20px;
+}
+
+#row-title {
+    background-color: #042932;
+    width: 1000px;
+    height: 80px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+#row-title h1 {
+    margin-left: 160px;
+    width: 800px;
+}
+
+#col-title-cut {
+    width: 0;
+    height: 0;
+    border-top: 40px solid transparent;
+    border-right: 80px solid white;
+    border-bottom: 40px solid transparent;
+}
+
+#img-logo-short {
+    width: 60px;
+    margin-bottom: 10px;
+}

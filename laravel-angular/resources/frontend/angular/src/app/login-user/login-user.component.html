@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+            <img id="img-logo-short" src="./assets/imagens/logo-short.png" alt="logo-short">
+            <h1>Seja bem-vindo(a)!</h1>
+            <form (ngSubmit)="submit()" [formGroup]="loginForm">
+                <div class="input">
+                    <input placeholder="E-mail" type="email" class="form-control" id="inputEmail" formControlName="email" [ngClass]="{
+                    'is-invalid': submitted && f['email'].errors && (f['email'].dirty || f['email'].touched),
+                    'is-valid': f['email'].valid && (f['email'].dirty || f['email'].touched)}">
+                    <div *ngIf="submitted && f['email'].errors && (f['email'].dirty || f['email'].touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="f['email'].errors['required']">Email é obrigatório</div>
+                        <div *ngIf="f['email'].errors['email']">Email inválido</div>
+                    </div>
+                </div>
+
+                <div class="input">
+                    <input placeholder="Senha" type="password" class="form-control" id="inputPassword" formControlName="password" [ngClass]="{
+                    'is-invalid': submitted && f['password'].errors && (f['password'].dirty || f['password'].touched),
+                    'is-valid': f['password'].valid && (f['password'].dirty || f['password'].touched)}">
+                    <div *ngIf="submitted && f['password'].errors && (f['password'].dirty || f['password'].touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="f['password'].errors['required']">Senha é obrigatória</div>
+                        <div *ngIf="f['password'].errors['minlength']">A senha deve ter pelo menos 6 caracteres</div>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary-long">Entrar</button>
+            </form>
+        </div>
+        <div class="col-md-3">
+            <h1>Não tem uma conta?</h1>
+            <p>Ainda não está no SharedLib? Crie uma conta agora mesmo gratuitamente para aproveitar do nosso sistema de
+                empréstimo de livros e mergulhar em novas leituras.</p>
+            <button class="btn-secundary-long"><a routerLink="/cadastro-user">Cadastre-se</a></button>
+        </div>
+    </div>
+</div>

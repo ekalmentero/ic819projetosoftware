@@ -1,0 +1,58 @@
+<div class="container" id="container-path">
+    <p>{{livro?.titulo}} - Requerimento de empréstimo</p>
+</div>
+<div class="row align-items-start" id="row-title">
+    <div class="col-1 align-self-center" id="col-title">
+        <h1>Requerimento de empréstimo</h1>
+    </div>
+    <div class="col" id="col-title-cut"></div>
+</div>
+<div id="container-box" class="container">
+    <form [formGroup]="updateForm" (ngSubmit)="submit()">
+        <div id="book" class="row">
+            <div class="col-md-9 align-self-center">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="tempoEmprestimo" style="font-size: 20px; margin-bottom: 10px;"><b>Tempo de empréstimo</b></label>
+                        <input type="number" id="tempoEmprestimo" style="margin-bottom: 10px;" formControlName="tempoEmprestimo" [(ngModel)]="tempoEmprestimo" [ngClass]="{
+                            'is-invalid': submitted && f['tempoEmprestimo'].errors && (f['tempoEmprestimo'].dirty || f['tempoEmprestimo'].touched),
+                            'is-valid': f['tempoEmprestimo'].valid && (f['tempoEmprestimo'].dirty || f['tempoEmprestimo'].touched)}">
+                    </div>
+                    <div *ngIf="submitted && f['tempoEmprestimo'].errors?.['required']" class="invalid-feedback">
+                        Tempo é obrigatório
+                    </div>
+                </div>
+                <p>* o usuário tem até 7 dias para buscar e 7 dias para devolver o livro além deste prazo de empréstimo</p>
+                <div class="row">
+                    <div class="col">
+                        <h5><b>Regras</b></h5>
+                        <ul>
+                            <li>É proibído rasurar, rabiscar, marcar ou desenhar em qualquer parte do livro.</li>
+                            <li>É proíbido tirar cópias do livro.</li>
+                            <li>É proibido emprestar o livro para terceiros.</li>
+                            <li>Qualquer atraso não conscentido na devolução gera um multa de R$ XX.</li>
+                            <li>As responsabilidades de busca de devolução do livro integralmente do requerente.</li>
+                        </ul>
+                        <p>Ao solicitar o empréstimo, você concorda com todas as regras acima e com o <a>Termos e Condições</a> da plataforma.</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <button type="submit" id="btn-primary-long">Solicitar</button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row align-items-center" id="perfil">
+                    <div class="col-md-3">
+                        <img src="./assets/imagens/foto-de-perfil.png" alt="Foto de perfil">
+                    </div>
+                    <div class="col-md-9 align-self-start">
+                        <h6><b>{{user?.nome}}</b></h6><br>
+                    </div>
+                </div>            
+                <img src="./assets/imagens/capa-livro.png" alt="Capa do livro"><br><br>
+                <h3><b>{{livro?.titulo}}</b></h3>
+                <h4>{{livro?.autor}}</h4>
+            </div>
+        </div>
+    </form>
+</div>

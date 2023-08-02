@@ -1,0 +1,21 @@
+#row-card {
+    color: #042932;
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#col-logo {
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 10px;
+}
+
+#col-btn-primary {
+    padding: 10px;
+}
+
+#btn-secundary {
+    width: 200px;
+}

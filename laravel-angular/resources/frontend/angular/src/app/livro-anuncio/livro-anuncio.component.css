@@ -1,0 +1,73 @@
+#container-box {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 50px 100px;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    border-radius: 10px;
+    color: #042932;
+}
+
+#location-logo, #location-text {
+    color: grey;
+}
+
+#nota {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+#avaliacao {
+    justify-content: center;
+}
+
+#avaliacao i {
+    color: #0B9D92;
+}
+
+#user-name {
+    text-align: center;
+}
+
+#location-logo, #location-text, #nota {
+    display: inline;
+}
+
+#foto-perfil img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#book {
+    margin-top: 30px;
+}
+
+#book img {
+    width: 80%;
+}
+
+#book p {
+    width: 80%;
+}
+
+#book-data {
+    margin-top: 30px;
+}
+
+#book-data {
+    color: #ffffff;
+    background: #042932;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#book-data i {
+    font-size: 30px;
+} 
+
+#btn-primary-long {
+    margin-top: 20px;
+    width: 300px;
+}

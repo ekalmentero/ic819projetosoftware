@@ -1,0 +1,80 @@
+<div id="search-container" class="container-fluid">
+  <div id="search-input" class="row height d-flex justify-content-center align-items-center">
+    <div class="col">
+      <div id="search" class="search">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control" placeholder="Procure o livro que deseja!"
+          (input)="filtrarLivros($event)">
+        <button class="btn btn-primary"><i class="fa-solid fa-filter"></i></button>
+      </div><br>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('romance')">Romance</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('ficção científica')">Ficção Científica</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('fantasia')">Fantasia</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('terror')">Terror</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('d-flex')">Drama</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('aventura')">Aventura</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('policial')">Policial</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Comédia')">Comédia</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Histórico')">Histórico</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Biografia')">Biografia</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Autoajuda')">Autoajuda</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Poesia')">Poesia</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Ensaio')">Ensaio</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Mitologia')">Mitologia</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Filosofia')">Filosofia</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Tecnologia')">Tecnologia</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Viagem')">Viagem</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Infantil')">Infantil</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('Suspense')">Suspense</button>
+      <button id="btn-primary" class="btn btn-primary mx-2 my-2"
+        (click)="filtrarLivrosPorCategoria('História em Quadrinhos')">História em Quadrinhos</button>
+    </div>
+  </div>
+</div>
+<div id="book-cards" class="container">
+  <ng-container *ngFor="let item of livros">
+    <div class="row" id="row-card" *ngIf="atendeCriteriosFiltro(item) && atendeCriteriosCategoriaFiltro(item)">
+      <div class="col-1" id="col-logo">
+        <img height="160" src="./assets/imagens/capa-livro.png" alt="capa-livro">
+      </div>
+      <div class="col-auto me-auto align-self-center">
+        <div class="row align-items-center">
+          <div class="col d-flex align-items-center">
+            <h3 id="book-title" class="col mb-0">{{item.livro?.titulo}}</h3>
+            <i id="location-logo" class="fa-solid fa-location-dot"></i>
+            <p id="location-text" class="mb-0">{{item.userAnuncio?.cidade}}, {{item.userAnuncio?.estado}}</p>
+          </div>
+        </div>
+        <p>{{item.livro?.autor}}</p>
+        <p><b>Status:</b> <span *ngIf="item.anuncio?.emprestado" style="color: #EE6363;"><b> Emprestado</b></span>
+          <span *ngIf="!item.anuncio?.emprestado"> Disponível</span>
+        </p>
+        <div id="search-categories" class="row height d-flex justify-content-start align-items-center">
+          <button id="btn-primary" class="btn btn-primary mx-2 my-2">{{item.livro.categoria1}}</button>
+      </div> 
+      </div>
+      <div class="col-auto align-self-end" id="col-btn-primary">
+        <button id="btn-primary" (click)="verAnuncio(item.anuncio?.id)">Ver mais</button>
+      </div>
+    </div>
+  </ng-container>
+</div>

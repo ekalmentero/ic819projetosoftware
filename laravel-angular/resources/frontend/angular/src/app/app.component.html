@@ -1,0 +1,74 @@
+<nav class="navbar">
+    <img id="img-logo" src="./assets/imagens/logo.png" alt="logo-sharedLib" class="navbar-brand">
+    <ul class="navbar-nav me-auto">
+        <div class="nav-pages">
+            <li><a routerLink="/home">Home</a></li>
+            <li><a (click)="scrollToSobre()" style="cursor: pointer;">Sobre</a></li>
+            <li><a routerLink="/livros">Livros</a></li>
+        </div>
+    </ul>
+    <div [hidden]="isAuthenticated" class="nav-login-cadastro">
+        <i class="fa-regular fa-user"></i>
+        <li><a routerLink="/login-user">Login</a></li>
+        <li>|</li>
+        <li><a routerLink="/cadastro-user">Cadastre-se</a></li>
+    </div>
+    <div class="dropdown" *ngIf="isAuthenticated" style="position: relative; z-index: 999;">
+        <i class="fa-regular fa-user"></i>
+        <button class="dropbtn">{{ nome }}</button>
+        <div class="dropdown-content">
+            <a routerLink="/perfil-user"><i class="fa-solid fa-house-user"></i> Meu Perfil</a>
+            <a routerLink="/cadastro-anuncio"><i class="fa-solid fa-plus"></i> Anunciar Livro</a>
+            <a (click)="logout()" style="cursor: pointer;"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+        </div>
+        <i class="fa-solid fa-caret-down"></i>
+    </div>
+
+</nav>
+
+<router-outlet>
+</router-outlet>
+
+<footer>
+    <div class="row">
+        <div class="col-md-6">
+            <img id="img-logo" src="./assets/imagens/logo-white.png" alt="logo-white"><br>
+
+            <i id="icon" class="fa-brands fa-instagram"></i>
+            <a id="link" href="https://www.instagram.com/"> sharedLib </a><br>
+
+            <i id="icon" class="fa-brands fa-twitter"></i>
+            <a id="link" href="https://www.twitter.com/"> sharedLib </a><br>
+
+            <i id="icon" class="fa-brands fa-github"></i>
+            <a id="link" href="https://www.github.com/"> sharedLib </a><br>
+
+            <i id="icon" class="fa-brands fa-linkedin"></i>
+            <a id="link" href="https://www.linkedin.com/"> sharedLib </a><br><br>
+
+            <span> Copyright © 2023 SharedLib ®. All rights reserved. </span>
+        </div>
+        <div class="col-md-6">
+            <div class="row" style="margin-top: 20px;">
+                <h2 class="col">Fale conosco!</h2>
+                <p class="col">Alguma dúvida, crítica ou sugestão para a nossa plataforma? Entre em contato!</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="input-name" class="form-label">Nome</label>
+                    <input id="input-name" type="text" class="form-control">
+
+                    <label for="input-email" class="form-label">Email</label>
+                    <input id="input-email" type="email" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="input-mensagem" class="form-label">Mensagem</label>
+                    <textarea id="input-mensagem" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" id="btn-primary" style="width: 200px;">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</footer>

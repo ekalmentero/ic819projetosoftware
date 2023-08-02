@@ -1,0 +1,50 @@
+h1 {
+    margin-bottom: 40px;
+    font-weight: 600;
+    font-size: 32px;
+}
+
+p {
+    margin-bottom: 40px;
+}
+
+.input {
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 7px;
+}
+
+.btn-secundary-long a {
+    text-decoration: none;
+    color: white;
+}
+
+.container {
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+
+.col-md-6 {
+    color: #042932;
+    padding: 110px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.col-md-6 a {
+    text-decoration: none;
+    color: #0B9D92;
+}
+
+.col-md-6 p {
+    text-align: start;
+}
+
+.col-md-3 {
+    color: white;
+    background-color: #042932;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,92 @@
+#row-title {
+    background-color: #042932;
+    width: 1000px;
+    height: 80px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+#row-title h1 {
+    margin-left: 160px;
+    width: 800px;
+}
+
+#col-title-cut {
+    width: 0;
+    height: 0;
+    border-top: 40px solid transparent;
+    border-right: 80px solid white;
+    border-bottom: 40px solid transparent;
+}
+
+#container-box {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 50px 100px;
+    margin-top: 20px;
+    margin-bottom: 90px;
+    border-radius: 10px;
+    color: #042932;
+}
+
+#location-logo, #location-text {
+    color: grey;
+}
+
+#nota {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+#avaliacao {
+    justify-content: center;
+}
+
+#avaliacao i {
+    color: #0B9D92;
+}
+
+#user-name {
+    text-align: center;
+}
+
+#location-logo, #location-text, #nota {
+    display: inline;
+}
+
+#perfil {
+    margin-top: -40px;
+}
+
+#perfil img {
+    margin-top: 0px;
+    width: 40px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+#perfil h6 {
+    margin-left: -20px;
+    margin-top: 40px;
+}
+
+#book {
+    margin-top: 30px;
+}
+
+#book img {
+    margin-top: 10px;
+    width: 80%;
+}
+
+#book p {
+    width: 80%;
+}
+
+#btn-primary-long {
+    width: 20%;
+}
+
+#btn-primary-long:hover{
+    background-color:#042932;
+}
